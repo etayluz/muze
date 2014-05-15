@@ -48,7 +48,7 @@ static Player *player;
     self.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;//MPMovieScalingModeAspectFit; // MPMovieScalingModeAspectFit
     self.moviePlayer.view.frame = CGRectMake(0,0,320,self.view.frame.size.height - self.footer.frame.size.height);
     self.moviePlayer.shouldAutoplay = YES;
-    self.moviePlayer.controlStyle = MPMovieControlStyleDefault;//MPMovieControlStyleNone,
+    self.moviePlayer.controlStyle = MPMovieControlStyleNone;//MPMovieControlStyleNone,MPMovieControlStyleDefault
     [self.moviePlayer prepareToPlay];
 
     [self.view addSubview:self.moviePlayer.view];
