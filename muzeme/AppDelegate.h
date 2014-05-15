@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Player.h"
+#import "MBProgressHUD.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

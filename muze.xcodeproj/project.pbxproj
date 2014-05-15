@@ -23,6 +23,7 @@
 		B40F7A28192560DE009BAE3C /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F7A27192560DE009BAE3C /* Player.m */; };
 		B4D3485219256C2F006A8C21 /* buttomBarSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D3485119256C2F006A8C21 /* buttomBarSelected.png */; };
 		B4D3485419256DF3006A8C21 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D3485319256DF3006A8C21 /* play.png */; };
+		B4D3486719257F39006A8C21 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486619257F39006A8C21 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		B40F7A27192560DE009BAE3C /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		B4D3485119256C2F006A8C21 /* buttomBarSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBarSelected.png; path = images/buttomBarSelected.png; sourceTree = "<group>"; };
 		B4D3485319256DF3006A8C21 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = images/play.png; sourceTree = "<group>"; };
+		B4D3486519257F39006A8C21 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = muze/MBProgressHUD.h; sourceTree = SOURCE_ROOT; };
+		B4D3486619257F39006A8C21 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = muze/MBProgressHUD.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 			children = (
 				B40F7A0119255F02009BAE3C /* AppDelegate.h */,
 				B40F7A0219255F02009BAE3C /* AppDelegate.m */,
+				B4D3486519257F39006A8C21 /* MBProgressHUD.h */,
+				B4D3486619257F39006A8C21 /* MBProgressHUD.m */,
 				B40F7A26192560DE009BAE3C /* Player.h */,
 				B40F7A27192560DE009BAE3C /* Player.m */,
 				B40F7A0419255F02009BAE3C /* Images.xcassets */,
@@ -272,6 +277,7 @@
 				B40F7A0319255F02009BAE3C /* AppDelegate.m in Sources */,
 				B40F7A28192560DE009BAE3C /* Player.m in Sources */,
 				B40F79FF19255F02009BAE3C /* main.m in Sources */,
+				B4D3486719257F39006A8C21 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

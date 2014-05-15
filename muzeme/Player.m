@@ -42,8 +42,13 @@ static Player *player;
     self.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;//MPMovieScalingModeAspectFit; // MPMovieScalingModeAspectFit
     self.moviePlayer.view.frame = CGRectMake(0,0,320,self.view.frame.size.height - self.footer.frame.size.height);
     self.moviePlayer.shouldAutoplay = YES;
-    self.moviePlayer.controlStyle = MPMovieControlStyleNone;
+    self.moviePlayer.controlStyle = MPMovieControlStyleDefault;//MPMovieControlStyleNone,
     [self.moviePlayer prepareToPlay];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stateChange)
+                                                 name:MPMoviePlayerLoadStateDidChangeNotification
+                                               object:self.moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
+
     [self.view addSubview:self.moviePlayer.view];
     
     /* DISLIKE BUTTON */
@@ -98,6 +103,17 @@ static Player *player;
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
     self.nextButton.hidden = YES;
     [self.view addSubview:self.nextButton];
+}
+
+
+- (void)stateChange
+{
+    
+}
+
+- (void)movieDidFinishPlaying
+{
+    [self didPressNextButton];
 }
 
 - (void)didPressLikeButton
