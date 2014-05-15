@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface muzemeTests : XCTestCase
+@interface muzeTests : XCTestCase
 
 @end
 
-@implementation muzemeTests
+@implementation muzeTests
 
 - (void)setUp
 {

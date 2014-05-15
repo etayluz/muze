@@ -18,7 +18,7 @@
 		B40F7A0D19255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
 		B40F7A0E19255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
 		B40F7A1619255F02009BAE3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B40F7A1419255F02009BAE3C /* InfoPlist.strings */; };
-		B40F7A1819255F02009BAE3C /* muzemeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F7A1719255F02009BAE3C /* muzemeTests.m */; };
+		B40F7A1819255F02009BAE3C /* muzeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F7A1719255F02009BAE3C /* muzeTests.m */; };
 		B40F7A241925600F009BAE3C /* buttomBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B40F7A221925600F009BAE3C /* buttomBar.png */; };
 		B40F7A28192560DE009BAE3C /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F7A27192560DE009BAE3C /* Player.m */; };
 		B4D3485219256C2F006A8C21 /* buttomBarSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D3485119256C2F006A8C21 /* buttomBarSelected.png */; };
@@ -51,7 +51,7 @@
 		B40F7A0B19255F02009BAE3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B40F7A1319255F02009BAE3C /* muzeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "muzeTests-Info.plist"; sourceTree = "<group>"; };
 		B40F7A1519255F02009BAE3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B40F7A1719255F02009BAE3C /* muzemeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muzemeTests.m; sourceTree = "<group>"; };
+		B40F7A1719255F02009BAE3C /* muzeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muzeTests.m; sourceTree = "<group>"; };
 		B40F7A221925600F009BAE3C /* buttomBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBar.png; path = images/buttomBar.png; sourceTree = "<group>"; };
 		B40F7A26192560DE009BAE3C /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		B40F7A27192560DE009BAE3C /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 		B40F7A1119255F02009BAE3C /* muzeTests */ = {
 			isa = PBXGroup;
 			children = (
-				B40F7A1719255F02009BAE3C /* muzemeTests.m */,
+				B40F7A1719255F02009BAE3C /* muzeTests.m */,
 				B40F7A1219255F02009BAE3C /* Supporting Files */,
 			);
 			name = muzeTests;
@@ -279,7 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B40F7A1819255F02009BAE3C /* muzemeTests.m in Sources */,
+				B40F7A1819255F02009BAE3C /* muzeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
