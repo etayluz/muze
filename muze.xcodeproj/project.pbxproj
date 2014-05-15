@@ -36,20 +36,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B40F79EF19255F02009BAE3C /* muzeme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muzeme.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B40F79EF19255F02009BAE3C /* muze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40F79F219255F02009BAE3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B40F79F419255F02009BAE3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B40F79F619255F02009BAE3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B40F79FA19255F02009BAE3C /* muzeme-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "muzeme-Info.plist"; sourceTree = "<group>"; };
+		B40F79FA19255F02009BAE3C /* muze-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "muze-Info.plist"; sourceTree = "<group>"; };
 		B40F79FC19255F02009BAE3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B40F79FE19255F02009BAE3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B40F7A0019255F02009BAE3C /* muzeme-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "muzeme-Prefix.pch"; sourceTree = "<group>"; };
+		B40F7A0019255F02009BAE3C /* muze-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "muze-Prefix.pch"; sourceTree = "<group>"; };
 		B40F7A0119255F02009BAE3C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B40F7A0219255F02009BAE3C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B40F7A0419255F02009BAE3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B40F7A0A19255F02009BAE3C /* muzemeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = muzemeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B40F7A0A19255F02009BAE3C /* muzeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = muzeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40F7A0B19255F02009BAE3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B40F7A1319255F02009BAE3C /* muzemeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "muzemeTests-Info.plist"; sourceTree = "<group>"; };
+		B40F7A1319255F02009BAE3C /* muzeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "muzeTests-Info.plist"; sourceTree = "<group>"; };
 		B40F7A1519255F02009BAE3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B40F7A1719255F02009BAE3C /* muzemeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muzemeTests.m; sourceTree = "<group>"; };
 		B40F7A221925600F009BAE3C /* buttomBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBar.png; path = images/buttomBar.png; sourceTree = "<group>"; };
@@ -86,8 +86,8 @@
 		B40F79E619255F02009BAE3C = {
 			isa = PBXGroup;
 			children = (
-				B40F79F819255F02009BAE3C /* muzeme */,
-				B40F7A1119255F02009BAE3C /* muzemeTests */,
+				B40F79F819255F02009BAE3C /* muze */,
+				B40F7A1119255F02009BAE3C /* muzeTests */,
 				B40F79F119255F02009BAE3C /* Frameworks */,
 				B40F79F019255F02009BAE3C /* Products */,
 			);
@@ -96,8 +96,8 @@
 		B40F79F019255F02009BAE3C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B40F79EF19255F02009BAE3C /* muzeme.app */,
-				B40F7A0A19255F02009BAE3C /* muzemeTests.xctest */,
+				B40F79EF19255F02009BAE3C /* muze.app */,
+				B40F7A0A19255F02009BAE3C /* muzeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,7 +113,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B40F79F819255F02009BAE3C /* muzeme */ = {
+		B40F79F819255F02009BAE3C /* muze */ = {
 			isa = PBXGroup;
 			children = (
 				B40F7A0119255F02009BAE3C /* AppDelegate.h */,
@@ -124,33 +124,35 @@
 				B40F7A2119255FFF009BAE3C /* images */,
 				B40F79F919255F02009BAE3C /* Supporting Files */,
 			);
+			name = muze;
 			path = muzeme;
 			sourceTree = "<group>";
 		};
 		B40F79F919255F02009BAE3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B40F79FA19255F02009BAE3C /* muzeme-Info.plist */,
+				B40F79FA19255F02009BAE3C /* muze-Info.plist */,
 				B40F79FB19255F02009BAE3C /* InfoPlist.strings */,
 				B40F79FE19255F02009BAE3C /* main.m */,
-				B40F7A0019255F02009BAE3C /* muzeme-Prefix.pch */,
+				B40F7A0019255F02009BAE3C /* muze-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B40F7A1119255F02009BAE3C /* muzemeTests */ = {
+		B40F7A1119255F02009BAE3C /* muzeTests */ = {
 			isa = PBXGroup;
 			children = (
 				B40F7A1719255F02009BAE3C /* muzemeTests.m */,
 				B40F7A1219255F02009BAE3C /* Supporting Files */,
 			);
+			name = muzeTests;
 			path = muzemeTests;
 			sourceTree = "<group>";
 		};
 		B40F7A1219255F02009BAE3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B40F7A1319255F02009BAE3C /* muzemeTests-Info.plist */,
+				B40F7A1319255F02009BAE3C /* muzeTests-Info.plist */,
 				B40F7A1419255F02009BAE3C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -169,9 +171,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B40F79EE19255F02009BAE3C /* muzeme */ = {
+		B40F79EE19255F02009BAE3C /* muze */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B40F7A1B19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muzeme" */;
+			buildConfigurationList = B40F7A1B19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muze" */;
 			buildPhases = (
 				B40F79EB19255F02009BAE3C /* Sources */,
 				B40F79EC19255F02009BAE3C /* Frameworks */,
@@ -181,14 +183,14 @@
 			);
 			dependencies = (
 			);
-			name = muzeme;
+			name = muze;
 			productName = muzeme;
-			productReference = B40F79EF19255F02009BAE3C /* muzeme.app */;
+			productReference = B40F79EF19255F02009BAE3C /* muze.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B40F7A0919255F02009BAE3C /* muzemeTests */ = {
+		B40F7A0919255F02009BAE3C /* muzeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B40F7A1E19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muzemeTests" */;
+			buildConfigurationList = B40F7A1E19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muzeTests" */;
 			buildPhases = (
 				B40F7A0619255F02009BAE3C /* Sources */,
 				B40F7A0719255F02009BAE3C /* Frameworks */,
@@ -199,9 +201,9 @@
 			dependencies = (
 				B40F7A1019255F02009BAE3C /* PBXTargetDependency */,
 			);
-			name = muzemeTests;
+			name = muzeTests;
 			productName = muzemeTests;
-			productReference = B40F7A0A19255F02009BAE3C /* muzemeTests.xctest */;
+			productReference = B40F7A0A19255F02009BAE3C /* muzeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -221,7 +223,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B40F79EA19255F02009BAE3C /* Build configuration list for PBXProject "muzeme" */;
+			buildConfigurationList = B40F79EA19255F02009BAE3C /* Build configuration list for PBXProject "muze" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -233,8 +235,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B40F79EE19255F02009BAE3C /* muzeme */,
-				B40F7A0919255F02009BAE3C /* muzemeTests */,
+				B40F79EE19255F02009BAE3C /* muze */,
+				B40F7A0919255F02009BAE3C /* muzeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -286,7 +288,7 @@
 /* Begin PBXTargetDependency section */
 		B40F7A1019255F02009BAE3C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B40F79EE19255F02009BAE3C /* muzeme */;
+			target = B40F79EE19255F02009BAE3C /* muze */;
 			targetProxy = B40F7A0F19255F02009BAE3C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -389,9 +391,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "muzeme/muzeme-Prefix.pch";
-				INFOPLIST_FILE = "muzeme/muzeme-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "muzeme/muze-Prefix.pch";
+				INFOPLIST_FILE = "muzeme/muze-Info.plist";
+				PRODUCT_NAME = muze;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -405,9 +407,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "muzeme/muzeme-Prefix.pch";
-				INFOPLIST_FILE = "muzeme/muzeme-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "muzeme/muze-Prefix.pch";
+				INFOPLIST_FILE = "muzeme/muze-Info.plist";
+				PRODUCT_NAME = muze;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -428,8 +430,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "muzemeTests/muzemeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "muzemeTests/muzeTests-Info.plist";
+				PRODUCT_NAME = muzeTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -446,8 +448,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "muzeme/muzeme-Prefix.pch";
-				INFOPLIST_FILE = "muzemeTests/muzemeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "muzemeTests/muzeTests-Info.plist";
+				PRODUCT_NAME = muzeTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -456,7 +458,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B40F79EA19255F02009BAE3C /* Build configuration list for PBXProject "muzeme" */ = {
+		B40F79EA19255F02009BAE3C /* Build configuration list for PBXProject "muze" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B40F7A1919255F02009BAE3C /* Debug */,
@@ -465,7 +467,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B40F7A1B19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muzeme" */ = {
+		B40F7A1B19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muze" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B40F7A1C19255F02009BAE3C /* Debug */,
@@ -474,7 +476,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B40F7A1E19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muzemeTests" */ = {
+		B40F7A1E19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muzeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B40F7A1F19255F02009BAE3C /* Debug */,
