@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B40F79F319255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
+		B40F79F519255F02009BAE3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F419255F02009BAE3C /* CoreGraphics.framework */; };
+		B40F79F719255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
+		B40F79FD19255F02009BAE3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B40F79FB19255F02009BAE3C /* InfoPlist.strings */; };
+		B40F79FF19255F02009BAE3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F79FE19255F02009BAE3C /* main.m */; };
+		B40F7A0319255F02009BAE3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F7A0219255F02009BAE3C /* AppDelegate.m */; };
+		B40F7A0519255F02009BAE3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B40F7A0419255F02009BAE3C /* Images.xcassets */; };
+		B40F7A0C19255F02009BAE3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F7A0B19255F02009BAE3C /* XCTest.framework */; };
+		B40F7A0D19255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
+		B40F7A0E19255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
+		B40F7A1619255F02009BAE3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B40F7A1419255F02009BAE3C /* InfoPlist.strings */; };
+		B40F7A1819255F02009BAE3C /* muzemeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F7A1719255F02009BAE3C /* muzemeTests.m */; };
+		B40F7A241925600F009BAE3C /* buttomBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B40F7A221925600F009BAE3C /* buttomBar.png */; };
+		B40F7A28192560DE009BAE3C /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F7A27192560DE009BAE3C /* Player.m */; };
+		B4D3485219256C2F006A8C21 /* buttomBarSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D3485119256C2F006A8C21 /* buttomBarSelected.png */; };
+		B4D3485419256DF3006A8C21 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D3485319256DF3006A8C21 /* play.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B40F7A0F19255F02009BAE3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B40F79E719255F02009BAE3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B40F79EE19255F02009BAE3C;
+			remoteInfo = muzeme;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B40F79EF19255F02009BAE3C /* muzeme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muzeme.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B40F79F219255F02009BAE3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B40F79F419255F02009BAE3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B40F79F619255F02009BAE3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B40F79FA19255F02009BAE3C /* muzeme-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "muzeme-Info.plist"; sourceTree = "<group>"; };
+		B40F79FC19255F02009BAE3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B40F79FE19255F02009BAE3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B40F7A0019255F02009BAE3C /* muzeme-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "muzeme-Prefix.pch"; sourceTree = "<group>"; };
+		B40F7A0119255F02009BAE3C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B40F7A0219255F02009BAE3C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B40F7A0419255F02009BAE3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B40F7A0A19255F02009BAE3C /* muzemeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = muzemeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B40F7A0B19255F02009BAE3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B40F7A1319255F02009BAE3C /* muzemeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "muzemeTests-Info.plist"; sourceTree = "<group>"; };
+		B40F7A1519255F02009BAE3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B40F7A1719255F02009BAE3C /* muzemeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = muzemeTests.m; sourceTree = "<group>"; };
+		B40F7A221925600F009BAE3C /* buttomBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBar.png; path = images/buttomBar.png; sourceTree = "<group>"; };
+		B40F7A26192560DE009BAE3C /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		B40F7A27192560DE009BAE3C /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		B4D3485119256C2F006A8C21 /* buttomBarSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBarSelected.png; path = images/buttomBarSelected.png; sourceTree = "<group>"; };
+		B4D3485319256DF3006A8C21 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = images/play.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B40F79EC19255F02009BAE3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B40F79F519255F02009BAE3C /* CoreGraphics.framework in Frameworks */,
+				B40F79F719255F02009BAE3C /* UIKit.framework in Frameworks */,
+				B40F79F319255F02009BAE3C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B40F7A0719255F02009BAE3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B40F7A0C19255F02009BAE3C /* XCTest.framework in Frameworks */,
+				B40F7A0E19255F02009BAE3C /* UIKit.framework in Frameworks */,
+				B40F7A0D19255F02009BAE3C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B40F79E619255F02009BAE3C = {
+			isa = PBXGroup;
+			children = (
+				B40F79F819255F02009BAE3C /* muzeme */,
+				B40F7A1119255F02009BAE3C /* muzemeTests */,
+				B40F79F119255F02009BAE3C /* Frameworks */,
+				B40F79F019255F02009BAE3C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B40F79F019255F02009BAE3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B40F79EF19255F02009BAE3C /* muzeme.app */,
+				B40F7A0A19255F02009BAE3C /* muzemeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B40F79F119255F02009BAE3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B40F79F219255F02009BAE3C /* Foundation.framework */,
+				B40F79F419255F02009BAE3C /* CoreGraphics.framework */,
+				B40F79F619255F02009BAE3C /* UIKit.framework */,
+				B40F7A0B19255F02009BAE3C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B40F79F819255F02009BAE3C /* muzeme */ = {
+			isa = PBXGroup;
+			children = (
+				B40F7A0119255F02009BAE3C /* AppDelegate.h */,
+				B40F7A0219255F02009BAE3C /* AppDelegate.m */,
+				B40F7A26192560DE009BAE3C /* Player.h */,
+				B40F7A27192560DE009BAE3C /* Player.m */,
+				B40F7A0419255F02009BAE3C /* Images.xcassets */,
+				B40F7A2119255FFF009BAE3C /* images */,
+				B40F79F919255F02009BAE3C /* Supporting Files */,
+			);
+			path = muzeme;
+			sourceTree = "<group>";
+		};
+		B40F79F919255F02009BAE3C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B40F79FA19255F02009BAE3C /* muzeme-Info.plist */,
+				B40F79FB19255F02009BAE3C /* InfoPlist.strings */,
+				B40F79FE19255F02009BAE3C /* main.m */,
+				B40F7A0019255F02009BAE3C /* muzeme-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B40F7A1119255F02009BAE3C /* muzemeTests */ = {
+			isa = PBXGroup;
+			children = (
+				B40F7A1719255F02009BAE3C /* muzemeTests.m */,
+				B40F7A1219255F02009BAE3C /* Supporting Files */,
+			);
+			path = muzemeTests;
+			sourceTree = "<group>";
+		};
+		B40F7A1219255F02009BAE3C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B40F7A1319255F02009BAE3C /* muzemeTests-Info.plist */,
+				B40F7A1419255F02009BAE3C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B40F7A2119255FFF009BAE3C /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B40F7A221925600F009BAE3C /* buttomBar.png */,
+				B4D3485119256C2F006A8C21 /* buttomBarSelected.png */,
+				B4D3485319256DF3006A8C21 /* play.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B40F79EE19255F02009BAE3C /* muzeme */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B40F7A1B19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muzeme" */;
+			buildPhases = (
+				B40F79EB19255F02009BAE3C /* Sources */,
+				B40F79EC19255F02009BAE3C /* Frameworks */,
+				B40F79ED19255F02009BAE3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = muzeme;
+			productName = muzeme;
+			productReference = B40F79EF19255F02009BAE3C /* muzeme.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B40F7A0919255F02009BAE3C /* muzemeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B40F7A1E19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muzemeTests" */;
+			buildPhases = (
+				B40F7A0619255F02009BAE3C /* Sources */,
+				B40F7A0719255F02009BAE3C /* Frameworks */,
+				B40F7A0819255F02009BAE3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B40F7A1019255F02009BAE3C /* PBXTargetDependency */,
+			);
+			name = muzemeTests;
+			productName = muzemeTests;
+			productReference = B40F7A0A19255F02009BAE3C /* muzemeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B40F79E719255F02009BAE3C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = com.luzsoft.muzeme;
+				TargetAttributes = {
+					B40F79EE19255F02009BAE3C = {
+						DevelopmentTeam = TUQJVTHTE9;
+					};
+					B40F7A0919255F02009BAE3C = {
+						TestTargetID = B40F79EE19255F02009BAE3C;
+					};
+				};
+			};
+			buildConfigurationList = B40F79EA19255F02009BAE3C /* Build configuration list for PBXProject "muzeme" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B40F79E619255F02009BAE3C;
+			productRefGroup = B40F79F019255F02009BAE3C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B40F79EE19255F02009BAE3C /* muzeme */,
+				B40F7A0919255F02009BAE3C /* muzemeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B40F79ED19255F02009BAE3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B40F79FD19255F02009BAE3C /* InfoPlist.strings in Resources */,
+				B4D3485419256DF3006A8C21 /* play.png in Resources */,
+				B4D3485219256C2F006A8C21 /* buttomBarSelected.png in Resources */,
+				B40F7A0519255F02009BAE3C /* Images.xcassets in Resources */,
+				B40F7A241925600F009BAE3C /* buttomBar.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B40F7A0819255F02009BAE3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B40F7A1619255F02009BAE3C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B40F79EB19255F02009BAE3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B40F7A0319255F02009BAE3C /* AppDelegate.m in Sources */,
+				B40F7A28192560DE009BAE3C /* Player.m in Sources */,
+				B40F79FF19255F02009BAE3C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B40F7A0619255F02009BAE3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B40F7A1819255F02009BAE3C /* muzemeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B40F7A1019255F02009BAE3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B40F79EE19255F02009BAE3C /* muzeme */;
+			targetProxy = B40F7A0F19255F02009BAE3C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B40F79FB19255F02009BAE3C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B40F79FC19255F02009BAE3C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B40F7A1419255F02009BAE3C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B40F7A1519255F02009BAE3C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B40F7A1919255F02009BAE3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B40F7A1A19255F02009BAE3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B40F7A1C19255F02009BAE3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "muzeme/muzeme-Prefix.pch";
+				INFOPLIST_FILE = "muzeme/muzeme-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B40F7A1D19255F02009BAE3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "muzeme/muzeme-Prefix.pch";
+				INFOPLIST_FILE = "muzeme/muzeme-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B40F7A1F19255F02009BAE3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/muzeme.app/muzeme";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "muzeme/muzeme-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "muzemeTests/muzemeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		B40F7A2019255F02009BAE3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/muzeme.app/muzeme";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "muzeme/muzeme-Prefix.pch";
+				INFOPLIST_FILE = "muzemeTests/muzemeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B40F79EA19255F02009BAE3C /* Build configuration list for PBXProject "muzeme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B40F7A1919255F02009BAE3C /* Debug */,
+				B40F7A1A19255F02009BAE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B40F7A1B19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muzeme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B40F7A1C19255F02009BAE3C /* Debug */,
+				B40F7A1D19255F02009BAE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B40F7A1E19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muzemeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B40F7A1F19255F02009BAE3C /* Debug */,
+				B40F7A2019255F02009BAE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B40F79E719255F02009BAE3C /* Project object */;
+}
