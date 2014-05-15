@@ -28,6 +28,7 @@ static Player *player;
     
     self.movieNumber = 1;
     player = self;
+    self.didPressNextMovieButton = NO;
     
     /* FOOTER */
     self.footer = [[UIImageView alloc] init];
@@ -38,16 +39,17 @@ static Player *player;
     
     /* MOVIE PLAYER */
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://etayluz.com/1.3gp"]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidStartPlaying)
+                                                 name:MPMoviePlayerNowPlayingMovieDidChangeNotification
+                                               object:self.moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
+    [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
     self.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
     self.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;//MPMovieScalingModeAspectFit; // MPMovieScalingModeAspectFit
     self.moviePlayer.view.frame = CGRectMake(0,0,320,self.view.frame.size.height - self.footer.frame.size.height);
     self.moviePlayer.shouldAutoplay = YES;
     self.moviePlayer.controlStyle = MPMovieControlStyleDefault;//MPMovieControlStyleNone,
     [self.moviePlayer prepareToPlay];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stateChange)
-                                                 name:MPMoviePlayerLoadStateDidChangeNotification
-                                               object:self.moviePlayer];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
 
     [self.view addSubview:self.moviePlayer.view];
     
@@ -106,14 +108,19 @@ static Player *player;
 }
 
 
-- (void)stateChange
+- (void)movieDidStartPlaying
 {
-    
+//    NSLog(@"%ld", (long)self.moviePlayer.playbackState);
+//    if (self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 - (void)movieDidFinishPlaying
 {
-    [self didPressNextButton];
+    if (self.didPressNextMovieButton == NO)
+        [self didPressNextButton];
+    else
+        self.didPressNextMovieButton = NO;
 }
 
 - (void)didPressLikeButton
@@ -130,16 +137,32 @@ static Player *player;
 
 - (void)didPressNextButton
 {
+    self.didPressNextMovieButton = YES;
     [self.moviePlayer pause];
     [self.moviePlayer.view removeFromSuperview];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerNowPlayingMovieDidChangeNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+                                                  object:nil];
+
+    
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://etayluz.com/2.3gp"]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidStartPlaying)
+                                                     name:MPMoviePlayerNowPlayingMovieDidChangeNotification
+                                                   object:self.moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
     self.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
     self.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
     self.moviePlayer.view.frame = CGRectMake(0,0,320,self.view.frame.size.height - self.footer.frame.size.height);
     self.moviePlayer.shouldAutoplay = YES;
     self.moviePlayer.controlStyle = MPMovieControlStyleNone;
-    [self.moviePlayer prepareToPlay];
     [self.view addSubview:self.moviePlayer.view];
+    [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
+    [self.moviePlayer prepareToPlay];
     self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
 }
 

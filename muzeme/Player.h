@@ -18,4 +18,5 @@
 @property   NSInteger                 movieNumber;
 @property   UIButton                 *playPauseButton;
 @property   UIButton                 *nextButton;
+@property   BOOL                      didPressNextMovieButton;
 @end
