@@ -39,13 +39,18 @@ static Player *player;
     
     /* MOVIE PLAYER */
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://etayluz.com/1.3gp"]];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidStartPlaying)
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
                                                  name:MPMoviePlayerNowPlayingMovieDidChangeNotification
                                                object:self.moviePlayer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayerStateDidChange)
+                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification
+                                               object:nil];
+    self.movieNumber = 2;
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
     self.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
-    self.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;//MPMovieScalingModeAspectFit; // MPMovieScalingModeAspectFit
+    self.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;//MPMovieScalingModeAspectFit; // MPMovieScalingModeAspectFit
     self.moviePlayer.view.frame = CGRectMake(0,0,320,self.view.frame.size.height - self.footer.frame.size.height);
     self.moviePlayer.shouldAutoplay = YES;
     self.moviePlayer.controlStyle = MPMovieControlStyleNone;//MPMovieControlStyleNone,MPMovieControlStyleDefault
@@ -108,13 +113,23 @@ static Player *player;
 }
 
 
-- (void)movieDidStartPlaying
+- (void)movieNowPlaying
 {
 //    NSLog(@"%ld", (long)self.moviePlayer.playbackState);
 //    if (self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    NSLog(@"movieNowPlaying");
+    self.movieDidStartPlaying = YES;
 }
 
+- (void)moviePlayerStateDidChange
+{
+    NSLog(@"moviePlayerStateDidChange");
+    if (self.movieDidStartPlaying == YES)
+    {
+        self.movieDidStartPlaying = NO;
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }
+}
 - (void)movieDidFinishPlaying
 {
     if (self.didPressNextMovieButton == NO)
@@ -148,15 +163,21 @@ static Player *player;
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerPlaybackDidFinishNotification
                                                   object:nil];
-
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerPlaybackStateDidChangeNotification
+                                                  object:nil];
     
-    self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://etayluz.com/2.3gp"]];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidStartPlaying)
+    self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://etayluz.com/%ld.3gp", (long)self.movieNumber++]]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
                                                      name:MPMoviePlayerNowPlayingMovieDidChangeNotification
                                                    object:self.moviePlayer];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayerStateDidChange)
+                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification
+                                               object:nil];
     self.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
-    self.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
+    self.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     self.moviePlayer.view.frame = CGRectMake(0,0,320,self.view.frame.size.height - self.footer.frame.size.height);
     self.moviePlayer.shouldAutoplay = YES;
     self.moviePlayer.controlStyle = MPMovieControlStyleNone;

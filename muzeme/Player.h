@@ -19,4 +19,5 @@
 @property   UIButton                 *playPauseButton;
 @property   UIButton                 *nextButton;
 @property   BOOL                      didPressNextMovieButton;
+@property   BOOL                      movieDidStartPlaying;
 @end
