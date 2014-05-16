@@ -10,7 +10,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface Player : UIViewController
+@interface Player : UIViewController <UIAlertViewDelegate>
 + (Player*)player;
 -(void)showControls;
 @property   MPMoviePlayerController  *moviePlayer;
@@ -27,4 +27,5 @@
 @property   BOOL                      isMovieLiked;
 @property   BOOL                      isControlsShown;
 @property   NSTimer                  *hideControlsTimer;
+@property   BOOL                      isError;
 @end

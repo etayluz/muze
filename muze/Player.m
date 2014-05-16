@@ -29,7 +29,7 @@ static Player *player;
     
     self.movieNumber = 1;
     player = self;
-    self.didPressNextMovieButton = NO;
+    //self.didPressNextMovieButton = NO;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
     
@@ -48,7 +48,7 @@ static Player *player;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
                                                  name:MPMoviePlayerNowPlayingMovieDidChangeNotification
                                                object:self.moviePlayer];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying:) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayerStateDidChange)
                                                  name:MPMoviePlayerPlaybackStateDidChangeNotification
@@ -243,15 +243,53 @@ static Player *player;
     //    if (self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
     NSLog(@"movieNowPlaying");
     self.movieDidStartPlaying = YES;
-    self.didPressNextMovieButton = NO;
+    //self.didPressNextMovieButton = NO;
 }
 
-- (void)movieDidFinishPlaying
+- (void)movieDidFinishPlaying:(NSNotification *)notification
 {
-    if (self.didPressNextMovieButton == NO)
-        [self didPressNextButton];
+    //if (self.didPressNextMovieButton == NO)
+    [self didPressNextButton];
+    
+    NSDictionary *notificationUserInfo = [notification userInfo];
+    NSNumber *resultValue = [notificationUserInfo objectForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey];
+    MPMovieFinishReason reason = [resultValue intValue];
+    if (reason == MPMovieFinishReasonPlaybackError)
+    {
+        NSError *mediaPlayerError = [notificationUserInfo objectForKey:@"error"];
+        if (mediaPlayerError && !self.isError)
+        {
+            self.isError = YES;
+            NSLog(@"playback failed with error description: %@", [mediaPlayerError localizedDescription]);
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ooops!"
+                                                                message:@"Video couldn't be loaded. App will shut down."
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+        }
+        else
+        {
+            NSLog(@"playback failed without any given reason");
+        }
+    }
     else
-        self.didPressNextMovieButton = NO;
+        NSLog(@"movieDidFinishPlaying");
+//    else
+//        self.didPressNextMovieButton = NO;
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+        //home button press programmatically
+//        UIApplication *app = [UIApplication sharedApplication];
+//        [app performSelector:@selector(suspend)];
+//        
+//        //wait 2 seconds while app is going background
+//        [NSThread sleepForTimeInterval:2.0];
+    
+        //exit app when app is in background
+        exit(0);
 }
 
 - (void)moviePlayerStateDidChange
@@ -267,8 +305,7 @@ static Player *player;
 
 - (void)didPressNextButton
 {
-    self.didPressNextMovieButton = YES;
-    [self.moviePlayer pause];
+//    self.didPressNextMovieButton = YES;
     [self.moviePlayer.view removeFromSuperview];
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
@@ -284,12 +321,14 @@ static Player *player;
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerPlaybackStateDidChangeNotification
                                                   object:nil];
+
+    [self.moviePlayer pause];
     
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://etayluz.com/%ld.3gp", (long)self.movieNumber++]]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
                                                      name:MPMoviePlayerNowPlayingMovieDidChangeNotification
                                                    object:self.moviePlayer];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying:) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(moviePlayerStateDidChange)
                                                  name:MPMoviePlayerPlaybackStateDidChangeNotification
