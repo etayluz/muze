@@ -16,7 +16,6 @@
 		B4D348711925A653006A8C21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486C1925A653006A8C21 /* AppDelegate.m */; };
 		B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486E1925A653006A8C21 /* MBProgressHUD.m */; };
 		B4D348731925A653006A8C21 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D348701925A653006A8C21 /* Player.m */; };
-		B4D348751925A661006A8C21 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D348741925A661006A8C21 /* Images.xcassets */; };
 		B4D348791925A66E006A8C21 /* buttomBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348761925A66E006A8C21 /* buttomBar.png */; };
 		B4D3487A1925A66E006A8C21 /* buttomBarSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348771925A66E006A8C21 /* buttomBarSelected.png */; };
 		B4D3487B1925A66E006A8C21 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348781925A66E006A8C21 /* play.png */; };
@@ -24,6 +23,10 @@
 		B4D348821925A699006A8C21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3487F1925A699006A8C21 /* main.m */; };
 		B4D348861925A985006A8C21 /* buttomBarPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348841925A985006A8C21 /* buttomBarPlay.png */; };
 		B4D348871925A985006A8C21 /* buttomBarSelectedPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348851925A985006A8C21 /* buttomBarSelectedPlay.png */; };
+		B4D348911925EBC0006A8C21 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D3488E1925EBC0006A8C21 /* Default-568h@2x.png */; };
+		B4D348921925EBC0006A8C21 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D3488F1925EBC0006A8C21 /* Default.png */; };
+		B4D348931925EBC0006A8C21 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348901925EBC0006A8C21 /* Default@2x.png */; };
+		B4D348951925EBF2006A8C21 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348941925EBF2006A8C21 /* Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +52,6 @@
 		B4D3486E1925A653006A8C21 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = muze/MBProgressHUD.m; sourceTree = SOURCE_ROOT; };
 		B4D3486F1925A653006A8C21 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = muze/Player.h; sourceTree = SOURCE_ROOT; };
 		B4D348701925A653006A8C21 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = muze/Player.m; sourceTree = SOURCE_ROOT; };
-		B4D348741925A661006A8C21 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = muze/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		B4D348761925A66E006A8C21 /* buttomBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBar.png; path = muze/images/buttomBar.png; sourceTree = SOURCE_ROOT; };
 		B4D348771925A66E006A8C21 /* buttomBarSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBarSelected.png; path = muze/images/buttomBarSelected.png; sourceTree = SOURCE_ROOT; };
 		B4D348781925A66E006A8C21 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = muze/images/play.png; sourceTree = SOURCE_ROOT; };
@@ -59,6 +61,10 @@
 		B4D348811925A699006A8C21 /* muze-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "muze-Prefix.pch"; path = "muze/muze-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		B4D348841925A985006A8C21 /* buttomBarPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBarPlay.png; path = muze/images/buttomBarPlay.png; sourceTree = SOURCE_ROOT; };
 		B4D348851925A985006A8C21 /* buttomBarSelectedPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBarSelectedPlay.png; path = muze/images/buttomBarSelectedPlay.png; sourceTree = SOURCE_ROOT; };
+		B4D3488E1925EBC0006A8C21 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "muze/images/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		B4D3488F1925EBC0006A8C21 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = muze/images/Default.png; sourceTree = SOURCE_ROOT; };
+		B4D348901925EBC0006A8C21 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "muze/images/Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		B4D348941925EBF2006A8C21 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = muze/images/Icon.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +129,6 @@
 				B4D3486E1925A653006A8C21 /* MBProgressHUD.m */,
 				B4D3486F1925A653006A8C21 /* Player.h */,
 				B4D348701925A653006A8C21 /* Player.m */,
-				B4D348741925A661006A8C21 /* Images.xcassets */,
 				B40F7A2119255FFF009BAE3C /* images */,
 				B40F79F919255F02009BAE3C /* Supporting Files */,
 			);
@@ -149,6 +154,10 @@
 				B4D348841925A985006A8C21 /* buttomBarPlay.png */,
 				B4D348771925A66E006A8C21 /* buttomBarSelected.png */,
 				B4D348851925A985006A8C21 /* buttomBarSelectedPlay.png */,
+				B4D3488E1925EBC0006A8C21 /* Default-568h@2x.png */,
+				B4D3488F1925EBC0006A8C21 /* Default.png */,
+				B4D348901925EBC0006A8C21 /* Default@2x.png */,
+				B4D348941925EBF2006A8C21 /* Icon.png */,
 				B4D348781925A66E006A8C21 /* play.png */,
 			);
 			name = images;
@@ -234,10 +243,13 @@
 			files = (
 				B4D348871925A985006A8C21 /* buttomBarSelectedPlay.png in Resources */,
 				B4D348861925A985006A8C21 /* buttomBarPlay.png in Resources */,
+				B4D348951925EBF2006A8C21 /* Icon.png in Resources */,
 				B4D3487B1925A66E006A8C21 /* play.png in Resources */,
+				B4D348931925EBC0006A8C21 /* Default@2x.png in Resources */,
+				B4D348921925EBC0006A8C21 /* Default.png in Resources */,
 				B4D348791925A66E006A8C21 /* buttomBar.png in Resources */,
-				B4D348751925A661006A8C21 /* Images.xcassets in Resources */,
 				B4D3487A1925A66E006A8C21 /* buttomBarSelected.png in Resources */,
+				B4D348911925EBC0006A8C21 /* Default-568h@2x.png in Resources */,
 				B4D3487E1925A683006A8C21 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
