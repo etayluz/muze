@@ -66,26 +66,26 @@ static Player *player;
 
 
     /* DISLIKE BUTTON */
-    UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [dislikeButton addTarget:self
+    self.dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.dislikeButton addTarget:self
                    action:@selector(didPressDislikeButton)
          forControlEvents:UIControlEventTouchDown];
-    dislikeButton.frame = CGRectMake(self.view.frame.size.height*0.05, self.footer.frame.origin.y, 85,self.footer.frame.size.height);
-    CALayer * layer1 = [dislikeButton layer];
+    self.dislikeButton.frame = CGRectMake(self.view.frame.size.height*0.05, self.footer.frame.origin.y, 85,self.footer.frame.size.height);
+    CALayer * layer1 = [self.dislikeButton layer];
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
-    [self.view addSubview:dislikeButton];
+    [self.view addSubview:self.dislikeButton];
     
     /* LIKE BUTTON */
-    UIButton *likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [likeButton addTarget:self
+    self.likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.likeButton addTarget:self
                    action:@selector(didPressLikeButton)
          forControlEvents:UIControlEventTouchDown];
-    likeButton.frame = CGRectMake(self.view.frame.size.height*0.24, self.footer.frame.origin.y, 80,self.footer.frame.size.height);
-    CALayer * layer2 = [likeButton layer];
+    self.likeButton.frame = CGRectMake(self.view.frame.size.height*0.24, self.footer.frame.origin.y, 80,self.footer.frame.size.height);
+    CALayer * layer2 = [self.likeButton layer];
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
-    [self.view addSubview:likeButton];
+    [self.view addSubview:self.likeButton];
     
     /* PLAY AND PAUSE BUTTON */
     self.playPauseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -111,6 +111,14 @@ static Player *player;
     [self.view addSubview:self.nextButton];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+{
+    if (self.isControlsShown)
+        [self hideControls];
+    else
+        [self showControls];
+}
+
 
 - (void)movieNowPlaying
 {
@@ -127,8 +135,32 @@ static Player *player;
     {
         self.movieDidStartPlaying = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self showControls];
     }
 }
+
+-(void)hideControls
+{
+    self.isControlsShown = NO;
+    self.footer.hidden = YES;
+    self.likeButton.enabled = NO;
+    self.dislikeButton.enabled = NO;
+    self.playPauseButton.enabled = NO;
+    self.nextButton.enabled = NO;
+}
+
+-(void)showControls
+{
+    self.isControlsShown = YES;
+    self.footer.hidden = NO;
+    self.likeButton.enabled = YES;
+    self.dislikeButton.enabled = YES;
+    self.playPauseButton.enabled = YES;
+    self.nextButton.enabled = YES;
+    [self.hideControlsTimer invalidate];
+    self.hideControlsTimer = [NSTimer scheduledTimerWithTimeInterval:7 target:self selector:@selector(hideControls) userInfo:nil repeats:NO];
+}
+
 - (void)movieDidFinishPlaying
 {
     if (self.didPressNextMovieButton == NO)

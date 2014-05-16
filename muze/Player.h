@@ -17,8 +17,12 @@
 @property   NSInteger                 movieNumber;
 @property   UIButton                 *playPauseButton;
 @property   UIButton                 *nextButton;
+@property   UIButton                 *dislikeButton;
+@property   UIButton                 *likeButton;
 @property   BOOL                      didPressNextMovieButton;
 @property   BOOL                      movieDidStartPlaying;
 @property   BOOL                      isMoviePaused;
 @property   BOOL                      isMovieLiked;
+@property   BOOL                      isControlsShown;
+@property   NSTimer                  *hideControlsTimer;
 @end
