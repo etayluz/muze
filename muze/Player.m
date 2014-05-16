@@ -8,6 +8,7 @@
 
 #import "Player.h"
 #import "AppDelegate.h"
+#import <MessageUI/MessageUI.h>
 
 @interface Player ()
 
@@ -89,7 +90,7 @@ static Player *player;
     /* MAIL BUTTON */
     self.mailButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.mailButton addTarget:self
-                        action:@selector(didPressDislikeButton)
+                        action:@selector(didPressMailButton)
               forControlEvents:UIControlEventTouchDown];
     layer1 = [self.mailButton layer];
     //[layer1 setBorderWidth:1.0];
@@ -131,6 +132,65 @@ static Player *player;
         [self showControls];
 }
 
+- (void)didPressMailButton
+{
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+        
+        mailer.mailComposeDelegate = (id)self;
+        
+        [mailer setSubject:@"New Feedback"];
+        
+        NSArray *toRecipients = [NSArray arrayWithObjects:@"etayluz@gmail.com", nil];
+        [mailer setToRecipients:toRecipients];
+        
+//        UIImage *myImage = [UIImage imageNamed:@"mobiletuts-logo.png"];
+//        NSData *imageData = UIImagePNGRepresentation(myImage);
+//        [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"mobiletutsImage"];
+        
+        NSString *emailBody = @"";
+        [mailer setMessageBody:emailBody isHTML:NO];
+        
+        [self presentViewController:mailer animated:YES completion:nil];
+        
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
+                                                        message:@"Your device doesn't support the composer sheet"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+            break;
+        default:
+            NSLog(@"Mail not sent.");
+            break;
+    }
+    
+    // Remove the mail view
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
 
 - (void)movieNowPlaying
 {
@@ -172,7 +232,7 @@ static Player *player;
     self.nextButton.enabled = YES;
     self.mailButton.hidden = NO;
     [self.hideControlsTimer invalidate];
-    self.hideControlsTimer = [NSTimer scheduledTimerWithTimeInterval:7 target:self selector:@selector(hideControls) userInfo:nil repeats:NO];
+    self.hideControlsTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(hideControls) userInfo:nil repeats:NO];
 }
 
 - (void)movieDidFinishPlaying

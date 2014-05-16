@@ -13,6 +13,7 @@
 		B40F7A0C19255F02009BAE3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F7A0B19255F02009BAE3C /* XCTest.framework */; };
 		B40F7A0D19255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
 		B40F7A0E19255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
+		B4C2550E1925F45400A6C846 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C2550D1925F45400A6C846 /* MessageUI.framework */; };
 		B4D348711925A653006A8C21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486C1925A653006A8C21 /* AppDelegate.m */; };
 		B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486E1925A653006A8C21 /* MBProgressHUD.m */; };
 		B4D348731925A653006A8C21 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D348701925A653006A8C21 /* Player.m */; };
@@ -47,6 +48,7 @@
 		B40F79F619255F02009BAE3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B40F7A0A19255F02009BAE3C /* muzeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = muzeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40F7A0B19255F02009BAE3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B4C2550D1925F45400A6C846 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B4D3486B1925A653006A8C21 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = muze/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		B4D3486C1925A653006A8C21 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = muze/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		B4D3486D1925A653006A8C21 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = muze/MBProgressHUD.h; sourceTree = SOURCE_ROOT; };
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C2550E1925F45400A6C846 /* MessageUI.framework in Frameworks */,
 				B40F79F519255F02009BAE3C /* CoreGraphics.framework in Frameworks */,
 				B40F79F719255F02009BAE3C /* UIKit.framework in Frameworks */,
 				B40F79F319255F02009BAE3C /* Foundation.framework in Frameworks */,
@@ -114,6 +117,7 @@
 		B40F79F119255F02009BAE3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B4C2550D1925F45400A6C846 /* MessageUI.framework */,
 				B40F79F219255F02009BAE3C /* Foundation.framework */,
 				B40F79F419255F02009BAE3C /* CoreGraphics.framework */,
 				B40F79F619255F02009BAE3C /* UIKit.framework */,
