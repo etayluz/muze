@@ -392,6 +392,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "muze/muze-Prefix.pch";
 				INFOPLIST_FILE = "muze/muze-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = muze;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -408,6 +409,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "muze/muze-Prefix.pch";
 				INFOPLIST_FILE = "muze/muze-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = muze;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
