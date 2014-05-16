@@ -192,24 +192,7 @@ static Player *player;
 
 }
 
-- (void)movieNowPlaying
-{
-//    NSLog(@"%ld", (long)self.moviePlayer.playbackState);
-//    if (self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
-    NSLog(@"movieNowPlaying");
-    self.movieDidStartPlaying = YES;
-}
 
-- (void)moviePlayerStateDidChange
-{
-    NSLog(@"moviePlayerStateDidChange");
-    if (self.movieDidStartPlaying == YES)
-    {
-        self.movieDidStartPlaying = NO;
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self showControls];
-    }
-}
 
 -(void)hideControls
 {
@@ -235,13 +218,7 @@ static Player *player;
     self.hideControlsTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(hideControls) userInfo:nil repeats:NO];
 }
 
-- (void)movieDidFinishPlaying
-{
-    if (self.didPressNextMovieButton == NO)
-        [self didPressNextButton];
-    else
-        self.didPressNextMovieButton = NO;
-}
+
 
 - (void)didPressLikeButton
 {
@@ -258,6 +235,34 @@ static Player *player;
 {
     [self didPressNextButton];
 
+}
+
+- (void)movieNowPlaying
+{
+    //    NSLog(@"%ld", (long)self.moviePlayer.playbackState);
+    //    if (self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
+    NSLog(@"movieNowPlaying");
+    self.movieDidStartPlaying = YES;
+    self.didPressNextMovieButton = NO;
+}
+
+- (void)movieDidFinishPlaying
+{
+    if (self.didPressNextMovieButton == NO)
+        [self didPressNextButton];
+    else
+        self.didPressNextMovieButton = NO;
+}
+
+- (void)moviePlayerStateDidChange
+{
+    NSLog(@"moviePlayerStateDidChange");
+    if (self.movieDidStartPlaying == YES)
+    {
+        self.movieDidStartPlaying = NO;
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self showControls];
+    }
 }
 
 - (void)didPressNextButton
@@ -293,7 +298,7 @@ static Player *player;
     self.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
     self.moviePlayer.view.frame = CGRectMake(0,0,self.view.frame.size.height,320);
     self.moviePlayer.shouldAutoplay = YES;
-    self.moviePlayer.controlStyle = MPMovieControlStyleNone;
+    self.moviePlayer.controlStyle = MPMovieControlStyleNone;//MPMovieControlStyleNone
     //[self.view addSubview:self.moviePlayer.view];
     [self.view insertSubview:self.moviePlayer.view atIndex:0];
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
