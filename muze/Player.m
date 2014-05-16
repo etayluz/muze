@@ -53,7 +53,6 @@ static Player *player;
                                                  name:MPMoviePlayerPlaybackStateDidChangeNotification
                                                object:nil];
     self.movieNumber = 2;
-    [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
     self.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
     self.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;//MPMovieScalingModeAspectFit; // MPMovieScalingModeAspectFit
     self.moviePlayer.view.frame = CGRectMake(0,0,self.view.frame.size.height,320);
@@ -63,6 +62,8 @@ static Player *player;
 
     [self.view addSubview:self.moviePlayer.view];
     [self.view addSubview:self.footer];
+    [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
+
 
     /* DISLIKE BUTTON */
     UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -106,7 +107,7 @@ static Player *player;
     layer2 = [self.nextButton layer];
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
-    self.nextButton.hidden = NO;
+    self.nextButton.hidden = YES;
     [self.view addSubview:self.nextButton];
 }
 
@@ -160,6 +161,7 @@ static Player *player;
     [self.moviePlayer.view removeFromSuperview];
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
+    self.nextButton.hidden = YES;
     self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerNowPlayingMovieDidChangeNotification
