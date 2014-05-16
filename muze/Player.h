@@ -12,6 +12,7 @@
 
 @interface Player : UIViewController
 + (Player*)player;
+-(void)showControls;
 @property   MPMoviePlayerController  *moviePlayer;
 @property   UIImageView              *footer;
 @property   NSInteger                 movieNumber;
