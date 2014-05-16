@@ -33,11 +33,11 @@ static Player *player;
     /* FOOTER */
     self.footer = [[UIImageView alloc] init];
     self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
-    self.footer.frame = CGRectMake(160+(self.view.frame.size.height-100*4.9),320-70,100,70);
+    self.footer.frame = CGRectMake(0,320-70,self.view.frame.size.height,70); // +(self.view.frame.size.height-100*4.9) 480
     //self.footer.bounds = CGRectMake(160,320-70,100,70);
     // origin starts at 160; the width seems to be multiplied by 4.9
     //self.footer.frame = CGRectMake(0.0, 320 - self.footer.image.size.height*0.7, 320.0, self.footer.image.size.height*0.7);
-    self.footer.contentMode = UIViewContentModeScaleAspectFill;
+    self.footer.contentMode = UIViewContentModeScaleToFill;
     self.footer.alpha = 0.5;
     
     /* MOVIE PLAYER */
@@ -67,7 +67,7 @@ static Player *player;
     [dislikeButton addTarget:self
                    action:@selector(didPressDislikeButton)
          forControlEvents:UIControlEventTouchDown];
-    dislikeButton.frame = CGRectMake(90, self.footer.frame.origin.y, 80,self.footer.frame.size.height);
+    dislikeButton.frame = CGRectMake(self.view.frame.size.height*0.05, self.footer.frame.origin.y, 85,self.footer.frame.size.height);
     CALayer * layer1 = [dislikeButton layer];
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
@@ -78,7 +78,7 @@ static Player *player;
     [likeButton addTarget:self
                    action:@selector(didPressLikeButton)
          forControlEvents:UIControlEventTouchDown];
-    likeButton.frame = CGRectMake(180, self.footer.frame.origin.y, 70,self.footer.frame.size.height);
+    likeButton.frame = CGRectMake(self.view.frame.size.height*0.24, self.footer.frame.origin.y, 80,self.footer.frame.size.height);
     CALayer * layer2 = [likeButton layer];
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
@@ -87,7 +87,7 @@ static Player *player;
     /* PLAY ICON */
     self.playIcon = [[UIImageView alloc] init];
     self.playIcon.image = [UIImage imageNamed:@"play.png"];
-    self.playIcon.frame = CGRectMake(360,self.footer.frame.origin.y, 10, self.footer.image.size.height);
+    self.playIcon.frame = CGRectMake(self.view.frame.size.height*0.67,self.footer.frame.origin.y, 10, self.footer.image.size.height);
     self.playIcon.contentMode = UIViewContentModeScaleAspectFill;
     self.playIcon.hidden = YES;
     self.playIcon.alpha = 0.5;
@@ -98,7 +98,7 @@ static Player *player;
     [self.playPauseButton addTarget:self
                    action:@selector(didPressPlayPauseButton)
          forControlEvents:UIControlEventTouchDown];
-    self.playPauseButton.frame = CGRectMake(330,self.footer.frame.origin.y, 70, self.footer.image.size.height);
+    self.playPauseButton.frame = CGRectMake(self.view.frame.size.height*0.60,self.footer.frame.origin.y, 70, self.footer.image.size.height);
     layer2 = [self.playPauseButton layer];
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
@@ -109,7 +109,7 @@ static Player *player;
     [self.nextButton addTarget:self
                              action:@selector(didPressNextButton)
                    forControlEvents:UIControlEventTouchDown];
-    self.nextButton.frame = CGRectMake(410,self.footer.frame.origin.y, 80, self.footer.image.size.height);
+    self.nextButton.frame = CGRectMake(self.view.frame.size.height*0.80,self.footer.frame.origin.y, 80, self.footer.image.size.height);
     layer2 = [self.nextButton layer];
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
