@@ -33,9 +33,12 @@ static Player *player;
     /* FOOTER */
     self.footer = [[UIImageView alloc] init];
     self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
-    self.footer.frame = CGRectMake(0.0, self.view.frame.size.height - self.footer.image.size.height*0.7, 320.0, self.footer.image.size.height*0.7);
+    self.footer.frame = CGRectMake(160+(self.view.frame.size.height-100*4.9),320-70,100,70);
+    //self.footer.bounds = CGRectMake(160,320-70,100,70);
+    // origin starts at 160; the width seems to be multiplied by 4.9
+    //self.footer.frame = CGRectMake(0.0, 320 - self.footer.image.size.height*0.7, 320.0, self.footer.image.size.height*0.7);
     self.footer.contentMode = UIViewContentModeScaleAspectFill;
-    [self.view addSubview:self.footer];
+    self.footer.alpha = 0.5;
     
     /* MOVIE PLAYER */
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://etayluz.com/1.3gp"]];
@@ -51,19 +54,20 @@ static Player *player;
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
     self.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
     self.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;//MPMovieScalingModeAspectFit; // MPMovieScalingModeAspectFit
-    self.moviePlayer.view.frame = CGRectMake(0,0,320,self.view.frame.size.height - self.footer.frame.size.height);
+    self.moviePlayer.view.frame = CGRectMake(0,0,self.view.frame.size.height,320);
     self.moviePlayer.shouldAutoplay = YES;
     self.moviePlayer.controlStyle = MPMovieControlStyleNone;//MPMovieControlStyleNone,MPMovieControlStyleDefault
     [self.moviePlayer prepareToPlay];
 
     [self.view addSubview:self.moviePlayer.view];
-    
+    [self.view addSubview:self.footer];
+
     /* DISLIKE BUTTON */
     UIButton *dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [dislikeButton addTarget:self
                    action:@selector(didPressDislikeButton)
          forControlEvents:UIControlEventTouchDown];
-    dislikeButton.frame = CGRectMake(0, self.moviePlayer.view.frame.size.height, 80,self.footer.frame.size.height);
+    dislikeButton.frame = CGRectMake(90, self.footer.frame.origin.y, 80,self.footer.frame.size.height);
     CALayer * layer1 = [dislikeButton layer];
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
@@ -74,7 +78,7 @@ static Player *player;
     [likeButton addTarget:self
                    action:@selector(didPressLikeButton)
          forControlEvents:UIControlEventTouchDown];
-    likeButton.frame = CGRectMake(80, self.moviePlayer.view.frame.size.height, 50,self.footer.frame.size.height);
+    likeButton.frame = CGRectMake(180, self.footer.frame.origin.y, 70,self.footer.frame.size.height);
     CALayer * layer2 = [likeButton layer];
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
@@ -83,9 +87,10 @@ static Player *player;
     /* PLAY ICON */
     self.playIcon = [[UIImageView alloc] init];
     self.playIcon.image = [UIImage imageNamed:@"play.png"];
-    self.playIcon.frame = CGRectMake(215,self.moviePlayer.view.frame.size.height, 10, self.footer.image.size.height*0.7);
+    self.playIcon.frame = CGRectMake(360,self.footer.frame.origin.y, 10, self.footer.image.size.height);
     self.playIcon.contentMode = UIViewContentModeScaleAspectFill;
     self.playIcon.hidden = YES;
+    self.playIcon.alpha = 0.5;
     [self.view addSubview:self.playIcon];
     
     /* PLAY AND PAUSE BUTTON */
@@ -93,7 +98,7 @@ static Player *player;
     [self.playPauseButton addTarget:self
                    action:@selector(didPressPlayPauseButton)
          forControlEvents:UIControlEventTouchDown];
-    self.playPauseButton.frame = CGRectMake(190,self.moviePlayer.view.frame.size.height, 55, self.footer.image.size.height*0.7);
+    self.playPauseButton.frame = CGRectMake(330,self.footer.frame.origin.y, 70, self.footer.image.size.height);
     layer2 = [self.playPauseButton layer];
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
@@ -104,11 +109,11 @@ static Player *player;
     [self.nextButton addTarget:self
                              action:@selector(didPressNextButton)
                    forControlEvents:UIControlEventTouchDown];
-    self.nextButton.frame = CGRectMake(320-70,self.moviePlayer.view.frame.size.height, 70, self.footer.image.size.height*0.7);
+    self.nextButton.frame = CGRectMake(410,self.footer.frame.origin.y, 80, self.footer.image.size.height);
     layer2 = [self.nextButton layer];
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
-    self.nextButton.hidden = YES;
+    self.nextButton.hidden = NO;
     [self.view addSubview:self.nextButton];
 }
 
@@ -178,10 +183,11 @@ static Player *player;
                                                object:nil];
     self.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
     self.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
-    self.moviePlayer.view.frame = CGRectMake(0,0,320,self.view.frame.size.height - self.footer.frame.size.height);
+    self.moviePlayer.view.frame = CGRectMake(0,0,self.view.frame.size.height,320);
     self.moviePlayer.shouldAutoplay = YES;
     self.moviePlayer.controlStyle = MPMovieControlStyleNone;
-    [self.view addSubview:self.moviePlayer.view];
+    //[self.view addSubview:self.moviePlayer.view];
+    [self.view insertSubview:self.moviePlayer.view atIndex:0];
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
     [self.moviePlayer prepareToPlay];
     self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
