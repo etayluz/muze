@@ -27,6 +27,7 @@
 		B4D348921925EBC0006A8C21 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D3488F1925EBC0006A8C21 /* Default.png */; };
 		B4D348931925EBC0006A8C21 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348901925EBC0006A8C21 /* Default@2x.png */; };
 		B4D348951925EBF2006A8C21 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348941925EBF2006A8C21 /* Icon.png */; };
+		B4D348971925EEB4006A8C21 /* Mail.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348961925EEB4006A8C21 /* Mail.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		B4D3488F1925EBC0006A8C21 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = muze/images/Default.png; sourceTree = SOURCE_ROOT; };
 		B4D348901925EBC0006A8C21 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "muze/images/Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		B4D348941925EBF2006A8C21 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = muze/images/Icon.png; sourceTree = SOURCE_ROOT; };
+		B4D348961925EEB4006A8C21 /* Mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Mail.png; path = muze/images/Mail.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				B4D3488F1925EBC0006A8C21 /* Default.png */,
 				B4D348901925EBC0006A8C21 /* Default@2x.png */,
 				B4D348941925EBF2006A8C21 /* Icon.png */,
+				B4D348961925EEB4006A8C21 /* Mail.png */,
 				B4D348781925A66E006A8C21 /* play.png */,
 			);
 			name = images;
@@ -249,6 +252,7 @@
 				B4D348921925EBC0006A8C21 /* Default.png in Resources */,
 				B4D348791925A66E006A8C21 /* buttomBar.png in Resources */,
 				B4D3487A1925A66E006A8C21 /* buttomBarSelected.png in Resources */,
+				B4D348971925EEB4006A8C21 /* Mail.png in Resources */,
 				B4D348911925EBC0006A8C21 /* Default-568h@2x.png in Resources */,
 				B4D3487E1925A683006A8C21 /* InfoPlist.strings in Resources */,
 			);

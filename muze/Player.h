@@ -20,6 +20,7 @@
 @property   UIButton                 *nextButton;
 @property   UIButton                 *dislikeButton;
 @property   UIButton                 *likeButton;
+@property   UIButton                 *mailButton;
 @property   BOOL                      didPressNextMovieButton;
 @property   BOOL                      movieDidStartPlaying;
 @property   BOOL                      isMoviePaused;

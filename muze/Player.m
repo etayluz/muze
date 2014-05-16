@@ -64,7 +64,6 @@ static Player *player;
     [self.view addSubview:self.footer];
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
 
-
     /* DISLIKE BUTTON */
     self.dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.dislikeButton addTarget:self
@@ -86,6 +85,19 @@ static Player *player;
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.view addSubview:self.likeButton];
+    
+    /* MAIL BUTTON */
+    self.mailButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.mailButton addTarget:self
+                        action:@selector(didPressDislikeButton)
+              forControlEvents:UIControlEventTouchDown];
+    layer1 = [self.mailButton layer];
+    //[layer1 setBorderWidth:1.0];
+    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.mailButton setBackgroundImage:[UIImage imageNamed:@"Mail.png"] forState:UIControlStateNormal];
+    self.mailButton.frame = CGRectMake(self.view.frame.size.height*0.44, self.footer.frame.origin.y+20, 256/4,30);
+    self.mailButton.alpha = 0.35;
+    [self.view addSubview:self.mailButton];
     
     /* PLAY AND PAUSE BUTTON */
     self.playPauseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -147,6 +159,7 @@ static Player *player;
     self.dislikeButton.enabled = NO;
     self.playPauseButton.enabled = NO;
     self.nextButton.enabled = NO;
+    self.mailButton.hidden = YES;
 }
 
 -(void)showControls
@@ -157,6 +170,7 @@ static Player *player;
     self.dislikeButton.enabled = YES;
     self.playPauseButton.enabled = YES;
     self.nextButton.enabled = YES;
+    self.mailButton.hidden = NO;
     [self.hideControlsTimer invalidate];
     self.hideControlsTimer = [NSTimer scheduledTimerWithTimeInterval:7 target:self selector:@selector(hideControls) userInfo:nil repeats:NO];
 }
