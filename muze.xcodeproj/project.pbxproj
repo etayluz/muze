@@ -10,18 +10,18 @@
 		B40F79F319255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
 		B40F79F519255F02009BAE3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F419255F02009BAE3C /* CoreGraphics.framework */; };
 		B40F79F719255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
-		B40F79FD19255F02009BAE3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B40F79FB19255F02009BAE3C /* InfoPlist.strings */; };
-		B40F79FF19255F02009BAE3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F79FE19255F02009BAE3C /* main.m */; };
-		B40F7A0319255F02009BAE3C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F7A0219255F02009BAE3C /* AppDelegate.m */; };
-		B40F7A0519255F02009BAE3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B40F7A0419255F02009BAE3C /* Images.xcassets */; };
 		B40F7A0C19255F02009BAE3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F7A0B19255F02009BAE3C /* XCTest.framework */; };
 		B40F7A0D19255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
 		B40F7A0E19255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
-		B40F7A241925600F009BAE3C /* buttomBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B40F7A221925600F009BAE3C /* buttomBar.png */; };
-		B40F7A28192560DE009BAE3C /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = B40F7A27192560DE009BAE3C /* Player.m */; };
-		B4D3485219256C2F006A8C21 /* buttomBarSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D3485119256C2F006A8C21 /* buttomBarSelected.png */; };
-		B4D3485419256DF3006A8C21 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D3485319256DF3006A8C21 /* play.png */; };
-		B4D3486A1925A586006A8C21 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D348691925A586006A8C21 /* MBProgressHUD.m */; };
+		B4D348711925A653006A8C21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486C1925A653006A8C21 /* AppDelegate.m */; };
+		B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486E1925A653006A8C21 /* MBProgressHUD.m */; };
+		B4D348731925A653006A8C21 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D348701925A653006A8C21 /* Player.m */; };
+		B4D348751925A661006A8C21 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D348741925A661006A8C21 /* Images.xcassets */; };
+		B4D348791925A66E006A8C21 /* buttomBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348761925A66E006A8C21 /* buttomBar.png */; };
+		B4D3487A1925A66E006A8C21 /* buttomBarSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348771925A66E006A8C21 /* buttomBarSelected.png */; };
+		B4D3487B1925A66E006A8C21 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348781925A66E006A8C21 /* play.png */; };
+		B4D3487E1925A683006A8C21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4D3487C1925A683006A8C21 /* InfoPlist.strings */; };
+		B4D348821925A699006A8C21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3487F1925A699006A8C21 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,22 +39,22 @@
 		B40F79F219255F02009BAE3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B40F79F419255F02009BAE3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B40F79F619255F02009BAE3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B40F79FA19255F02009BAE3C /* muze-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "muze-Info.plist"; sourceTree = "<group>"; };
-		B40F79FC19255F02009BAE3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B40F79FE19255F02009BAE3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B40F7A0019255F02009BAE3C /* muze-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "muze-Prefix.pch"; sourceTree = "<group>"; };
-		B40F7A0119255F02009BAE3C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B40F7A0219255F02009BAE3C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B40F7A0419255F02009BAE3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B40F7A0A19255F02009BAE3C /* muzeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = muzeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40F7A0B19255F02009BAE3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B40F7A221925600F009BAE3C /* buttomBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBar.png; path = images/buttomBar.png; sourceTree = "<group>"; };
-		B40F7A26192560DE009BAE3C /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		B40F7A27192560DE009BAE3C /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
-		B4D3485119256C2F006A8C21 /* buttomBarSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBarSelected.png; path = images/buttomBarSelected.png; sourceTree = "<group>"; };
-		B4D3485319256DF3006A8C21 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = images/play.png; sourceTree = "<group>"; };
-		B4D348681925A586006A8C21 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		B4D348691925A586006A8C21 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		B4D3486B1925A653006A8C21 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = muze/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		B4D3486C1925A653006A8C21 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = muze/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		B4D3486D1925A653006A8C21 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = muze/MBProgressHUD.h; sourceTree = SOURCE_ROOT; };
+		B4D3486E1925A653006A8C21 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = muze/MBProgressHUD.m; sourceTree = SOURCE_ROOT; };
+		B4D3486F1925A653006A8C21 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = muze/Player.h; sourceTree = SOURCE_ROOT; };
+		B4D348701925A653006A8C21 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = muze/Player.m; sourceTree = SOURCE_ROOT; };
+		B4D348741925A661006A8C21 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = muze/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		B4D348761925A66E006A8C21 /* buttomBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBar.png; path = muze/images/buttomBar.png; sourceTree = SOURCE_ROOT; };
+		B4D348771925A66E006A8C21 /* buttomBarSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBarSelected.png; path = muze/images/buttomBarSelected.png; sourceTree = SOURCE_ROOT; };
+		B4D348781925A66E006A8C21 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = muze/images/play.png; sourceTree = SOURCE_ROOT; };
+		B4D3487D1925A683006A8C21 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = muze/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		B4D3487F1925A699006A8C21 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = muze/main.m; sourceTree = SOURCE_ROOT; };
+		B4D348801925A699006A8C21 /* muze-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "muze-Info.plist"; path = "muze/muze-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B4D348811925A699006A8C21 /* muze-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "muze-Prefix.pch"; path = "muze/muze-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,13 +113,13 @@
 		B40F79F819255F02009BAE3C /* muze */ = {
 			isa = PBXGroup;
 			children = (
-				B40F7A0119255F02009BAE3C /* AppDelegate.h */,
-				B40F7A0219255F02009BAE3C /* AppDelegate.m */,
-				B4D348681925A586006A8C21 /* MBProgressHUD.h */,
-				B4D348691925A586006A8C21 /* MBProgressHUD.m */,
-				B40F7A26192560DE009BAE3C /* Player.h */,
-				B40F7A27192560DE009BAE3C /* Player.m */,
-				B40F7A0419255F02009BAE3C /* Images.xcassets */,
+				B4D3486B1925A653006A8C21 /* AppDelegate.h */,
+				B4D3486C1925A653006A8C21 /* AppDelegate.m */,
+				B4D3486D1925A653006A8C21 /* MBProgressHUD.h */,
+				B4D3486E1925A653006A8C21 /* MBProgressHUD.m */,
+				B4D3486F1925A653006A8C21 /* Player.h */,
+				B4D348701925A653006A8C21 /* Player.m */,
+				B4D348741925A661006A8C21 /* Images.xcassets */,
 				B40F7A2119255FFF009BAE3C /* images */,
 				B40F79F919255F02009BAE3C /* Supporting Files */,
 			);
@@ -130,10 +130,10 @@
 		B40F79F919255F02009BAE3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B40F79FA19255F02009BAE3C /* muze-Info.plist */,
-				B40F79FB19255F02009BAE3C /* InfoPlist.strings */,
-				B40F79FE19255F02009BAE3C /* main.m */,
-				B40F7A0019255F02009BAE3C /* muze-Prefix.pch */,
+				B4D3487C1925A683006A8C21 /* InfoPlist.strings */,
+				B4D3487F1925A699006A8C21 /* main.m */,
+				B4D348801925A699006A8C21 /* muze-Info.plist */,
+				B4D348811925A699006A8C21 /* muze-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -141,9 +141,9 @@
 		B40F7A2119255FFF009BAE3C /* images */ = {
 			isa = PBXGroup;
 			children = (
-				B40F7A221925600F009BAE3C /* buttomBar.png */,
-				B4D3485119256C2F006A8C21 /* buttomBarSelected.png */,
-				B4D3485319256DF3006A8C21 /* play.png */,
+				B4D348761925A66E006A8C21 /* buttomBar.png */,
+				B4D348771925A66E006A8C21 /* buttomBarSelected.png */,
+				B4D348781925A66E006A8C21 /* play.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -226,11 +226,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B40F79FD19255F02009BAE3C /* InfoPlist.strings in Resources */,
-				B4D3485419256DF3006A8C21 /* play.png in Resources */,
-				B4D3485219256C2F006A8C21 /* buttomBarSelected.png in Resources */,
-				B40F7A0519255F02009BAE3C /* Images.xcassets in Resources */,
-				B40F7A241925600F009BAE3C /* buttomBar.png in Resources */,
+				B4D3487B1925A66E006A8C21 /* play.png in Resources */,
+				B4D348791925A66E006A8C21 /* buttomBar.png in Resources */,
+				B4D348751925A661006A8C21 /* Images.xcassets in Resources */,
+				B4D3487A1925A66E006A8C21 /* buttomBarSelected.png in Resources */,
+				B4D3487E1925A683006A8C21 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,10 +248,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B40F7A0319255F02009BAE3C /* AppDelegate.m in Sources */,
-				B40F7A28192560DE009BAE3C /* Player.m in Sources */,
-				B40F79FF19255F02009BAE3C /* main.m in Sources */,
-				B4D3486A1925A586006A8C21 /* MBProgressHUD.m in Sources */,
+				B4D348821925A699006A8C21 /* main.m in Sources */,
+				B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */,
+				B4D348731925A653006A8C21 /* Player.m in Sources */,
+				B4D348711925A653006A8C21 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,10 +273,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B40F79FB19255F02009BAE3C /* InfoPlist.strings */ = {
+		B4D3487C1925A683006A8C21 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B40F79FC19255F02009BAE3C /* en */,
+				B4D3487D1925A683006A8C21 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -362,8 +362,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "muzeme/muze-Prefix.pch";
-				INFOPLIST_FILE = "muzeme/muze-Info.plist";
+				GCC_PREFIX_HEADER = "muze/muze-Prefix.pch";
+				INFOPLIST_FILE = "muze/muze-Info.plist";
 				PRODUCT_NAME = muze;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -378,8 +378,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "muzeme/muze-Prefix.pch";
-				INFOPLIST_FILE = "muzeme/muze-Info.plist";
+				GCC_PREFIX_HEADER = "muze/muze-Prefix.pch";
+				INFOPLIST_FILE = "muze/muze-Info.plist";
 				PRODUCT_NAME = muze;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
