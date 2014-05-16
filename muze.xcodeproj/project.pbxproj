@@ -22,6 +22,8 @@
 		B4D3487B1925A66E006A8C21 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348781925A66E006A8C21 /* play.png */; };
 		B4D3487E1925A683006A8C21 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4D3487C1925A683006A8C21 /* InfoPlist.strings */; };
 		B4D348821925A699006A8C21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3487F1925A699006A8C21 /* main.m */; };
+		B4D348861925A985006A8C21 /* buttomBarPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348841925A985006A8C21 /* buttomBarPlay.png */; };
+		B4D348871925A985006A8C21 /* buttomBarSelectedPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = B4D348851925A985006A8C21 /* buttomBarSelectedPlay.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		B4D3487F1925A699006A8C21 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = muze/main.m; sourceTree = SOURCE_ROOT; };
 		B4D348801925A699006A8C21 /* muze-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "muze-Info.plist"; path = "muze/muze-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B4D348811925A699006A8C21 /* muze-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "muze-Prefix.pch"; path = "muze/muze-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		B4D348841925A985006A8C21 /* buttomBarPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBarPlay.png; path = muze/images/buttomBarPlay.png; sourceTree = SOURCE_ROOT; };
+		B4D348851925A985006A8C21 /* buttomBarSelectedPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttomBarSelectedPlay.png; path = muze/images/buttomBarSelectedPlay.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				B4D348761925A66E006A8C21 /* buttomBar.png */,
+				B4D348841925A985006A8C21 /* buttomBarPlay.png */,
 				B4D348771925A66E006A8C21 /* buttomBarSelected.png */,
+				B4D348851925A985006A8C21 /* buttomBarSelectedPlay.png */,
 				B4D348781925A66E006A8C21 /* play.png */,
 			);
 			name = images;
@@ -226,6 +232,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4D348871925A985006A8C21 /* buttomBarSelectedPlay.png in Resources */,
+				B4D348861925A985006A8C21 /* buttomBarPlay.png in Resources */,
 				B4D3487B1925A66E006A8C21 /* play.png in Resources */,
 				B4D348791925A66E006A8C21 /* buttomBar.png in Resources */,
 				B4D348751925A661006A8C21 /* Images.xcassets in Resources */,

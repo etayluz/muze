@@ -30,11 +30,12 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     Player *player = [Player player];
-    if (player.playIcon.hidden == YES)
-    {
-        player.playIcon.hidden = NO;
-        [player.moviePlayer pause];
-    }
+    if (player.isMovieLiked)
+        player.footer.image = [UIImage imageNamed:@"buttomBarSelected.png"];
+    else
+        player.footer.image = [UIImage imageNamed:@"buttomBar.png"];
+
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

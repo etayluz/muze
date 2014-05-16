@@ -14,10 +14,11 @@
 + (Player*)player;
 @property   MPMoviePlayerController  *moviePlayer;
 @property   UIImageView              *footer;
-@property   UIImageView              *playIcon;
 @property   NSInteger                 movieNumber;
 @property   UIButton                 *playPauseButton;
 @property   UIButton                 *nextButton;
 @property   BOOL                      didPressNextMovieButton;
 @property   BOOL                      movieDidStartPlaying;
+@property   BOOL                      isMoviePaused;
+@property   BOOL                      isMovieLiked;
 @end

@@ -29,6 +29,8 @@ static Player *player;
     self.movieNumber = 1;
     player = self;
     self.didPressNextMovieButton = NO;
+    self.isMovieLiked = NO;
+    self.isMoviePaused = NO;
     
     /* FOOTER */
     self.footer = [[UIImageView alloc] init];
@@ -84,15 +86,6 @@ static Player *player;
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.view addSubview:likeButton];
     
-    /* PLAY ICON */
-    self.playIcon = [[UIImageView alloc] init];
-    self.playIcon.image = [UIImage imageNamed:@"play.png"];
-    self.playIcon.frame = CGRectMake(self.view.frame.size.height*0.67,self.footer.frame.origin.y, 10, self.footer.image.size.height);
-    self.playIcon.contentMode = UIViewContentModeScaleAspectFill;
-    self.playIcon.hidden = YES;
-    self.playIcon.alpha = 0.5;
-    [self.view addSubview:self.playIcon];
-    
     /* PLAY AND PAUSE BUTTON */
     self.playPauseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.playPauseButton addTarget:self
@@ -145,7 +138,12 @@ static Player *player;
 
 - (void)didPressLikeButton
 {
-    self.footer.image = [UIImage imageNamed:@"buttomBarSelected.png"];
+    if (self.isMoviePaused)
+        self.footer.image = [UIImage imageNamed:@"buttomBarSelectedPlay.png"];
+    else
+        self.footer.image = [UIImage imageNamed:@"buttomBarSelected.png"];
+    self.isMovieLiked = YES;
+
     self.nextButton.hidden = NO;
 }
 
@@ -160,7 +158,9 @@ static Player *player;
     self.didPressNextMovieButton = YES;
     [self.moviePlayer pause];
     [self.moviePlayer.view removeFromSuperview];
-    
+    self.isMovieLiked = NO;
+    self.isMoviePaused = NO;
+    self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerNowPlayingMovieDidChangeNotification
                                                   object:nil];
@@ -193,19 +193,26 @@ static Player *player;
     self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
 }
 
-- (void) didPressPlayPauseButton
+- (void)didPressPlayPauseButton
 {
-    if (self.playIcon.hidden == YES)
+    if (self.isMoviePaused == NO)
     {
         [self.moviePlayer pause];
-        self.playIcon.hidden = NO;
+        self.isMoviePaused = YES;
+        if (self.isMovieLiked)
+            self.footer.image = [UIImage imageNamed:@"buttomBarSelectedPlay.png"];
+        else
+            self.footer.image = [UIImage imageNamed:@"buttomBarPlay.png"];
     }
     else
     {
         [self.moviePlayer play];
-        self.playIcon.hidden = YES;
+        self.isMoviePaused = NO;
+        if (self.isMovieLiked)
+            self.footer.image = [UIImage imageNamed:@"buttomBarSelected.png"];
+        else
+            self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
     }
-    
 }
 
 - (void)didReceiveMemoryWarning
