@@ -50,7 +50,7 @@ static Player *player;
     [self.view addSubview:self.menu];
     
     /* DISLIKE IMAGE */
-    self.dislikeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.15, iconY, iconHeight*35/40, iconHeight)];
+    self.dislikeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.20, iconY, iconHeight*35/40, iconHeight)];
     self.dislikeImage.image = [UIImage imageNamed:@"Dislike.png"];
     self.dislikeImage.contentMode = UIViewContentModeScaleAspectFill;
     [self.menu addSubview:self.dislikeImage];
@@ -67,7 +67,7 @@ static Player *player;
     [self.menu addSubview:self.dislikeButton];
 
     /* LIKE IMAGE */
-    self.likeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.dislikeImage.frame.origin.x + self.dislikeImage.frame.size.width+30, iconY, iconHeight*35/40, iconHeight)];
+    self.likeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.dislikeImage.frame.origin.x + self.dislikeImage.frame.size.width*2, iconY, iconHeight*35/40, iconHeight)];
     self.likeImage.image = [UIImage imageNamed:@"Like.png"];
     self.likeImage.contentMode = UIViewContentModeScaleAspectFill;
     [self.menu addSubview:self.likeImage];
@@ -121,7 +121,7 @@ static Player *player;
     [self.menu addSubview:self.playButton];
     
     /* NEXT IMAGE */
-    self.nextImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.80, iconY, iconHeight*21/31, iconHeight)];
+    self.nextImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.75, iconY, iconHeight*21/31, iconHeight)];
     self.nextImage.image = [UIImage imageNamed:@"Next.png"];
     self.nextImage.contentMode = UIViewContentModeScaleAspectFill;
     self.nextImage.hidden = YES;
