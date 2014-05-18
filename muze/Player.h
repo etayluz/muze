@@ -36,4 +36,5 @@
 @property   BOOL                      isMenuShown;
 @property   NSTimer                  *hideMenuTimer;
 @property   BOOL                      isError;
+@property   UITapGestureRecognizer   *tap;
 @end

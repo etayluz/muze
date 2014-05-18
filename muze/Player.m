@@ -157,12 +157,12 @@ static Player *player;
     self.moviePlayer.controlStyle = MPMovieControlStyleNone;//MPMovieControlStyleNone,MPMovieControlStyleDefault
     [self.moviePlayer prepareToPlay];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+    self.tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(toggleMenu)];
-    tap.delegate = self;
+    self.tap.delegate = self;
     
-    [self.moviePlayer.view addGestureRecognizer:tap];
+    [self.moviePlayer.view addGestureRecognizer:self.tap];
 
     [self.view addSubview:self.moviePlayer.view];
     [self.view addSubview:self.nudge];
@@ -392,6 +392,7 @@ static Player *player;
     [self.moviePlayer pause];
     
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://etayluz.com/%ld.3gp", (long)self.movieNumber++]]];
+    [self.moviePlayer.view addGestureRecognizer:self.tap];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
                                                      name:MPMoviePlayerNowPlayingMovieDidChangeNotification
                                                    object:self.moviePlayer];
