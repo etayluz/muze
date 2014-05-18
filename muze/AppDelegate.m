@@ -37,7 +37,7 @@
     player.pauseButton.enabled = NO;
     player.playImage.hidden = NO;
     player.playButton.enabled = YES;
-    if (player.isMenuShown)
+    if (!player.isMenuShown)
         [player showMenu];
     
 }
