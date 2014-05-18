@@ -45,7 +45,25 @@ static Player *player;
     self.nudge.image = [UIImage imageNamed:@"Nudge.png"];
     self.nudge.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:self.nudge];
+
+    /* DISLIKE IMAGE */
+    self.dislikeImage  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-125/2)/2, 320-60/2, 125/2, 60/2)];
+    self.dislikeImage.image = [UIImage imageNamed:@"Dislike.png"];
+    self.dislikeImage.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:self.dislikeImage];
+    
     return;
+    /* DISLIKE BUTTON */
+    self.dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.dislikeButton addTarget:self
+                           action:@selector(didPressDislikeButton)
+                 forControlEvents:UIControlEventTouchDown];
+    self.dislikeButton.frame = CGRectMake(self.view.frame.size.height*0.05, self.menu.frame.origin.y, 85,self.menu.frame.size.height);
+    CALayer * layer1 = [self.dislikeButton layer];
+    //[layer1 setBorderWidth:1.0];
+    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.view addSubview:self.dislikeButton];
+    
     /* MOVIE PLAYER */
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://etayluz.com/1.3gp"]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
@@ -68,16 +86,7 @@ static Player *player;
     [self.view addSubview:self.menu];
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
 
-    /* DISLIKE BUTTON */
-    self.dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.dislikeButton addTarget:self
-                   action:@selector(didPressDislikeButton)
-         forControlEvents:UIControlEventTouchDown];
-    self.dislikeButton.frame = CGRectMake(self.view.frame.size.height*0.05, self.menu.frame.origin.y, 85,self.menu.frame.size.height);
-    CALayer * layer1 = [self.dislikeButton layer];
-    //[layer1 setBorderWidth:1.0];
-    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
-    [self.view addSubview:self.dislikeButton];
+
     
     /* LIKE BUTTON */
     self.likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
