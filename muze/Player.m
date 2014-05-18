@@ -143,6 +143,17 @@ static Player *player;
                                    initWithTarget:self
                                    action:@selector(toggleMenu)];
     self.tap.delegate = self;
+    
+    self.swipeUp = [[UISwipeGestureRecognizer alloc]
+             initWithTarget:self action:@selector(didSwipeUp)];
+    
+    [self.swipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
+    
+    self.swipeDown = [[UISwipeGestureRecognizer alloc]
+                    initWithTarget:self action:@selector(didSwipeDown)];
+    
+    [self.swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
+    
     [self didPressNextButton];
     [self.view addSubview:self.nudge];
     [self.view addSubview:self.menu];
@@ -151,7 +162,7 @@ static Player *player;
 
 - (void)toggleMenu
 {
-    if (self.isMenuShown && !self.isMoviePaused)
+    if (self.isMenuShown)// && !self.isMoviePaused)
     {
         [self hideMenu];
         
@@ -230,7 +241,17 @@ static Player *player;
 
 }
 
+-(void)didSwipeUp
+{
+    if (!self.isMenuShown)
+        [self showMenu];
+}
 
+-(void)didSwipeDown
+{
+    if (self.isMenuShown)
+        [self hideMenu];
+}
 
 -(void)hideMenu
 {
@@ -259,8 +280,6 @@ static Player *player;
     completion:^ (BOOL finished) {}
     ];
 }
-
-
 
 - (void)didPressLikeButton
 {
@@ -295,7 +314,6 @@ static Player *player;
     //    if (self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
     NSLog(@"movieNowPlaying");
     self.movieWillStartPlaying = YES;
-    //self.didPressNextMovieButton = NO;
 }
 
 - (void)movieDidFinishPlaying:(NSNotification *)notification
@@ -332,8 +350,6 @@ static Player *player;
 //        self.didPressNextMovieButton = NO;
 }
 
-
-
 - (void)didPressNextButton
 {
     self.movieDidStartPlaying = NO;
@@ -363,8 +379,12 @@ static Player *player;
 
     [self.moviePlayer pause];
     
+    if (self.movieNumber == 4)
+        self.movieNumber = 1;
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://etayluz.com/%ld.3gp", (long)self.movieNumber++]]];
     [self.moviePlayer.view addGestureRecognizer:self.tap];
+    [self.moviePlayer.view addGestureRecognizer:self.swipeDown];
+    [self.moviePlayer.view addGestureRecognizer:self.swipeUp];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
                                                      name:MPMoviePlayerNowPlayingMovieDidChangeNotification
                                                    object:self.moviePlayer];
@@ -378,11 +398,9 @@ static Player *player;
     self.moviePlayer.view.frame = CGRectMake(0,0,self.view.frame.size.height,320);
     self.moviePlayer.shouldAutoplay = YES;
     self.moviePlayer.controlStyle = MPMovieControlStyleNone;//MPMovieControlStyleNone
-    //[self.view addSubview:self.moviePlayer.view];
     [self.view insertSubview:self.moviePlayer.view atIndex:0];
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
     [self.moviePlayer prepareToPlay];
-    //self.menu.image = [UIImage imageNamed:@"buttomBar.png"];
 }
 
 - (void)didPressPauseButton

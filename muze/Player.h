@@ -39,4 +39,6 @@
 @property   NSTimer                  *hideMenuTimer;
 @property   BOOL                      isError;
 @property   UITapGestureRecognizer   *tap;
+@property   UISwipeGestureRecognizer *swipeUp;
+@property   UISwipeGestureRecognizer *swipeDown;
 @end
