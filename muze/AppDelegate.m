@@ -33,18 +33,19 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     Player *player = [Player player];
-    player.pauseImage.hidden = YES;
-    player.pauseButton.enabled = NO;
-    player.playImage.hidden = NO;
-    player.playButton.enabled = YES;
-    if (!player.isMenuShown)
-        [player showMenu];
     
     if (player.movieDidStartPlaying == NO)
     {
         player.movieNumber--;
         [MBProgressHUD hideHUDForView:player.view animated:YES];
         [player didPressNextButton];
+    }
+    else
+    {
+        if (!player.isMenuShown)
+            [player showMenu];
+        if (player.playImage.hidden == YES)
+            [player.moviePlayer play];
     }
     
 }

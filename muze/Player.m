@@ -312,6 +312,7 @@ static Player *player;
         if (mediaPlayerError && !self.isError)
         {
             self.isError = YES;
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             NSLog(@"playback failed with error description: %@", [mediaPlayerError localizedDescription]);
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ooops!"
                                                                 message:@"Video couldn't be loaded. App will shut down."
