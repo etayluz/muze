@@ -32,6 +32,7 @@ static Player *player;
     //self.didPressNextMovieButton = NO;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
+    self.isMenuShown = YES;
     
     /* NUDGE */
     self.nudge  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-125/2)/2, 320-60/2, 125/2, 60/2)];
@@ -193,9 +194,35 @@ static Player *player;
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 {
     if (self.isMenuShown)
-        [self hideMenu];
+    {
+        self.isMenuShown = NO;
+        [UIView animateWithDuration:0.5 animations:^{
+            CGRect frame;
+            frame = self.menu.frame;
+            frame.origin.y += (self.menu.frame.size.height);
+            self.menu.frame=frame;
+            //theImageView.alpha=1.0;
+        }
+        completion:^ (BOOL finished)
+        {
+        }
+        ];
+    }
     else
-        [self showMenu];
+    {
+        self.isMenuShown = YES;
+        [UIView animateWithDuration:0.5 animations:^{
+            CGRect frame;
+            frame = self.menu.frame;
+            frame.origin.y -= (self.menu.frame.size.height);
+            self.menu.frame=frame;
+            //theImageView.alpha=1.0;
+        }
+        completion:^ (BOOL finished)
+        {
+        }
+        ];
+    }
 }
 
 - (void)didPressMailButton
@@ -280,8 +307,8 @@ static Player *player;
     self.playPauseButton.enabled = YES;
     self.nextButton.enabled = YES;
     self.mailButton.hidden = NO;
-    [self.hideControlsTimer invalidate];
-    self.hideControlsTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(hideControls) userInfo:nil repeats:NO];
+    [self.hideMenuTimer invalidate];
+    self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
 }
 
 

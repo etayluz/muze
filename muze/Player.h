@@ -33,6 +33,6 @@
 @property   BOOL                      isMoviePaused;
 @property   BOOL                      isMovieLiked;
 @property   BOOL                      isMenuShown;
-@property   NSTimer                  *hideControlsTimer;
+@property   NSTimer                  *hideMenuTimer;
 @property   BOOL                      isError;
 @end
