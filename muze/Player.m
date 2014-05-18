@@ -151,12 +151,12 @@ static Player *player;
 
 - (void)toggleMenu
 {
-    if (self.isMenuShown)
+    if (self.isMenuShown && !self.isMoviePaused)
     {
         [self hideMenu];
         
     }
-    else
+    else if(!self.isMenuShown)
     {
         [self showMenu];
     }
