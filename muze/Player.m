@@ -42,12 +42,14 @@ static Player *player;
     /* MENU */
     self.menu = [[UIImageView alloc] init];
     NSInteger menuHeight = 55;
+    NSInteger iconHeight = menuHeight*0.6;
+    NSInteger iconY =(menuHeight-iconHeight)/2;
     self.menu.frame = CGRectMake(0,320-menuHeight,self.view.frame.size.height,menuHeight); // +(self.view.frame.size.height-100*4.9) 480
     self.menu.backgroundColor = [UIColor colorWithRed:(69/255.0) green:(89/255.0) blue:(122/255.0) alpha:1];
     [self.view insertSubview:self.menu atIndex:5];
     
     /* DISLIKE IMAGE */
-    self.dislikeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.15, self.menu.frame.size.height*0.2, self.menu.frame.size.height*0.6, self.menu.frame.size.height*0.6*40/35)];
+    self.dislikeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.15, iconY, iconHeight*35/40, iconHeight)];
     self.dislikeImage.image = [UIImage imageNamed:@"Dislike.png"];
     self.dislikeImage.contentMode = UIViewContentModeScaleAspectFill;
     [self.menu addSubview:self.dislikeImage];
@@ -64,7 +66,7 @@ static Player *player;
     [self.menu addSubview:self.dislikeButton];
 
     /* LIKE IMAGE */
-    self.likeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.dislikeImage.frame.origin.x + self.dislikeImage.frame.size.width+30, self.dislikeImage.frame.origin.y, self.menu.frame.size.height*0.6, self.menu.frame.size.height*0.6*40/35)];
+    self.likeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.dislikeImage.frame.origin.x + self.dislikeImage.frame.size.width+30, iconY, iconHeight*35/40, iconHeight)];
     self.likeImage.image = [UIImage imageNamed:@"Like.png"];
     self.likeImage.contentMode = UIViewContentModeScaleAspectFill;
     [self.menu addSubview:self.likeImage];
@@ -81,8 +83,8 @@ static Player *player;
     [self.menu addSubview:self.likeButton];
     
     /* PAUSE IMAGE */
-    self.pauseImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, self.dislikeImage.frame.origin.y*0.2, self.menu.frame.size.height*0.6, self.menu.frame.size.height*0.6*40/35)];
-    self.pauseImage.image = [UIImage imageNamed:@"Like.png"];
+    self.pauseImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, iconY, iconHeight*21/31, iconHeight)];
+    self.pauseImage.image = [UIImage imageNamed:@"Pause.png"];
     self.pauseImage.contentMode = UIViewContentModeScaleAspectFill;
     [self.menu addSubview:self.pauseImage];
     
