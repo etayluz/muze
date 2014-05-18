@@ -300,6 +300,8 @@ static Player *player;
     NSLog(@"moviePlayerStateDidChange");
     if (self.movieWillStartPlaying == YES)
     {
+        [self.hideMenuTimer invalidate];
+        self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
         self.movieDidStartPlaying = YES;
         self.movieWillStartPlaying = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -363,8 +365,6 @@ static Player *player;
     self.nextImage.hidden = YES;
     self.nextButton.enabled = NO;
     self.likeImage.image = [UIImage imageNamed:@"Like.png"];
-    [self.hideMenuTimer invalidate];
-    self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
     [self.moviePlayer.view removeFromSuperview];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerNowPlayingMovieDidChangeNotification
