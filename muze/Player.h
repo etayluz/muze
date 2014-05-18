@@ -13,6 +13,7 @@
 @interface Player : UIViewController <UIAlertViewDelegate, UIGestureRecognizerDelegate>
 + (Player*)player;
 -(void)showMenu;
+- (void)didPressNextButton;
 @property   MPMoviePlayerController  *moviePlayer;
 @property   UIView                   *menu;
 @property   NSInteger                 movieNumber;
@@ -30,6 +31,7 @@
 @property   UIImageView              *playImage;
 @property   UIImageView              *likeImage;
 @property   BOOL                      didPressNextMovieButton;
+@property   BOOL                      movieWillStartPlaying;
 @property   BOOL                      movieDidStartPlaying;
 @property   BOOL                      isMoviePaused;
 @property   BOOL                      isMovieLiked;

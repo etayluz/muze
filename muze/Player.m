@@ -138,38 +138,14 @@ static Player *player;
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     self.nextButton.enabled = NO;
     [self.menu addSubview:self.nextButton];
-    
-    /* MOVIE PLAYER */
-//    self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://etayluz.com/1.3gp"]];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
-//                                                 name:MPMoviePlayerNowPlayingMovieDidChangeNotification
-//                                               object:self.moviePlayer];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying:) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(moviePlayerStateDidChange)
-//                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification
-//                                               object:nil];
-//    self.movieNumber = 2;
-//    self.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
-//    self.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;//MPMovieScalingModeAspectFit; // MPMovieScalingModeAspectFit
-//    self.moviePlayer.view.frame = CGRectMake(0,0,self.view.frame.size.height,320);
-//    self.moviePlayer.shouldAutoplay = YES;
-//    self.moviePlayer.controlStyle = MPMovieControlStyleNone;//MPMovieControlStyleNone,MPMovieControlStyleDefault
-//    [self.moviePlayer prepareToPlay];
-//    
+
     self.tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(toggleMenu)];
     self.tap.delegate = self;
-//
-//    [self.moviePlayer.view addGestureRecognizer:self.tap];
-//
-//    [self.view addSubview:self.moviePlayer.view];
     [self didPressNextButton];
     [self.view addSubview:self.nudge];
     [self.view addSubview:self.menu];
-    //[MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
-    
     self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
 }
 
@@ -300,12 +276,25 @@ static Player *player;
 
 }
 
+- (void)moviePlayerStateDidChange
+{
+    NSLog(@"moviePlayerStateDidChange");
+    if (self.movieWillStartPlaying == YES)
+    {
+        self.movieDidStartPlaying = YES;
+        self.movieWillStartPlaying = NO;
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (!self.isMenuShown)
+            [self showMenu];
+    }
+}
+
 - (void)movieNowPlaying
 {
     //    NSLog(@"%ld", (long)self.moviePlayer.playbackState);
     //    if (self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
     NSLog(@"movieNowPlaying");
-    self.movieDidStartPlaying = YES;
+    self.movieWillStartPlaying = YES;
     //self.didPressNextMovieButton = NO;
 }
 
@@ -342,33 +331,12 @@ static Player *player;
 //        self.didPressNextMovieButton = NO;
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-        //home button press programmatically
-//        UIApplication *app = [UIApplication sharedApplication];
-//        [app performSelector:@selector(suspend)];
-//        
-//        //wait 2 seconds while app is going background
-//        [NSThread sleepForTimeInterval:2.0];
-    
-        //exit app when app is in background
-        exit(0);
-}
 
-- (void)moviePlayerStateDidChange
-{
-    NSLog(@"moviePlayerStateDidChange");
-    if (self.movieDidStartPlaying == YES)
-    {
-        self.movieDidStartPlaying = NO;
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if (!self.isMenuShown)
-            [self showMenu];
-    }
-}
 
 - (void)didPressNextButton
 {
+    self.movieDidStartPlaying = NO;
+    self.movieWillStartPlaying = NO;
     self.pauseImage.hidden = NO;
     self.pauseButton.enabled = YES;
     self.playImage.hidden = YES;
@@ -434,6 +402,19 @@ static Player *player;
     self.pauseButton.enabled = YES;
     self.playImage.hidden = YES;
     self.playButton.enabled = NO;
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //home button press programmatically
+    //        UIApplication *app = [UIApplication sharedApplication];
+    //        [app performSelector:@selector(suspend)];
+    //
+    //        //wait 2 seconds while app is going background
+    //        [NSThread sleepForTimeInterval:2.0];
+    
+    //exit app when app is in background
+    exit(0);
 }
 
 - (void)didReceiveMemoryWarning

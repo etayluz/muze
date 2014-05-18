@@ -40,6 +40,13 @@
     if (!player.isMenuShown)
         [player showMenu];
     
+    if (player.movieDidStartPlaying == NO)
+    {
+        player.movieNumber--;
+        [MBProgressHUD hideHUDForView:player.view animated:YES];
+        [player didPressNextButton];
+    }
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
