@@ -41,7 +41,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     Player *player = [Player player];
-    [player showControls];
+    [player showMenu];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

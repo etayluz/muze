@@ -82,10 +82,28 @@ static Player *player;
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.menu addSubview:self.likeButton];
     
+    /* PLAY IMAGE */
+    self.playImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, iconY, iconHeight*21/31, iconHeight)];
+    self.playImage.image = [UIImage imageNamed:@"Play.png"];
+    self.playImage.contentMode = UIViewContentModeScaleAspectFill;
+    [self.menu addSubview:self.playImage];
+    
+    /* PLAY BUTTON */
+    self.playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.playButton addTarget:self
+                         action:@selector(didPressLikeButton)
+               forControlEvents:UIControlEventTouchDown];
+    self.playButton.frame = CGRectMake(self.playImage.frame.origin.x - 15, 0, self.playImage.frame.size.width+30,self.menu.frame.size.height);
+    layer1 = [self.playButton layer];
+    [layer1 setBorderWidth:1.0];
+    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.menu addSubview:self.playButton];
+    
     /* PAUSE IMAGE */
     self.pauseImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, iconY, iconHeight*21/31, iconHeight)];
     self.pauseImage.image = [UIImage imageNamed:@"Pause.png"];
     self.pauseImage.contentMode = UIViewContentModeScaleAspectFill;
+    self.pauseImage.hidden = YES;
     [self.menu addSubview:self.pauseImage];
     
     /* PAUSE BUTTON */
@@ -174,10 +192,10 @@ static Player *player;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-    if (self.isControlsShown)
-        [self hideControls];
+    if (self.isMenuShown)
+        [self hideMenu];
     else
-        [self showControls];
+        [self showMenu];
 }
 
 - (void)didPressMailButton
@@ -242,9 +260,9 @@ static Player *player;
 
 
 
--(void)hideControls
+-(void)hideMenu
 {
-    self.isControlsShown = NO;
+    self.isMenuShown = NO;
     self.menu.hidden = YES;
     self.likeButton.enabled = NO;
     self.dislikeButton.enabled = NO;
@@ -253,9 +271,9 @@ static Player *player;
     self.mailButton.hidden = YES;
 }
 
--(void)showControls
+-(void)showMenu
 {
-    self.isControlsShown = YES;
+    self.isMenuShown = YES;
     self.menu.hidden = NO;
     self.likeButton.enabled = YES;
     self.dislikeButton.enabled = YES;
@@ -347,7 +365,7 @@ static Player *player;
     {
         self.movieDidStartPlaying = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self showControls];
+        [self showMenu];
     }
 }
 

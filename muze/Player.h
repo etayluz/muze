@@ -12,7 +12,7 @@
 
 @interface Player : UIViewController <UIAlertViewDelegate>
 + (Player*)player;
--(void)showControls;
+-(void)showMenu;
 @property   MPMoviePlayerController  *moviePlayer;
 @property   UIView                   *menu;
 @property   NSInteger                 movieNumber;
@@ -22,15 +22,17 @@
 @property   UIButton                 *likeButton;
 @property   UIButton                 *mailButton;
 @property   UIButton                 *pauseButton;
+@property   UIButton                 *playButton;
 @property   UIImageView              *nudge;
 @property   UIImageView              *dislikeImage;
 @property   UIImageView              *pauseImage;
+@property   UIImageView              *playImage;
 @property   UIImageView              *likeImage;
 @property   BOOL                      didPressNextMovieButton;
 @property   BOOL                      movieDidStartPlaying;
 @property   BOOL                      isMoviePaused;
 @property   BOOL                      isMovieLiked;
-@property   BOOL                      isControlsShown;
+@property   BOOL                      isMenuShown;
 @property   NSTimer                  *hideControlsTimer;
 @property   BOOL                      isError;
 @end
