@@ -87,7 +87,7 @@ static Player *player;
     self.pauseImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, iconY, iconHeight*21/31, iconHeight)];
     self.pauseImage.image = [UIImage imageNamed:@"Pause.png"];
     self.pauseImage.contentMode = UIViewContentModeScaleAspectFill;
-    self.pauseImage.hidden = YES;
+    self.pauseImage.hidden = NO;
     [self.menu addSubview:self.pauseImage];
     
     /* PAUSE BUTTON */
@@ -102,9 +102,10 @@ static Player *player;
     [self.menu addSubview:self.pauseButton];
     
     /* PLAY IMAGE */
-    self.playImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, iconY, iconHeight*21/31, iconHeight)];
+    self.playImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.61, iconY, iconHeight*21/31, iconHeight)];
     self.playImage.image = [UIImage imageNamed:@"Play.png"];
     self.playImage.contentMode = UIViewContentModeScaleAspectFill;
+    self.playImage.hidden = YES;
     [self.menu addSubview:self.playImage];
     
     /* PLAY BUTTON */
@@ -116,24 +117,26 @@ static Player *player;
     layer1 = [self.playButton layer];
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+    self.playButton.enabled = NO;
     [self.menu addSubview:self.playButton];
     
     /* NEXT IMAGE */
     self.nextImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.80, iconY, iconHeight*21/31, iconHeight)];
     self.nextImage.image = [UIImage imageNamed:@"Next.png"];
     self.nextImage.contentMode = UIViewContentModeScaleAspectFill;
-    self.nextImage.hidden = NO;
+    self.nextImage.hidden = YES;
     [self.menu addSubview:self.nextImage];
     
     /* NEXT BUTTON */
     self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.nextButton addTarget:self
-                         action:@selector(didPressLikeButton)
+                         action:@selector(didPressNextButton)
                forControlEvents:UIControlEventTouchDown];
     self.nextButton.frame = CGRectMake(self.nextImage.frame.origin.x - 15, 0, self.nextImage.frame.size.width+30,self.menu.frame.size.height);
     layer1 = [self.nextButton layer];
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+    self.nextButton.enabled = NO;
     [self.menu addSubview:self.nextButton];
     
     /* MOVIE PLAYER */
@@ -264,13 +267,10 @@ static Player *player;
 
 - (void)didPressLikeButton
 {
-//    if (self.isMoviePaused)
-//        self.menu.image = [UIImage imageNamed:@"buttomBarSelectedPlay.png"];
-//    else
-//        self.menu.image = [UIImage imageNamed:@"buttomBarSelected.png"];
     self.isMovieLiked = YES;
-
-    self.nextButton.hidden = NO;
+    self.likeImage.image = [UIImage imageNamed:@"LikeSelected.png"];
+    self.nextImage.hidden = NO;
+    self.nextButton.enabled = YES;
 }
 
 - (void)didPressDislikeButton
@@ -348,13 +348,16 @@ static Player *player;
 
 - (void)didPressNextButton
 {
-//    self.didPressNextMovieButton = YES;
-    [self didPressPauseButton];
-    [self.moviePlayer.view removeFromSuperview];
+    self.pauseImage.hidden = NO;
+    self.pauseButton.enabled = YES;
+    self.playImage.hidden = YES;
+    self.playButton.enabled = NO;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
-    self.nextButton.hidden = YES;
-   // self.menu.image = [UIImage imageNamed:@"buttomBar.png"];
+    self.nextImage.hidden = YES;
+    self.nextButton.enabled = NO;
+    self.likeImage.image = [UIImage imageNamed:@"Like.png"];
+    [self.moviePlayer.view removeFromSuperview];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerNowPlayingMovieDidChangeNotification
                                                   object:nil];
