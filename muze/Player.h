@@ -10,7 +10,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface Player : UIViewController <UIAlertViewDelegate>
+@interface Player : UIViewController <UIAlertViewDelegate, UIGestureRecognizerDelegate>
 + (Player*)player;
 -(void)showMenu;
 @property   MPMoviePlayerController  *moviePlayer;

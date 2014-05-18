@@ -156,6 +156,13 @@ static Player *player;
     self.moviePlayer.shouldAutoplay = YES;
     self.moviePlayer.controlStyle = MPMovieControlStyleNone;//MPMovieControlStyleNone,MPMovieControlStyleDefault
     [self.moviePlayer prepareToPlay];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(toggleMenu)];
+    tap.delegate = self;
+    
+    [self.moviePlayer.view addGestureRecognizer:tap];
 
     [self.view addSubview:self.moviePlayer.view];
     [self.view addSubview:self.nudge];
@@ -165,7 +172,7 @@ static Player *player;
     self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)toggleMenu
 {
     if (self.isMenuShown)
     {
@@ -176,6 +183,14 @@ static Player *player;
     {
         [self showMenu];
     }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return YES;
+}
+// this enables you to handle multiple recognizers on single view
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 - (void)didPressMailButton
