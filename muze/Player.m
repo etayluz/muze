@@ -161,6 +161,8 @@ static Player *player;
     [self.view addSubview:self.nudge];
     [self.view addSubview:self.menu];
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
+    
+    self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
@@ -168,6 +170,7 @@ static Player *player;
     if (self.isMenuShown)
     {
         [self hideMenu];
+        
     }
     else
     {
@@ -240,6 +243,7 @@ static Player *player;
 -(void)hideMenu
 {
     self.isMenuShown = NO;
+    [self.hideMenuTimer invalidate];
     [UIView animateWithDuration:0.5 animations:^{
         CGRect frame;
         frame = self.menu.frame;
@@ -253,6 +257,7 @@ static Player *player;
 -(void)showMenu
 {
     self.isMenuShown = YES;
+    self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
     [UIView animateWithDuration:0.5 animations:^{
         CGRect frame;
         frame = self.menu.frame;
