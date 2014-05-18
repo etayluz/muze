@@ -30,7 +30,6 @@
 @property   UIImageView              *nextImage;
 @property   UIImageView              *playImage;
 @property   UIImageView              *likeImage;
-@property   BOOL                      didPressNextMovieButton;
 @property   BOOL                      movieWillStartPlaying;
 @property   BOOL                      movieDidStartPlaying;
 @property   BOOL                      isMoviePaused;

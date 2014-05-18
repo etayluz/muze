@@ -27,9 +27,8 @@ static Player *player;
 {
     [super viewDidLoad];
     
-    self.movieNumber = 1;
+    self.movieNumber = 5;
     player = self;
-    //self.didPressNextMovieButton = NO;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
     self.isMenuShown = YES;
@@ -162,6 +161,11 @@ static Player *player;
 
 - (void)toggleMenu
 {
+    if (self.isError)
+    {
+        [self didPressNextButton];
+        return;
+    }
     if (self.isMenuShown)// && !self.isMoviePaused)
     {
         [self hideMenu];
@@ -300,6 +304,7 @@ static Player *player;
     NSLog(@"moviePlayerStateDidChange");
     if (self.movieWillStartPlaying == YES)
     {
+        self.isError = NO;
         [self.hideMenuTimer invalidate];
         self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
         self.movieDidStartPlaying = YES;
@@ -320,36 +325,25 @@ static Player *player;
 
 - (void)movieDidFinishPlaying:(NSNotification *)notification
 {
-    //if (self.didPressNextMovieButton == NO)
-    [self didPressNextButton];
-    
     NSDictionary *notificationUserInfo = [notification userInfo];
     NSNumber *resultValue = [notificationUserInfo objectForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey];
     MPMovieFinishReason reason = [resultValue intValue];
     if (reason == MPMovieFinishReasonPlaybackError)
     {
-        NSError *mediaPlayerError = [notificationUserInfo objectForKey:@"error"];
-        if (mediaPlayerError && !self.isError)
-        {
-            self.isError = YES;
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            NSLog(@"playback failed with error description: %@", [mediaPlayerError localizedDescription]);
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ooops!"
-                                                                message:@"Video couldn't be loaded. App will shut down."
-                                                               delegate:self
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-            [alertView show];
-        }
-        else
-        {
-            NSLog(@"playback failed without any given reason");
-        }
+        self.isError = YES;
+        UILabel *textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 320/2.5,self.view.frame.size.height,40)];
+        textLabel.font = [UIFont systemFontOfSize:15];
+        textLabel.textAlignment = NSTextAlignmentCenter;
+        textLabel.textColor = [UIColor whiteColor];
+        textLabel.text = @"Video failed to load. Tap to retry.";
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.moviePlayer.view addSubview:textLabel];
     }
     else
+    {
+        [self didPressNextButton];
         NSLog(@"movieDidFinishPlaying");
-//    else
-//        self.didPressNextMovieButton = NO;
+    }
 }
 
 - (void)didPressNextButton
