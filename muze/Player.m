@@ -33,6 +33,7 @@ static Player *player;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
     self.isMenuShown = YES;
+    self.view.backgroundColor = [UIColor blueColor];
     
     /* NUDGE */
     self.nudge  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-125/2)/2, 320-60/2, 125/2, 60/2)];
@@ -41,13 +42,13 @@ static Player *player;
     [self.view addSubview:self.nudge];
     
     /* MENU */
-    self.menu = [[UIImageView alloc] init];
+    self.menu = [[UIView alloc] init];
     NSInteger menuHeight = 55;
     NSInteger iconHeight = menuHeight*0.6;
     NSInteger iconY =(menuHeight-iconHeight)/2;
     self.menu.frame = CGRectMake(0,320-menuHeight,self.view.frame.size.height,menuHeight); // +(self.view.frame.size.height-100*4.9) 480
     self.menu.backgroundColor = [UIColor colorWithRed:(69/255.0) green:(89/255.0) blue:(122/255.0) alpha:1];
-    [self.view insertSubview:self.menu atIndex:5];
+    [self.view addSubview:self.menu];
     
     /* DISLIKE IMAGE */
     self.dislikeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.15, iconY, iconHeight*35/40, iconHeight)];
@@ -62,8 +63,8 @@ static Player *player;
                  forControlEvents:UIControlEventTouchDown];
     self.dislikeButton.frame = CGRectMake(self.dislikeImage.frame.origin.x - 15, 0, self.dislikeImage.frame.size.width+30,self.menu.frame.size.height);
     CALayer * layer1 = [self.dislikeButton layer];
-    [layer1 setBorderWidth:1.0];
-    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+    //[layer1 setBorderWidth:1.0];
+    [layer1 setBorderColor:[[UIColor greenColor] CGColor]];
     [self.menu addSubview:self.dislikeButton];
 
     /* LIKE IMAGE */
@@ -79,7 +80,7 @@ static Player *player;
                  forControlEvents:UIControlEventTouchDown];
     self.likeButton.frame = CGRectMake(self.likeImage.frame.origin.x - 15, 0, self.likeImage.frame.size.width+30,self.menu.frame.size.height);
     layer1 = [self.likeButton layer];
-    [layer1 setBorderWidth:1.0];
+    //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.menu addSubview:self.likeButton];
     
@@ -96,7 +97,7 @@ static Player *player;
                forControlEvents:UIControlEventTouchDown];
     self.playButton.frame = CGRectMake(self.playImage.frame.origin.x - 15, 0, self.playImage.frame.size.width+30,self.menu.frame.size.height);
     layer1 = [self.playButton layer];
-    [layer1 setBorderWidth:1.0];
+    //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.menu addSubview:self.playButton];
     
@@ -114,15 +115,15 @@ static Player *player;
               forControlEvents:UIControlEventTouchDown];
     self.pauseButton.frame = CGRectMake(self.pauseImage.frame.origin.x - 15, 0, self.pauseImage.frame.size.width+30,self.menu.frame.size.height);
     layer1 = [self.likeButton layer];
-    [layer1 setBorderWidth:1.0];
+    //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.menu addSubview:self.pauseButton];
     
     /* NEXT IMAGE */
-    self.nextImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, iconY, iconHeight*21/31, iconHeight)];
+    self.nextImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.80, iconY, iconHeight*21/31, iconHeight)];
     self.nextImage.image = [UIImage imageNamed:@"Next.png"];
     self.nextImage.contentMode = UIViewContentModeScaleAspectFill;
-    self.nextImage.hidden = YES;
+    self.nextImage.hidden = NO;
     [self.menu addSubview:self.nextImage];
     
     /* NEXT BUTTON */
@@ -131,8 +132,8 @@ static Player *player;
                          action:@selector(didPressLikeButton)
                forControlEvents:UIControlEventTouchDown];
     self.nextButton.frame = CGRectMake(self.nextImage.frame.origin.x - 15, 0, self.nextImage.frame.size.width+30,self.menu.frame.size.height);
-    layer1 = [self.likeButton layer];
-    [layer1 setBorderWidth:1.0];
+    layer1 = [self.nextButton layer];
+    //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.menu addSubview:self.nextButton];
     
@@ -164,33 +165,11 @@ static Player *player;
 {
     if (self.isMenuShown)
     {
-        self.isMenuShown = NO;
-        [UIView animateWithDuration:0.5 animations:^{
-            CGRect frame;
-            frame = self.menu.frame;
-            frame.origin.y += (self.menu.frame.size.height);
-            self.menu.frame=frame;
-            //theImageView.alpha=1.0;
-        }
-        completion:^ (BOOL finished)
-        {
-        }
-        ];
+        [self hideMenu];
     }
     else
     {
-        self.isMenuShown = YES;
-        [UIView animateWithDuration:0.5 animations:^{
-            CGRect frame;
-            frame = self.menu.frame;
-            frame.origin.y -= (self.menu.frame.size.height);
-            self.menu.frame=frame;
-            //theImageView.alpha=1.0;
-        }
-        completion:^ (BOOL finished)
-        {
-        }
-        ];
+        [self showMenu];
     }
 }
 
@@ -259,25 +238,27 @@ static Player *player;
 -(void)hideMenu
 {
     self.isMenuShown = NO;
-    self.menu.hidden = YES;
-    self.likeButton.enabled = NO;
-    self.dislikeButton.enabled = NO;
-    self.playPauseButton.enabled = NO;
-    self.nextButton.enabled = NO;
-    self.mailButton.hidden = YES;
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect frame;
+        frame = self.menu.frame;
+        frame.origin.y += (self.menu.frame.size.height);
+        self.menu.frame=frame;
+    }
+    completion:^ (BOOL finished) {}
+    ];
 }
 
 -(void)showMenu
 {
-    self.isMenuShown = YES;
-    self.menu.hidden = NO;
-    self.likeButton.enabled = YES;
-    self.dislikeButton.enabled = YES;
-    self.playPauseButton.enabled = YES;
-    self.nextButton.enabled = YES;
-    self.mailButton.hidden = NO;
-    [self.hideMenuTimer invalidate];
-    self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
+    self.isMenuShown = NO;
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect frame;
+        frame = self.menu.frame;
+        frame.origin.y -= (self.menu.frame.size.height);
+        self.menu.frame=frame;
+    }
+    completion:^ (BOOL finished) {}
+    ];
 }
 
 
