@@ -27,7 +27,7 @@ static Player *player;
 {
     [super viewDidLoad];
     
-    self.movieNumber = 5;
+    self.movieNumber = 1;
     player = self;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
