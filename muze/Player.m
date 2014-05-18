@@ -118,6 +118,24 @@ static Player *player;
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.menu addSubview:self.pauseButton];
     
+    /* NEXT IMAGE */
+    self.nextImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, iconY, iconHeight*21/31, iconHeight)];
+    self.nextImage.image = [UIImage imageNamed:@"Next.png"];
+    self.nextImage.contentMode = UIViewContentModeScaleAspectFill;
+    self.nextImage.hidden = YES;
+    [self.menu addSubview:self.nextImage];
+    
+    /* NEXT BUTTON */
+    self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.nextButton addTarget:self
+                         action:@selector(didPressLikeButton)
+               forControlEvents:UIControlEventTouchDown];
+    self.nextButton.frame = CGRectMake(self.nextImage.frame.origin.x - 15, 0, self.nextImage.frame.size.width+30,self.menu.frame.size.height);
+    layer1 = [self.likeButton layer];
+    [layer1 setBorderWidth:1.0];
+    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.menu addSubview:self.nextButton];
+    
     return;
     /* MOVIE PLAYER */
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://etayluz.com/1.3gp"]];
@@ -140,55 +158,6 @@ static Player *player;
     [self.view addSubview:self.moviePlayer.view];
     [self.view addSubview:self.menu];
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
-
-
-    
-    /* LIKE BUTTON */
-    self.likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.likeButton addTarget:self
-                   action:@selector(didPressLikeButton)
-         forControlEvents:UIControlEventTouchDown];
-    self.likeButton.frame = CGRectMake(self.view.frame.size.height*0.24, self.menu.frame.origin.y, 80,self.menu.frame.size.height);
-    CALayer * layer2 = [self.likeButton layer];
-    //[layer2 setBorderWidth:1.0];
-    [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
-    [self.view addSubview:self.likeButton];
-    
-    /* MAIL BUTTON */
-    self.mailButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.mailButton addTarget:self
-                        action:@selector(didPressMailButton)
-              forControlEvents:UIControlEventTouchDown];
-    layer1 = [self.mailButton layer];
-    //[layer1 setBorderWidth:1.0];
-    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
-    [self.mailButton setBackgroundImage:[UIImage imageNamed:@"Mail.png"] forState:UIControlStateNormal];
-    self.mailButton.frame = CGRectMake(self.view.frame.size.height*0.44, self.menu.frame.origin.y+20, 256/4,30);
-    self.mailButton.alpha = 0.35;
-    [self.view addSubview:self.mailButton];
-    
-    /* PLAY AND PAUSE BUTTON */
-    self.playPauseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.playPauseButton addTarget:self
-                   action:@selector(didPressPlayPauseButton)
-         forControlEvents:UIControlEventTouchDown];
-    //self.playPauseButton.frame = CGRectMake(self.view.frame.size.height*0.60,self.menu.frame.origin.y, 70, self.menu.image.size.height);
-    layer2 = [self.playPauseButton layer];
-    //[layer2 setBorderWidth:1.0];
-    [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
-    [self.view addSubview:self.playPauseButton];
-    
-    /* NEXT BUTTON */
-    self.nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.nextButton addTarget:self
-                             action:@selector(didPressNextButton)
-                   forControlEvents:UIControlEventTouchDown];
-    //self.nextButton.frame = CGRectMake(self.view.frame.size.height*0.80,self.menu.frame.origin.y, 80, self.menu.image.size.height);
-    layer2 = [self.nextButton layer];
-    //[layer2 setBorderWidth:1.0];
-    [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
-    self.nextButton.hidden = YES;
-    [self.view addSubview:self.nextButton];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;

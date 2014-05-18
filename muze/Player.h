@@ -26,6 +26,8 @@
 @property   UIImageView              *nudge;
 @property   UIImageView              *dislikeImage;
 @property   UIImageView              *pauseImage;
+@property   UIImageView              *nextImage;
+@property   UIImageView              *nextImage;
 @property   UIImageView              *playImage;
 @property   UIImageView              *likeImage;
 @property   BOOL                      didPressNextMovieButton;
