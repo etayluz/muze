@@ -33,6 +33,12 @@ static Player *player;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
     
+    /* NUDGE */
+    self.nudge  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-125/2)/2, 320-60/2, 125/2, 60/2)];
+    self.nudge.image = [UIImage imageNamed:@"Nudge.png"];
+    self.nudge.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:self.nudge];
+    
     /* MENU */
     self.menu = [[UIImageView alloc] init];
     NSInteger menuHeight = 55;
@@ -40,30 +46,41 @@ static Player *player;
     self.menu.backgroundColor = [UIColor colorWithRed:(69/255.0) green:(89/255.0) blue:(122/255.0) alpha:1];
     [self.view insertSubview:self.menu atIndex:5];
     
-    /* NUDGE */
-    self.nudge  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-125/2)/2, 320-60/2, 125/2, 60/2)];
-    self.nudge.image = [UIImage imageNamed:@"Nudge.png"];
-    self.nudge.contentMode = UIViewContentModeScaleAspectFill;
-    [self.view addSubview:self.nudge];
-
     /* DISLIKE IMAGE */
-    self.dislikeImage  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-125/2)/2, 320-60/2, 125/2, 60/2)];
+    self.dislikeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.15, self.menu.frame.size.height*0.2, self.menu.frame.size.height*0.6, self.menu.frame.size.height*0.6*40/35)];
     self.dislikeImage.image = [UIImage imageNamed:@"Dislike.png"];
     self.dislikeImage.contentMode = UIViewContentModeScaleAspectFill;
-    [self.view addSubview:self.dislikeImage];
+    [self.menu addSubview:self.dislikeImage];
     
-    return;
     /* DISLIKE BUTTON */
     self.dislikeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.dislikeButton addTarget:self
                            action:@selector(didPressDislikeButton)
                  forControlEvents:UIControlEventTouchDown];
-    self.dislikeButton.frame = CGRectMake(self.view.frame.size.height*0.05, self.menu.frame.origin.y, 85,self.menu.frame.size.height);
+    self.dislikeButton.frame = CGRectMake(self.dislikeImage.frame.origin.x - 15, 0, self.dislikeImage.frame.size.width+30,self.menu.frame.size.height);
     CALayer * layer1 = [self.dislikeButton layer];
-    //[layer1 setBorderWidth:1.0];
+    [layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
-    [self.view addSubview:self.dislikeButton];
+    [self.menu addSubview:self.dislikeButton];
+
+    /* LIKE IMAGE */
+    self.likeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.dislikeImage.frame.origin.x + self.dislikeImage.frame.size.width+30, self.menu.frame.size.height*0.2, self.menu.frame.size.height*0.6, self.menu.frame.size.height*0.6*40/35)];
+    self.likeImage.image = [UIImage imageNamed:@"Like.png"];
+    self.likeImage.contentMode = UIViewContentModeScaleAspectFill;
+    [self.menu addSubview:self.likeImage];
     
+    /* LIKE BUTTON */
+    self.likeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.likeButton addTarget:self
+                           action:@selector(didPressLikeButton)
+                 forControlEvents:UIControlEventTouchDown];
+    self.likeButton.frame = CGRectMake(self.likeImage.frame.origin.x - 15, 0, self.likeImage.frame.size.width+30,self.menu.frame.size.height);
+    layer1 = [self.likeButton layer];
+    [layer1 setBorderWidth:1.0];
+    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.menu addSubview:self.likeButton];
+    
+    return;
     /* MOVIE PLAYER */
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://etayluz.com/1.3gp"]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
