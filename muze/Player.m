@@ -39,7 +39,6 @@ static Player *player;
     self.nudge  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-125/2)/2, 320-60/2, 125/2, 60/2)];
     self.nudge.image = [UIImage imageNamed:@"Nudge.png"];
     self.nudge.contentMode = UIViewContentModeScaleAspectFill;
-    [self.view addSubview:self.nudge];
     
     /* MENU */
     self.menu = [[UIView alloc] init];
@@ -84,23 +83,6 @@ static Player *player;
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.menu addSubview:self.likeButton];
     
-    /* PLAY IMAGE */
-    self.playImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, iconY, iconHeight*21/31, iconHeight)];
-    self.playImage.image = [UIImage imageNamed:@"Play.png"];
-    self.playImage.contentMode = UIViewContentModeScaleAspectFill;
-    [self.menu addSubview:self.playImage];
-    
-    /* PLAY BUTTON */
-    self.playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.playButton addTarget:self
-                         action:@selector(didPressLikeButton)
-               forControlEvents:UIControlEventTouchDown];
-    self.playButton.frame = CGRectMake(self.playImage.frame.origin.x - 15, 0, self.playImage.frame.size.width+30,self.menu.frame.size.height);
-    layer1 = [self.playButton layer];
-    //[layer1 setBorderWidth:1.0];
-    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
-    [self.menu addSubview:self.playButton];
-    
     /* PAUSE IMAGE */
     self.pauseImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, iconY, iconHeight*21/31, iconHeight)];
     self.pauseImage.image = [UIImage imageNamed:@"Pause.png"];
@@ -111,13 +93,30 @@ static Player *player;
     /* PAUSE BUTTON */
     self.pauseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.pauseButton addTarget:self
-                        action:@selector(didPressLikeButton)
+                        action:@selector(didPressPauseButton)
               forControlEvents:UIControlEventTouchDown];
     self.pauseButton.frame = CGRectMake(self.pauseImage.frame.origin.x - 15, 0, self.pauseImage.frame.size.width+30,self.menu.frame.size.height);
     layer1 = [self.likeButton layer];
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.menu addSubview:self.pauseButton];
+    
+    /* PLAY IMAGE */
+    self.playImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, iconY, iconHeight*21/31, iconHeight)];
+    self.playImage.image = [UIImage imageNamed:@"Play.png"];
+    self.playImage.contentMode = UIViewContentModeScaleAspectFill;
+    [self.menu addSubview:self.playImage];
+    
+    /* PLAY BUTTON */
+    self.playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.playButton addTarget:self
+                        action:@selector(didPressPlayButton)
+              forControlEvents:UIControlEventTouchDown];
+    self.playButton.frame = CGRectMake(self.playImage.frame.origin.x - 15, 0, self.playImage.frame.size.width+30,self.menu.frame.size.height);
+    layer1 = [self.playButton layer];
+    //[layer1 setBorderWidth:1.0];
+    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.menu addSubview:self.playButton];
     
     /* NEXT IMAGE */
     self.nextImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.80, iconY, iconHeight*21/31, iconHeight)];
@@ -137,7 +136,6 @@ static Player *player;
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.menu addSubview:self.nextButton];
     
-    return;
     /* MOVIE PLAYER */
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://etayluz.com/1.3gp"]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
@@ -157,6 +155,7 @@ static Player *player;
     [self.moviePlayer prepareToPlay];
 
     [self.view addSubview:self.moviePlayer.view];
+    [self.view addSubview:self.nudge];
     [self.view addSubview:self.menu];
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
 }
@@ -250,7 +249,7 @@ static Player *player;
 
 -(void)showMenu
 {
-    self.isMenuShown = NO;
+    self.isMenuShown = YES;
     [UIView animateWithDuration:0.5 animations:^{
         CGRect frame;
         frame = self.menu.frame;
@@ -342,13 +341,15 @@ static Player *player;
     {
         self.movieDidStartPlaying = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self showMenu];
+        if (!self.isMenuShown)
+            [self showMenu];
     }
 }
 
 - (void)didPressNextButton
 {
 //    self.didPressNextMovieButton = YES;
+    [self didPressPauseButton];
     [self.moviePlayer.view removeFromSuperview];
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
@@ -388,26 +389,24 @@ static Player *player;
     //self.menu.image = [UIImage imageNamed:@"buttomBar.png"];
 }
 
-- (void)didPressPlayPauseButton
+- (void)didPressPauseButton
 {
-    if (self.isMoviePaused == NO)
-    {
-        [self.moviePlayer pause];
-        self.isMoviePaused = YES;
-//        if (self.isMovieLiked)
-//            self.menu.image = [UIImage imageNamed:@"buttomBarSelectedPlay.png"];
-//        else
-//            self.menu.image = [UIImage imageNamed:@"buttomBarPlay.png"];
-    }
-    else
-    {
-        [self.moviePlayer play];
-        self.isMoviePaused = NO;
-//        if (self.isMovieLiked)
-//            self.menu.image = [UIImage imageNamed:@"buttomBarSelected.png"];
-//        else
-//            self.menu.image = [UIImage imageNamed:@"buttomBar.png"];
-    }
+    self.isMoviePaused = YES;
+    [self.moviePlayer pause];
+    self.pauseImage.hidden = YES;
+    self.pauseButton.enabled = NO;
+    self.playImage.hidden = NO;
+    self.playButton.enabled = YES;
+}
+
+- (void)didPressPlayButton
+{
+    self.isMoviePaused = NO;
+    [self.moviePlayer play];
+    self.pauseImage.hidden = NO;
+    self.pauseButton.enabled = YES;
+    self.playImage.hidden = YES;
+    self.playButton.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
