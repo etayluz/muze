@@ -64,7 +64,7 @@ static Player *player;
     [self.menu addSubview:self.dislikeButton];
 
     /* LIKE IMAGE */
-    self.likeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.dislikeImage.frame.origin.x + self.dislikeImage.frame.size.width+30, self.menu.frame.size.height*0.2, self.menu.frame.size.height*0.6, self.menu.frame.size.height*0.6*40/35)];
+    self.likeImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.dislikeImage.frame.origin.x + self.dislikeImage.frame.size.width+30, self.dislikeImage.frame.origin.y, self.menu.frame.size.height*0.6, self.menu.frame.size.height*0.6*40/35)];
     self.likeImage.image = [UIImage imageNamed:@"Like.png"];
     self.likeImage.contentMode = UIViewContentModeScaleAspectFill;
     [self.menu addSubview:self.likeImage];
@@ -79,6 +79,23 @@ static Player *player;
     [layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.menu addSubview:self.likeButton];
+    
+    /* PAUSE IMAGE */
+    self.pauseImage  = [[UIImageView alloc] initWithFrame:CGRectMake(self.menu.frame.size.width*0.60, self.dislikeImage.frame.origin.y*0.2, self.menu.frame.size.height*0.6, self.menu.frame.size.height*0.6*40/35)];
+    self.pauseImage.image = [UIImage imageNamed:@"Like.png"];
+    self.pauseImage.contentMode = UIViewContentModeScaleAspectFill;
+    [self.menu addSubview:self.pauseImage];
+    
+    /* PAUSE BUTTON */
+    self.pauseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.pauseButton addTarget:self
+                        action:@selector(didPressLikeButton)
+              forControlEvents:UIControlEventTouchDown];
+    self.pauseButton.frame = CGRectMake(self.pauseImage.frame.origin.x - 15, 0, self.pauseImage.frame.size.width+30,self.menu.frame.size.height);
+    layer1 = [self.likeButton layer];
+    [layer1 setBorderWidth:1.0];
+    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.menu addSubview:self.pauseButton];
     
     return;
     /* MOVIE PLAYER */

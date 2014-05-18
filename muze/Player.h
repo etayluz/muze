@@ -21,8 +21,10 @@
 @property   UIButton                 *dislikeButton;
 @property   UIButton                 *likeButton;
 @property   UIButton                 *mailButton;
+@property   UIButton                 *pauseButton;
 @property   UIImageView              *nudge;
 @property   UIImageView              *dislikeImage;
+@property   UIImageView              *pauseImage;
 @property   UIImageView              *likeImage;
 @property   BOOL                      didPressNextMovieButton;
 @property   BOOL                      movieDidStartPlaying;
