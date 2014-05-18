@@ -13,6 +13,7 @@
 		B40F7A0C19255F02009BAE3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F7A0B19255F02009BAE3C /* XCTest.framework */; };
 		B40F7A0D19255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
 		B40F7A0E19255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
+		B447D17C19285106005F081E /* Nudge.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17B19285106005F081E /* Nudge.png */; };
 		B4C2550E1925F45400A6C846 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C2550D1925F45400A6C846 /* MessageUI.framework */; };
 		B4D348711925A653006A8C21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486C1925A653006A8C21 /* AppDelegate.m */; };
 		B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486E1925A653006A8C21 /* MBProgressHUD.m */; };
@@ -48,6 +49,7 @@
 		B40F79F619255F02009BAE3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B40F7A0A19255F02009BAE3C /* muzeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = muzeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40F7A0B19255F02009BAE3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B447D17B19285106005F081E /* Nudge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Nudge.png; path = muze/images/Nudge.png; sourceTree = SOURCE_ROOT; };
 		B4C2550D1925F45400A6C846 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B4D3486B1925A653006A8C21 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = muze/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		B4D3486C1925A653006A8C21 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = muze/AppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -165,6 +167,7 @@
 				B4D348901925EBC0006A8C21 /* Default@2x.png */,
 				B4D348941925EBF2006A8C21 /* Icon.png */,
 				B4D348961925EEB4006A8C21 /* Mail.png */,
+				B447D17B19285106005F081E /* Nudge.png */,
 				B4D348781925A66E006A8C21 /* play.png */,
 			);
 			name = images;
@@ -255,6 +258,7 @@
 				B4D348931925EBC0006A8C21 /* Default@2x.png in Resources */,
 				B4D348921925EBC0006A8C21 /* Default.png in Resources */,
 				B4D348791925A66E006A8C21 /* buttomBar.png in Resources */,
+				B447D17C19285106005F081E /* Nudge.png in Resources */,
 				B4D3487A1925A66E006A8C21 /* buttomBarSelected.png in Resources */,
 				B4D348971925EEB4006A8C21 /* Mail.png in Resources */,
 				B4D348911925EBC0006A8C21 /* Default-568h@2x.png in Resources */,

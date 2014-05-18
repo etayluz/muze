@@ -33,16 +33,19 @@ static Player *player;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
     
-    /* FOOTER */
-    self.footer = [[UIImageView alloc] init];
-    self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
-    self.footer.frame = CGRectMake(0,320-70,self.view.frame.size.height,70); // +(self.view.frame.size.height-100*4.9) 480
-    //self.footer.bounds = CGRectMake(160,320-70,100,70);
-    // origin starts at 160; the width seems to be multiplied by 4.9
-    //self.footer.frame = CGRectMake(0.0, 320 - self.footer.image.size.height*0.7, 320.0, self.footer.image.size.height*0.7);
-    self.footer.contentMode = UIViewContentModeScaleToFill;
-    self.footer.alpha = 0.5;
+    /* MENU */
+    self.menu = [[UIImageView alloc] init];
+    NSInteger menuHeight = 55;
+    self.menu.frame = CGRectMake(0,320-menuHeight,self.view.frame.size.height,menuHeight); // +(self.view.frame.size.height-100*4.9) 480
+    self.menu.backgroundColor = [UIColor colorWithRed:(69/255.0) green:(89/255.0) blue:(122/255.0) alpha:1];
+    [self.view insertSubview:self.menu atIndex:5];
     
+    /* NUDGE */
+    self.nudge  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-125/2)/2, 320-60/2, 125/2, 60/2)];
+    self.nudge.image = [UIImage imageNamed:@"Nudge.png"];
+    self.nudge.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:self.nudge];
+    return;
     /* MOVIE PLAYER */
     self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:@"http://etayluz.com/1.3gp"]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
@@ -62,7 +65,7 @@ static Player *player;
     [self.moviePlayer prepareToPlay];
 
     [self.view addSubview:self.moviePlayer.view];
-    [self.view addSubview:self.footer];
+    [self.view addSubview:self.menu];
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
 
     /* DISLIKE BUTTON */
@@ -70,7 +73,7 @@ static Player *player;
     [self.dislikeButton addTarget:self
                    action:@selector(didPressDislikeButton)
          forControlEvents:UIControlEventTouchDown];
-    self.dislikeButton.frame = CGRectMake(self.view.frame.size.height*0.05, self.footer.frame.origin.y, 85,self.footer.frame.size.height);
+    self.dislikeButton.frame = CGRectMake(self.view.frame.size.height*0.05, self.menu.frame.origin.y, 85,self.menu.frame.size.height);
     CALayer * layer1 = [self.dislikeButton layer];
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
@@ -81,7 +84,7 @@ static Player *player;
     [self.likeButton addTarget:self
                    action:@selector(didPressLikeButton)
          forControlEvents:UIControlEventTouchDown];
-    self.likeButton.frame = CGRectMake(self.view.frame.size.height*0.24, self.footer.frame.origin.y, 80,self.footer.frame.size.height);
+    self.likeButton.frame = CGRectMake(self.view.frame.size.height*0.24, self.menu.frame.origin.y, 80,self.menu.frame.size.height);
     CALayer * layer2 = [self.likeButton layer];
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
@@ -96,7 +99,7 @@ static Player *player;
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.mailButton setBackgroundImage:[UIImage imageNamed:@"Mail.png"] forState:UIControlStateNormal];
-    self.mailButton.frame = CGRectMake(self.view.frame.size.height*0.44, self.footer.frame.origin.y+20, 256/4,30);
+    self.mailButton.frame = CGRectMake(self.view.frame.size.height*0.44, self.menu.frame.origin.y+20, 256/4,30);
     self.mailButton.alpha = 0.35;
     [self.view addSubview:self.mailButton];
     
@@ -105,7 +108,7 @@ static Player *player;
     [self.playPauseButton addTarget:self
                    action:@selector(didPressPlayPauseButton)
          forControlEvents:UIControlEventTouchDown];
-    self.playPauseButton.frame = CGRectMake(self.view.frame.size.height*0.60,self.footer.frame.origin.y, 70, self.footer.image.size.height);
+    //self.playPauseButton.frame = CGRectMake(self.view.frame.size.height*0.60,self.menu.frame.origin.y, 70, self.menu.image.size.height);
     layer2 = [self.playPauseButton layer];
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
@@ -116,7 +119,7 @@ static Player *player;
     [self.nextButton addTarget:self
                              action:@selector(didPressNextButton)
                    forControlEvents:UIControlEventTouchDown];
-    self.nextButton.frame = CGRectMake(self.view.frame.size.height*0.80,self.footer.frame.origin.y, 80, self.footer.image.size.height);
+    //self.nextButton.frame = CGRectMake(self.view.frame.size.height*0.80,self.menu.frame.origin.y, 80, self.menu.image.size.height);
     layer2 = [self.nextButton layer];
     //[layer2 setBorderWidth:1.0];
     [layer2 setBorderColor:[[UIColor blackColor] CGColor]];
@@ -197,7 +200,7 @@ static Player *player;
 -(void)hideControls
 {
     self.isControlsShown = NO;
-    self.footer.hidden = YES;
+    self.menu.hidden = YES;
     self.likeButton.enabled = NO;
     self.dislikeButton.enabled = NO;
     self.playPauseButton.enabled = NO;
@@ -208,7 +211,7 @@ static Player *player;
 -(void)showControls
 {
     self.isControlsShown = YES;
-    self.footer.hidden = NO;
+    self.menu.hidden = NO;
     self.likeButton.enabled = YES;
     self.dislikeButton.enabled = YES;
     self.playPauseButton.enabled = YES;
@@ -222,10 +225,10 @@ static Player *player;
 
 - (void)didPressLikeButton
 {
-    if (self.isMoviePaused)
-        self.footer.image = [UIImage imageNamed:@"buttomBarSelectedPlay.png"];
-    else
-        self.footer.image = [UIImage imageNamed:@"buttomBarSelected.png"];
+//    if (self.isMoviePaused)
+//        self.menu.image = [UIImage imageNamed:@"buttomBarSelectedPlay.png"];
+//    else
+//        self.menu.image = [UIImage imageNamed:@"buttomBarSelected.png"];
     self.isMovieLiked = YES;
 
     self.nextButton.hidden = NO;
@@ -310,7 +313,7 @@ static Player *player;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
     self.nextButton.hidden = YES;
-    self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
+   // self.menu.image = [UIImage imageNamed:@"buttomBar.png"];
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerNowPlayingMovieDidChangeNotification
                                                   object:nil];
@@ -342,7 +345,7 @@ static Player *player;
     [self.view insertSubview:self.moviePlayer.view atIndex:0];
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
     [self.moviePlayer prepareToPlay];
-    self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
+    //self.menu.image = [UIImage imageNamed:@"buttomBar.png"];
 }
 
 - (void)didPressPlayPauseButton
@@ -351,19 +354,19 @@ static Player *player;
     {
         [self.moviePlayer pause];
         self.isMoviePaused = YES;
-        if (self.isMovieLiked)
-            self.footer.image = [UIImage imageNamed:@"buttomBarSelectedPlay.png"];
-        else
-            self.footer.image = [UIImage imageNamed:@"buttomBarPlay.png"];
+//        if (self.isMovieLiked)
+//            self.menu.image = [UIImage imageNamed:@"buttomBarSelectedPlay.png"];
+//        else
+//            self.menu.image = [UIImage imageNamed:@"buttomBarPlay.png"];
     }
     else
     {
         [self.moviePlayer play];
         self.isMoviePaused = NO;
-        if (self.isMovieLiked)
-            self.footer.image = [UIImage imageNamed:@"buttomBarSelected.png"];
-        else
-            self.footer.image = [UIImage imageNamed:@"buttomBar.png"];
+//        if (self.isMovieLiked)
+//            self.menu.image = [UIImage imageNamed:@"buttomBarSelected.png"];
+//        else
+//            self.menu.image = [UIImage imageNamed:@"buttomBar.png"];
     }
 }
 
