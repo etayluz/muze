@@ -166,10 +166,10 @@ static Player *player;
     [self.view addSubview:self.helpOverlay];
 
     /* HELP OVERLAY IMAGE */
-    self.helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.height, 320)];
-    self.helpImage.image = [UIImage imageNamed:@"Help.png"];
-    self.helpImage.contentMode = UIViewContentModeScaleAspectFill;
-    [self.helpOverlay addSubview:self.helpImage];
+    UIImageView *helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.height, 320)];
+    helpImage.image = [UIImage imageNamed:@"Help.png"];
+    helpImage.contentMode = UIViewContentModeScaleAspectFill;
+    [self.helpOverlay addSubview:helpImage];
     
     /* HIDE HELP BUTTON */
     self.hideHelpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -185,14 +185,12 @@ static Player *player;
 
 -(void)didPressHideHelpButton
 {
-    self.helpOverlay.hidden = YES;
-    /* HELP OVERLAY IMAGE */
-    self.helpImage.image = [UIImage imageNamed:@"Help2.png"];
+    [self.helpOverlay removeFromSuperview];
 }
 
 - (void)toggleMenu
 {
-    self.helpOverlay.hidden = YES;
+    [self.helpOverlay removeFromSuperview];
     if (self.isError)
     {
         [self didPressNextButton];
@@ -200,7 +198,6 @@ static Player *player;
     }
     if (self.isMenuShown)// && !self.isMoviePaused)
     {
-        self.helpOverlay.hidden = NO;
         [self hideMenu];
         
     }
@@ -292,6 +289,7 @@ static Player *player;
 
 -(void)hideMenu
 {
+    [self.helpOverlay removeFromSuperview];
     self.isMenuShown = NO;
     [self.hideMenuTimer invalidate];
     [UIView animateWithDuration:0.5 animations:^{

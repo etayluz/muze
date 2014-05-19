@@ -21,7 +21,6 @@
 		B447D1851928540A005F081E /* Next.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D1801928540A005F081E /* Next.png */; };
 		B447D1861928540A005F081E /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D1811928540A005F081E /* Play.png */; };
 		B447D18A19285906005F081E /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D18919285906005F081E /* Pause.png */; };
-		B4A8C8D3192A14B9002A2175 /* Help2.png in Resources */ = {isa = PBXBuildFile; fileRef = B4A8C8D2192A14B9002A2175 /* Help2.png */; };
 		B4C2550E1925F45400A6C846 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C2550D1925F45400A6C846 /* MessageUI.framework */; };
 		B4D348711925A653006A8C21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486C1925A653006A8C21 /* AppDelegate.m */; };
 		B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486E1925A653006A8C21 /* MBProgressHUD.m */; };
@@ -60,7 +59,6 @@
 		B447D1801928540A005F081E /* Next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Next.png; path = muze/images/Next.png; sourceTree = SOURCE_ROOT; };
 		B447D1811928540A005F081E /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Play.png; path = muze/images/Play.png; sourceTree = SOURCE_ROOT; };
 		B447D18919285906005F081E /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = muze/images/Pause.png; sourceTree = SOURCE_ROOT; };
-		B4A8C8D2192A14B9002A2175 /* Help2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Help2.png; path = muze/images/Help2.png; sourceTree = SOURCE_ROOT; };
 		B4C2550D1925F45400A6C846 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B4D3486B1925A653006A8C21 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = muze/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		B4D3486C1925A653006A8C21 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = muze/AppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -169,7 +167,6 @@
 				B4D348901925EBC0006A8C21 /* Default@2x.png */,
 				B447D17D1928540A005F081E /* Dislike.png */,
 				B438DFEF192A11C500049005 /* Help.png */,
-				B4A8C8D2192A14B9002A2175 /* Help2.png */,
 				B4D348941925EBF2006A8C21 /* Icon.png */,
 				B447D17E1928540A005F081E /* Like.png */,
 				B447D17F1928540A005F081E /* LikeSelected.png */,
@@ -272,7 +269,6 @@
 				B4D348971925EEB4006A8C21 /* Mail.png in Resources */,
 				B438DFF0192A11C500049005 /* Help.png in Resources */,
 				B447D1861928540A005F081E /* Play.png in Resources */,
-				B4A8C8D3192A14B9002A2175 /* Help2.png in Resources */,
 				B4D348911925EBC0006A8C21 /* Default-568h@2x.png in Resources */,
 				B4D3487E1925A683006A8C21 /* InfoPlist.strings in Resources */,
 			);
