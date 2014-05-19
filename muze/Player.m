@@ -189,7 +189,7 @@ static Player *player;
 -(void)loadNextVideo
 {
     //NSLog(@"%f %f", self.moviePlayer.duration, self.moviePlayer.playableDuration);
-    if (self.moviePlayer.playableDuration > self.moviePlayer.duration * 0.75)
+    if (self.moviePlayer.playableDuration > self.moviePlayer.duration * 0.5)
     {
         [self.loadNextVideoTimer invalidate];
         if (self.movieNumber == 4)
