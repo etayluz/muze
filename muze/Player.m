@@ -140,7 +140,7 @@ static Player *player;
 
     self.tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
-                                   action:@selector(toggleMenu)];
+                                   action:@selector(didPressMovie)];
     self.tap.delegate = self;
     
     self.swipeUp = [[UISwipeGestureRecognizer alloc]
@@ -156,7 +156,6 @@ static Player *player;
     [self didPressNextButton];
     [self.view addSubview:self.nudge];
     [self.view addSubview:self.menu];
-    self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
     
     /* HELP OVERLAY VIEW */
     self.helpOverlay = [[UIView alloc] init];
@@ -166,7 +165,7 @@ static Player *player;
     [self.view addSubview:self.helpOverlay];
 
     /* HELP OVERLAY IMAGE */
-    UIImageView *helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.height, 320)];
+    UIImageView *helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-568)*-1/7, -20, self.view.frame.size.height, 320)];
     helpImage.image = [UIImage imageNamed:@"Help.png"];
     helpImage.contentMode = UIViewContentModeScaleAspectFill;
     [self.helpOverlay addSubview:helpImage];
@@ -186,9 +185,10 @@ static Player *player;
 -(void)didPressHideHelpButton
 {
     [self.helpOverlay removeFromSuperview];
+    self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
 }
 
-- (void)toggleMenu
+- (void)didPressMovie
 {
     [self.helpOverlay removeFromSuperview];
     if (self.isError)
@@ -337,7 +337,8 @@ static Player *player;
     {
         self.isError = NO;
         [self.hideMenuTimer invalidate];
-        self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
+        if (self.helpOverlay.hidden == YES)
+            self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
         self.movieDidStartPlaying = YES;
         self.movieWillStartPlaying = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
