@@ -13,6 +13,7 @@
 		B40F7A0C19255F02009BAE3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F7A0B19255F02009BAE3C /* XCTest.framework */; };
 		B40F7A0D19255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
 		B40F7A0E19255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
+		B438DFF0192A11C500049005 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = B438DFEF192A11C500049005 /* Help.png */; };
 		B447D17C19285106005F081E /* Nudge.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17B19285106005F081E /* Nudge.png */; };
 		B447D1821928540A005F081E /* Dislike.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17D1928540A005F081E /* Dislike.png */; };
 		B447D1831928540A005F081E /* Like.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17E1928540A005F081E /* Like.png */; };
@@ -50,6 +51,7 @@
 		B40F79F619255F02009BAE3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B40F7A0A19255F02009BAE3C /* muzeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = muzeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40F7A0B19255F02009BAE3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B438DFEF192A11C500049005 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Help.png; path = muze/images/Help.png; sourceTree = SOURCE_ROOT; };
 		B447D17B19285106005F081E /* Nudge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Nudge.png; path = muze/images/Nudge.png; sourceTree = SOURCE_ROOT; };
 		B447D17D1928540A005F081E /* Dislike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dislike.png; path = muze/images/Dislike.png; sourceTree = SOURCE_ROOT; };
 		B447D17E1928540A005F081E /* Like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Like.png; path = muze/images/Like.png; sourceTree = SOURCE_ROOT; };
@@ -164,6 +166,7 @@
 				B4D3488F1925EBC0006A8C21 /* Default.png */,
 				B4D348901925EBC0006A8C21 /* Default@2x.png */,
 				B447D17D1928540A005F081E /* Dislike.png */,
+				B438DFEF192A11C500049005 /* Help.png */,
 				B4D348941925EBF2006A8C21 /* Icon.png */,
 				B447D17E1928540A005F081E /* Like.png */,
 				B447D17F1928540A005F081E /* LikeSelected.png */,
@@ -264,6 +267,7 @@
 				B447D1841928540A005F081E /* LikeSelected.png in Resources */,
 				B447D17C19285106005F081E /* Nudge.png in Resources */,
 				B4D348971925EEB4006A8C21 /* Mail.png in Resources */,
+				B438DFF0192A11C500049005 /* Help.png in Resources */,
 				B447D1861928540A005F081E /* Play.png in Resources */,
 				B4D348911925EBC0006A8C21 /* Default-568h@2x.png in Resources */,
 				B4D3487E1925A683006A8C21 /* InfoPlist.strings in Resources */,
@@ -419,7 +423,7 @@
 				INFOPLIST_FILE = "muze/muze-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = muze;
-				PROVISIONING_PROFILE = "485AEE3D-0D05-42F5-B0EB-44AA681B023E";
+				PROVISIONING_PROFILE = "135372FD-770D-4452-90CC-92E8A120D669";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

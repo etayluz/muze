@@ -157,10 +157,40 @@ static Player *player;
     [self.view addSubview:self.nudge];
     [self.view addSubview:self.menu];
     self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
+    
+    /* HELP OVERLAY VIEW */
+    self.helpOverlay = [[UIView alloc] init];
+    self.helpOverlay.frame = CGRectMake(0,0,self.view.frame.size.height,320);
+    self.helpOverlay.backgroundColor = [UIColor blackColor];
+    self.helpOverlay.alpha = 0.6;
+    [self.view addSubview:self.helpOverlay];
+
+    /* HELP OVERLAY IMAGE */
+    UIImageView *helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake(0, -20, self.view.frame.size.height, 320)];
+    helpImage.image = [UIImage imageNamed:@"Help.png"];
+    helpImage.contentMode = UIViewContentModeScaleAspectFill;
+    [self.helpOverlay addSubview:helpImage];
+    
+    /* HIDE HELP BUTTON */
+    self.hideHelpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.hideHelpButton addTarget:self
+                        action:@selector(didPressHideHelpButton)
+              forControlEvents:UIControlEventTouchDown];
+    self.hideHelpButton.frame = self.helpOverlay.frame;
+    layer1 = [self.playButton layer];
+    //[layer1 setBorderWidth:1.0];
+    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+    [self.helpOverlay addSubview:self.hideHelpButton];
+}
+
+-(void)didPressHideHelpButton
+{
+    [self.helpOverlay removeFromSuperview];
 }
 
 - (void)toggleMenu
 {
+    [self.helpOverlay removeFromSuperview];
     if (self.isError)
     {
         [self didPressNextButton];
@@ -259,6 +289,7 @@ static Player *player;
 
 -(void)hideMenu
 {
+    [self.helpOverlay removeFromSuperview];
     self.isMenuShown = NO;
     [self.hideMenuTimer invalidate];
     [UIView animateWithDuration:0.5 animations:^{

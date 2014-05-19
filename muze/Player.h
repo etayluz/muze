@@ -24,6 +24,7 @@
 @property   UIButton                 *mailButton;
 @property   UIButton                 *pauseButton;
 @property   UIButton                 *playButton;
+@property   UIButton                 *hideHelpButton;
 @property   UIImageView              *nudge;
 @property   UIImageView              *dislikeImage;
 @property   UIImageView              *pauseImage;
@@ -40,4 +41,5 @@
 @property   UITapGestureRecognizer   *tap;
 @property   UISwipeGestureRecognizer *swipeUp;
 @property   UISwipeGestureRecognizer *swipeDown;
+@property   UIView                   *helpOverlay;
 @end
