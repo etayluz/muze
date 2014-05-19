@@ -181,6 +181,22 @@ static Player *player;
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.helpOverlay addSubview:self.hideHelpButton];
+    
+    self.loadNextVideoTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(loadNextVideo) userInfo:nil repeats:YES];
+
+}
+
+-(void)loadNextVideo
+{
+    //NSLog(@"%f %f", self.moviePlayer.duration, self.moviePlayer.playableDuration);
+    if (self.moviePlayer.playableDuration > self.moviePlayer.duration * 0.75)
+    {
+        [self.loadNextVideoTimer invalidate];
+        if (self.movieNumber == 4)
+            self.movieNumber = 1;
+        NSLog(@"Loaded movie %ld", (long)self.movieNumber);
+        self.nextMoviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://etayluz.com/%ld.3gp", (long)self.movieNumber++]]];
+    }
 }
 
 -(void)didPressHideHelpButton
@@ -193,6 +209,7 @@ static Player *player;
     [self.helpOverlay removeFromSuperview];
     if (self.isError)
     {
+        NSLog(@"%ld", (long)self.movieNumber);
         [self didPressNextButton];
         return;
     }
@@ -335,6 +352,8 @@ static Player *player;
     NSLog(@"moviePlayerStateDidChange");
     if (self.movieWillStartPlaying == YES)
     {
+        [self.loadNextVideoTimer invalidate];
+        self.loadNextVideoTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(loadNextVideo) userInfo:nil repeats:YES];
         self.isError = NO;
         [self.hideMenuTimer invalidate];
         self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
@@ -369,6 +388,15 @@ static Player *player;
         textLabel.text = @"Video failed to load. Tap to retry.";
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self.moviePlayer.view addSubview:textLabel];
+        
+        NSError *mediaPlayerError = [notificationUserInfo objectForKey:@"error"];
+        if (mediaPlayerError && !self.isError)
+        {
+            self.isError = YES;
+            NSLog(@"playback failed with error description: %@", [mediaPlayerError localizedDescription]);
+        }
+        else
+            NSLog(@"playback failed without any given reason");
     }
     else
     {
@@ -406,7 +434,11 @@ static Player *player;
     
     if (self.movieNumber == 4)
         self.movieNumber = 1;
-    self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://etayluz.com/%ld.3gp", (long)self.movieNumber++]]];
+    if (self.nextMoviePlayer != nil)
+        self.moviePlayer = self.nextMoviePlayer;
+    else
+        self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://etayluz.com/%ld.3gp", (long)self.movieNumber++]]];
+    self.nextMoviePlayer = nil;
     [self.moviePlayer.view addGestureRecognizer:self.tap];
     [self.moviePlayer.view addGestureRecognizer:self.swipeDown];
     [self.moviePlayer.view addGestureRecognizer:self.swipeUp];
