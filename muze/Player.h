@@ -15,7 +15,6 @@
 -(void)showMenu;
 - (void)didPressNextButton;
 @property   MPMoviePlayerController  *moviePlayer;
-@property   MPMoviePlayerController  *nextMoviePlayer;
 @property   UIView                   *menu;
 @property   NSInteger                 movieNumber;
 @property   UIButton                 *playPauseButton;
@@ -38,7 +37,6 @@
 @property   BOOL                      isMovieLiked;
 @property   BOOL                      isMenuShown;
 @property   NSTimer                  *hideMenuTimer;
-@property   NSTimer                  *loadNextVideoTimer;
 @property   BOOL                      isError;
 @property   UITapGestureRecognizer   *tap;
 @property   UISwipeGestureRecognizer *swipeUp;
