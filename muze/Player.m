@@ -32,6 +32,7 @@ static Player *player;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
     self.isMenuShown = YES;
+    self.isHelpDone = NO;
     self.view.backgroundColor = [UIColor blueColor];
     
     /* NUDGE */
@@ -186,11 +187,13 @@ static Player *player;
 {
     [self.helpOverlay removeFromSuperview];
     self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
+    if(!self.isMenuShown)
+        [self showMenu];
 }
 
 - (void)didPressMovie
 {
-    [self.helpOverlay removeFromSuperview];
+    //[self.helpOverlay removeFromSuperview];
     if (self.isError)
     {
         [self didPressNextButton];
@@ -290,6 +293,32 @@ static Player *player;
 -(void)hideMenu
 {
     [self.helpOverlay removeFromSuperview];
+    if (!self.isHelpDone)
+    {
+        self.isHelpDone = YES;
+        /* HELP OVERLAY VIEW */
+        self.helpOverlay = [[UIView alloc] init];
+        self.helpOverlay.frame = CGRectMake(0,0,self.view.frame.size.height,320);
+        [self.view addSubview:self.helpOverlay];
+        
+        /* HELP OVERLAY IMAGE */
+        UIImageView *helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-568)*-1/7, -20, self.view.frame.size.height, 320)];
+        helpImage.image = [UIImage imageNamed:@"Help2.png"];
+        helpImage.contentMode = UIViewContentModeScaleAspectFill;
+        [self.helpOverlay addSubview:helpImage];
+        
+        /* HIDE HELP BUTTON */
+        self.hideHelpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [self.hideHelpButton addTarget:self
+                                action:@selector(didPressHideHelpButton)
+                      forControlEvents:UIControlEventTouchDown];
+        self.hideHelpButton.frame = self.helpOverlay.frame;
+        CALayer *layer1 = [self.playButton layer];
+        //[layer1 setBorderWidth:1.0];
+        [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+        [self.helpOverlay addSubview:self.hideHelpButton];
+    }
+    
     self.isMenuShown = NO;
     [self.hideMenuTimer invalidate];
     [UIView animateWithDuration:0.5 animations:^{

@@ -36,6 +36,7 @@
 @property   BOOL                      isMoviePaused;
 @property   BOOL                      isMovieLiked;
 @property   BOOL                      isMenuShown;
+@property   BOOL                      isHelpDone;
 @property   NSTimer                  *hideMenuTimer;
 @property   BOOL                      isError;
 @property   UITapGestureRecognizer   *tap;
