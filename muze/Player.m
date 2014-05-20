@@ -31,7 +31,6 @@ static Player *player;
     player = self;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
-    self.isMenuShown = YES;
     self.isHelpDone = NO;
     self.view.backgroundColor = [UIColor blueColor];
     
@@ -187,7 +186,7 @@ static Player *player;
 {
     [self.helpOverlay removeFromSuperview];
     self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
-    if(!self.isMenuShown)
+    if(self.menu.frame.origin.y == 320)
         [self showMenu];
 }
 
@@ -199,12 +198,12 @@ static Player *player;
         [self didPressNextButton];
         return;
     }
-    if (self.isMenuShown)// && !self.isMoviePaused)
+    if (self.menu.frame.origin.y == 320 - self.menu.frame.size.height)// && !self.isMoviePaused)
     {
         [self hideMenu];
         
     }
-    else if(!self.isMenuShown)
+    else if(self.menu.frame.origin.y == 320)
     {
         [self showMenu];
     }
@@ -280,13 +279,13 @@ static Player *player;
 
 -(void)didSwipeUp
 {
-    if (!self.isMenuShown)
+    if(self.menu.frame.origin.y == 320)
         [self showMenu];
 }
 
 -(void)didSwipeDown
 {
-    if (self.isMenuShown)
+    if (self.menu.frame.origin.y == 320 - self.menu.frame.size.height)
         [self hideMenu];
 }
 
@@ -319,7 +318,6 @@ static Player *player;
         [self.helpOverlay addSubview:self.hideHelpButton];
     }
     
-    self.isMenuShown = NO;
     [self.hideMenuTimer invalidate];
     [UIView animateWithDuration:0.5 animations:^{
         CGRect frame;
@@ -333,7 +331,6 @@ static Player *player;
 
 -(void)showMenu
 {
-    self.isMenuShown = YES;
     self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
     [UIView animateWithDuration:0.5 animations:^{
         CGRect frame;
@@ -371,7 +368,7 @@ static Player *player;
         self.movieDidStartPlaying = YES;
         self.movieWillStartPlaying = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if (!self.isMenuShown)
+        if(self.menu.frame.origin.y == 320)
             [self showMenu];
     }
 }
@@ -434,9 +431,9 @@ static Player *player;
 
     [self.moviePlayer pause];
     
-    if (self.movieNumber == 4)
+    if (self.movieNumber == 6)
         self.movieNumber = 1;
-    self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://etayluz.com/%ld.3gp", (long)self.movieNumber++]]];
+    self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://etayluz.com/videos/%ld.mp4", (long)self.movieNumber++]]];
     [self.moviePlayer.view addGestureRecognizer:self.tap];
     [self.moviePlayer.view addGestureRecognizer:self.swipeDown];
     [self.moviePlayer.view addGestureRecognizer:self.swipeUp];
