@@ -361,6 +361,7 @@ static Player *player;
 {
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
     [self.youTubePlayer stopVideo];
+    self.youTubePlayer.hidden = YES;
     return;
 }
 
