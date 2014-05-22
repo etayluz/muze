@@ -17,6 +17,7 @@
 		B426CE3E192E9790007B655D /* Login4.png in Resources */ = {isa = PBXBuildFile; fileRef = B426CE3C192E9790007B655D /* Login4.png */; };
 		B426CE3F192E9790007B655D /* Login5.png in Resources */ = {isa = PBXBuildFile; fileRef = B426CE3D192E9790007B655D /* Login5.png */; };
 		B426CE41192E9923007B655D /* FacebookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B426CE40192E9923007B655D /* FacebookButton.png */; };
+		B426CE43192E9AEE007B655D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B426CE42192E9AEE007B655D /* FacebookSDK.framework */; };
 		B438DFF0192A11C500049005 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = B438DFEF192A11C500049005 /* Help.png */; };
 		B447D17C19285106005F081E /* Nudge.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17B19285106005F081E /* Nudge.png */; };
 		B447D1821928540A005F081E /* Dislike.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17D1928540A005F081E /* Dislike.png */; };
@@ -63,6 +64,7 @@
 		B426CE3C192E9790007B655D /* Login4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Login4.png; path = muze/images/Login4.png; sourceTree = SOURCE_ROOT; };
 		B426CE3D192E9790007B655D /* Login5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Login5.png; path = muze/images/Login5.png; sourceTree = SOURCE_ROOT; };
 		B426CE40192E9923007B655D /* FacebookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FacebookButton.png; path = muze/images/FacebookButton.png; sourceTree = SOURCE_ROOT; };
+		B426CE42192E9AEE007B655D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = muze/FacebookSDK.framework; sourceTree = "<group>"; };
 		B438DFEF192A11C500049005 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Help.png; path = muze/images/Help.png; sourceTree = SOURCE_ROOT; };
 		B447D17B19285106005F081E /* Nudge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Nudge.png; path = muze/images/Nudge.png; sourceTree = SOURCE_ROOT; };
 		B447D17D1928540A005F081E /* Dislike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dislike.png; path = muze/images/Dislike.png; sourceTree = SOURCE_ROOT; };
@@ -99,6 +101,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4C2550E1925F45400A6C846 /* MessageUI.framework in Frameworks */,
+				B426CE43192E9AEE007B655D /* FacebookSDK.framework in Frameworks */,
 				B40F79F519255F02009BAE3C /* CoreGraphics.framework in Frameworks */,
 				B40F79F719255F02009BAE3C /* UIKit.framework in Frameworks */,
 				B40F79F319255F02009BAE3C /* Foundation.framework in Frameworks */,
@@ -139,6 +142,7 @@
 		B40F79F119255F02009BAE3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B426CE42192E9AEE007B655D /* FacebookSDK.framework */,
 				B4C2550D1925F45400A6C846 /* MessageUI.framework */,
 				B40F79F219255F02009BAE3C /* Foundation.framework */,
 				B40F79F419255F02009BAE3C /* CoreGraphics.framework */,
@@ -433,6 +437,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/muze",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "muze/muze-Prefix.pch";
 				INFOPLIST_FILE = "muze/muze-Info.plist";
@@ -450,6 +458,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/muze",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "muze/muze-Prefix.pch";
 				INFOPLIST_FILE = "muze/muze-Info.plist";

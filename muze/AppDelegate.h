@@ -10,6 +10,7 @@
 #import "Player.h"
 #import "MBProgressHUD.h"
 #import "Login.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
