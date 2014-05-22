@@ -14,24 +14,24 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    //self.window.rootViewController =  [[Player alloc] init];
-    self.window.rootViewController = [[Login alloc] init];
+    self.window.rootViewController =  [[Player alloc] init];
+    //self.window.rootViewController = [[Login alloc] init];
     [self.window makeKeyAndVisible];
     
-    // Whenever a person opens the app, check for a cached session
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-        NSLog(@"FBSessionStateCreatedTokenLoaded");
-        // If there's one, just open the session silently, without showing the user the login UI
-        //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile",@"email",@"age_range"]
-                                           allowLoginUI:NO
-                                      completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
-                                          // Handler for session state changes
-                                          // This method will be called EACH time the session state changes,
-                                          // also for intermediate states and NOT just when the session open
-                                          [self sessionStateChanged:session state:state error:error];
-                                      }];
-    }
+//    // Whenever a person opens the app, check for a cached session
+//    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+//        NSLog(@"FBSessionStateCreatedTokenLoaded");
+//        // If there's one, just open the session silently, without showing the user the login UI
+//        //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile",@"email"]
+//                                           allowLoginUI:NO
+//                                      completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
+//                                          // Handler for session state changes
+//                                          // This method will be called EACH time the session state changes,
+//                                          // also for intermediate states and NOT just when the session open
+//                                          [self sessionStateChanged:session state:state error:error];
+//                                      }];
+//    }
     
     return YES;
 }
@@ -72,6 +72,7 @@
 
 -(void)completeFacebookLogin
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"facebookLoginComplete" object:self];
     [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id facebookUser, NSError *error) {
         if (!error) {
             NSLog(@"%@",facebookUser);
