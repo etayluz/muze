@@ -7,6 +7,7 @@
 //
 
 #import "Login.h"
+#import "AppDelegate.h"
 
 @interface Login ()
 
@@ -33,16 +34,26 @@
     /* FACEBOOK BUTTON */
     self.facebookButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.facebookButton addTarget:self
-                               action:@selector(didPressFacebookButton)
+                               action:@selector(didPressFacebookLoginButton)
                      forControlEvents:UIControlEventTouchDown];
     [self.facebookButton setBackgroundImage:[UIImage imageNamed:@"FacebookButton.png"] forState:UIControlStateNormal];
     self.facebookButton.frame = CGRectMake((self.view.frame.size.height - 200)/2, 320*0.8, 200, 45.5);
     [self.view addSubview:self.facebookButton];
 }
 
--(void)didPressFacebookButton
+-(void)didPressFacebookLoginButton
 {
-    
+    [MBProgressHUD showHUDAddedTo:self.view message:@"Login" animated:YES];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookLoginComplete) name:@"facebookLoginComplete" object:nil];
+    [FBSession openActiveSessionWithReadPermissions:@[@"basic_info",@"email",@"user_birthday"]
+                                       allowLoginUI:YES
+                                  completionHandler:
+     ^(FBSession *session, FBSessionState state, NSError *error) {
+         
+         AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+         [appDelegate sessionStateChanged:session state:state error:error];
+     }];
 }
 
 - (void)didReceiveMemoryWarning
