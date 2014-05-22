@@ -251,20 +251,32 @@ static Player *player;
 {
     float currentTimeToDuration = [self.youTubePlayer currentTime]/[self.youTubePlayer duration];
     float videoLoadedFraction = [self.youTubePlayer videoLoadedFraction];
-    NSLog(@"videoLoadedFraction=%f, currentTimeToDuration=%f, Duration=%d, Current=%f",[self.youTubePlayer videoLoadedFraction], currentTimeToDuration, [self.youTubePlayer duration], [self.youTubePlayer currentTime]);
+    NSLog(@"videoLoadedFraction=%f, currentTimeToDuration=%f, Duration=%d, Current=%f",videoLoadedFraction, currentTimeToDuration, [self.youTubePlayer duration], [self.youTubePlayer currentTime]);
     if (currentTimeToDuration <  videoLoadedFraction * 0.3)
     {
-        [self.checkLoadedFraction invalidate];
+        //[self.checkLoadedFraction invalidate];
         NSLog(@"Load Next Video");
-        NSDictionary *playerVars2 = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0,@"cc_load_policy":@0,@"enablejsapi":@1,@"vq":@"large",@"rel":@0};
-        [self.youTubePlayer2 loadWithVideoId:@"6sii6TcrS3I" playerVars:playerVars2];//BW-tzEKwD7g//Bt9zSfinwFA
+        //NSDictionary *playerVars2 = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0,@"cc_load_policy":@0,@"enablejsapi":@1,@"vq":@"large",@"rel":@0};
+        //[self.youTubePlayer2 loadWithVideoId:@"6sii6TcrS3I" playerVars:playerVars2];//BW-tzEKwD7g//Bt9zSfinwFA
+
+        [self.youTubePlayer2 cueVideoById:@"JvxHPtEsmFc" startSeconds:0 suggestedQuality:kYTPlaybackQualityMedium];
+
     }
+    
+    float currentTimeToDuration2 = [self.youTubePlayer2 currentTime]/[self.youTubePlayer duration];
+    float videoLoadedFraction2 = [self.youTubePlayer2 videoLoadedFraction];
+    NSLog(@"videoLoadedFraction2=%f, currentTimeToDuration2=%f, Duration2=%d, Current2=%f",videoLoadedFraction2, currentTimeToDuration2, [self.youTubePlayer2 duration], [self.youTubePlayer2 currentTime]);
 }
 
 
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView
 {
      NSLog(@"playerViewDidBecomeReady Tag=%ld",(long)playerView.tag);
+    if (playerView.tag == 2)
+    {
+        [self.youTubePlayer2 playVideo];
+        //return;
+    }
     [self.youTubePlayer playVideo];
 }
 
