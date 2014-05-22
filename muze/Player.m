@@ -205,10 +205,10 @@ static Player *player;
 }
 
 - (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
-    NSLog(@"Tag=%ld", (long)playerView.tag);
-    
-    if (playerView.tag == 2)
-        return;
+//    NSLog(@"Tag=%ld", (long)playerView.tag);
+//    
+//    if (playerView.tag == 2)
+//        return;
     switch (state) {
         case kYTPlayerStateUnstarted:
             NSLog(@"kYTPlayerStateUnstarted");
@@ -263,21 +263,21 @@ static Player *player;
         [self.youTubePlayer2 cueVideoById:@"JvxHPtEsmFc" startSeconds:0 suggestedQuality:kYTPlaybackQualityMedium];
 
     }
-    
-    float currentTimeToDuration2 = [self.youTubePlayer2 currentTime]/[self.youTubePlayer duration];
-    float videoLoadedFraction2 = [self.youTubePlayer2 videoLoadedFraction];
+  
+//    float currentTimeToDuration2 = [self.youTubePlayer2 currentTime]/[self.youTubePlayer duration];
+//    float videoLoadedFraction2 = [self.youTubePlayer2 videoLoadedFraction];
     //NSLog(@"videoLoadedFraction2=%f, currentTimeToDuration2=%f, Duration2=%d, Current2=%f",videoLoadedFraction2, currentTimeToDuration2, [self.youTubePlayer2 duration], [self.youTubePlayer2 currentTime]);
 }
 
 
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView
 {
-     NSLog(@"playerViewDidBecomeReady Tag=%ld",(long)playerView.tag);
-    if (playerView.tag == 2)
-    {
-        [self.youTubePlayer2 playVideo];
-        //return;
-    }
+//     NSLog(@"playerViewDidBecomeReady Tag=%ld",(long)playerView.tag);
+//    if (playerView.tag == 2)
+//    {
+//        [self.youTubePlayer2 playVideo];
+//        //return;
+//    }
     [self.youTubePlayer playVideo];
 }
 
