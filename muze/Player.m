@@ -249,6 +249,7 @@ static Player *player;
 
 -(void)checkTheLoadedFraction
 {
+    return;
     float currentTimeToDuration = [self.youTubePlayer currentTime]/[self.youTubePlayer duration];
     float videoLoadedFraction = [self.youTubePlayer videoLoadedFraction];
     NSLog(@"videoLoadedFraction=%f, currentTimeToDuration=%f, Duration=%d, Current=%f",videoLoadedFraction, currentTimeToDuration, [self.youTubePlayer duration], [self.youTubePlayer currentTime]);
@@ -265,7 +266,7 @@ static Player *player;
     
     float currentTimeToDuration2 = [self.youTubePlayer2 currentTime]/[self.youTubePlayer duration];
     float videoLoadedFraction2 = [self.youTubePlayer2 videoLoadedFraction];
-    NSLog(@"videoLoadedFraction2=%f, currentTimeToDuration2=%f, Duration2=%d, Current2=%f",videoLoadedFraction2, currentTimeToDuration2, [self.youTubePlayer2 duration], [self.youTubePlayer2 currentTime]);
+    //NSLog(@"videoLoadedFraction2=%f, currentTimeToDuration2=%f, Duration2=%d, Current2=%f",videoLoadedFraction2, currentTimeToDuration2, [self.youTubePlayer2 duration], [self.youTubePlayer2 currentTime]);
 }
 
 
