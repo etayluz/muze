@@ -23,7 +23,7 @@
         NSLog(@"FBSessionStateCreatedTokenLoaded");
         // If there's one, just open the session silently, without showing the user the login UI
         //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"]
+        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile",@"email",@"age_range"]
                                            allowLoginUI:NO
                                       completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
                                           // Handler for session state changes
@@ -59,7 +59,7 @@
             [FBSession.activeSession closeAndClearTokenInformation];
             NSLog(@"FBSessionStateClosedLoginFailed");
             [MBProgressHUD hideHUDForView:[Login login].view animated:YES];
-            
+            [MBProgressHUD hideHUDForView:[Login login].view animated:YES];
             break;
         }
         default:
