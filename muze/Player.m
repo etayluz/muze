@@ -257,7 +257,7 @@ static Player *player;
         [self hideMenu];
         
     }
-    else if(self.menu.frame.origin.y == 320)
+    else if(self.menu.frame.origin.y >= 320)
     {
         [self showMenu];
     }
@@ -389,7 +389,7 @@ static Player *player;
     [UIView animateWithDuration:0.5 animations:^{
         CGRect frame;
         frame = self.menu.frame;
-        frame.origin.y -= (self.menu.frame.size.height);
+        frame.origin.y = 320 - self.menu.frame.size.height;
         self.menu.frame=frame;
     }
     completion:^ (BOOL finished) {}
