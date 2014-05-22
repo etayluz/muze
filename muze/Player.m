@@ -156,7 +156,7 @@ static Player *player;
     //[self didPressNextButton];
     
     self.playerView = [[YTPlayerView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.height,600)];
-    NSDictionary *playerVars = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0,@"cc_load_policy":@0,@"enablejsapi":@1,@"vq":@"large"};
+    NSDictionary *playerVars = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0,@"cc_load_policy":@0,@"enablejsapi":@1,@"vq":@"large",@"rel":@0};
     [self.playerView loadWithVideoId:@"Bt9zSfinwFA" playerVars:playerVars];//BW-tzEKwD7g
     self.playerView.backgroundColor = [UIColor redColor];
     self.playerView.delegate = self;
@@ -212,6 +212,9 @@ static Player *player;
             NSLog(@"Paused playback");
             break;
         default:
+            [self.playerView playVideo];
+//            self.playerView.hidden = NO;
+//            [MBProgressHUD hideHUDForView:self.view animated:YES];
             NSLog(@"default");
             break;
     }
@@ -460,6 +463,12 @@ static Player *player;
 
 - (void)didPressNextButton
 {
+    [self.playerView stopVideo];
+    [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
+    [self.playerView cueVideoById:@"JvxHPtEsmFc" startSeconds:0 suggestedQuality:kYTPlaybackQualityMedium];
+//    NSDictionary *playerVars = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0,@"cc_load_policy":@0,@"enablejsapi":@1,@"vq":@"large",@"rel":@0};
+    //[self.playerView loadWithVideoId:@"JvxHPtEsmFc" playerVars:playerVars];//BW-tzEKwD7g
+    return;
     self.movieDidStartPlaying = NO;
     self.movieWillStartPlaying = NO;
     self.pauseImage.hidden = NO;
