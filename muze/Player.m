@@ -156,7 +156,7 @@ static Player *player;
     //[self didPressNextButton];
     
     self.playerView = [[YTPlayerView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.height,300)];
-    NSDictionary *playerVars = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0};
+    NSDictionary *playerVars = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0,@"cc_load_policy":@0,@"enablejsapi":@1};
     [self.playerView loadWithVideoId:@"Bt9zSfinwFA" playerVars:playerVars];//BW-tzEKwD7g
     self.playerView.backgroundColor = [UIColor redColor];
     self.playerView.delegate = self;
