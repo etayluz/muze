@@ -13,6 +13,7 @@
 		B40F7A0C19255F02009BAE3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F7A0B19255F02009BAE3C /* XCTest.framework */; };
 		B40F7A0D19255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
 		B40F7A0E19255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
+		B426CE3B192E9329007B655D /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = B426CE3A192E9329007B655D /* Login.m */; };
 		B438DFF0192A11C500049005 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = B438DFEF192A11C500049005 /* Help.png */; };
 		B447D17C19285106005F081E /* Nudge.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17B19285106005F081E /* Nudge.png */; };
 		B447D1821928540A005F081E /* Dislike.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17D1928540A005F081E /* Dislike.png */; };
@@ -54,6 +55,8 @@
 		B40F79F619255F02009BAE3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B40F7A0A19255F02009BAE3C /* muzeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = muzeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40F7A0B19255F02009BAE3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B426CE39192E9329007B655D /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = SOURCE_ROOT; };
+		B426CE3A192E9329007B655D /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = SOURCE_ROOT; };
 		B438DFEF192A11C500049005 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Help.png; path = muze/images/Help.png; sourceTree = SOURCE_ROOT; };
 		B447D17B19285106005F081E /* Nudge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Nudge.png; path = muze/images/Nudge.png; sourceTree = SOURCE_ROOT; };
 		B447D17D1928540A005F081E /* Dislike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dislike.png; path = muze/images/Dislike.png; sourceTree = SOURCE_ROOT; };
@@ -145,6 +148,8 @@
 				B4B10D27192DA36100A70C7F /* Assets */,
 				B4D3486B1925A653006A8C21 /* AppDelegate.h */,
 				B4D3486C1925A653006A8C21 /* AppDelegate.m */,
+				B426CE39192E9329007B655D /* Login.h */,
+				B426CE3A192E9329007B655D /* Login.m */,
 				B4D3486D1925A653006A8C21 /* MBProgressHUD.h */,
 				B4D3486E1925A653006A8C21 /* MBProgressHUD.m */,
 				B4D3486F1925A653006A8C21 /* Player.h */,
@@ -304,6 +309,7 @@
 				B4D348821925A699006A8C21 /* main.m in Sources */,
 				B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */,
 				B4D348731925A653006A8C21 /* Player.m in Sources */,
+				B426CE3B192E9329007B655D /* Login.m in Sources */,
 				B4B10D2B192DA37400A70C7F /* YTPlayerView.m in Sources */,
 				B4D348711925A653006A8C21 /* AppDelegate.m in Sources */,
 			);
