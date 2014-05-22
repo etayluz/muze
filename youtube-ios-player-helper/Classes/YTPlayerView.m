@@ -673,12 +673,13 @@ NSString static *const kYTPlayerEmbedUrlRegexPattern = @"^http(s)://(www.)youtub
         player = new YT.Player('player', {\
             'playerVars' : {\
                 'enablejsapi' : 1,\
+                'cc_load_policy' : 0,\
+                'iv_load_policy' : 3,\
                 'modestbranding' : 1,\
                 'autoplay' : 1,\
-                'iv_load_policy' : 3,\
                 'showinfo' : 0,\
                 'controls' : 0,\
-                'cc_load_policy' : 0,\
+                'rel' : 0,\
                 'vq' : 'large',\
                 'playsinline' : 1\
             },\
