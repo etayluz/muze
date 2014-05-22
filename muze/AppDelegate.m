@@ -23,7 +23,7 @@
         NSLog(@"FBSessionStateCreatedTokenLoaded");
         // If there's one, just open the session silently, without showing the user the login UI
         //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [FBSession openActiveSessionWithReadPermissions:@[@"basic_info"]
+        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"]
                                            allowLoginUI:NO
                                       completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
                                           // Handler for session state changes
@@ -72,81 +72,60 @@
 
 -(void)completeFacebookLogin
 {
-    [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+    [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id facebookUser, NSError *error) {
         if (!error) {
-            self.facebookUserData = [[NSMutableDictionary alloc] init];
-            [self.facebookUserData setValue:[result objectForKey:@"id"] forKey:@"facebook_id"];
-            [self.facebookUserData setValue:[result objectForKey:@"email"] forKey:@"email"];
-            //NSString *username = [[result objectForKey:@"email"] substringToIndex:[[result objectForKey:@"email"] rangeOfString:@"@"].location];
-            NSString* username = [[result objectForKey:@"email"] stringByReplacingOccurrencesOfString:@"@" withString:@""];
-            username = [username stringByReplacingOccurrencesOfString:@"." withString:@""];
-            [self.facebookUserData setValue:username forKey:@"username"];
-            [self.facebookUserData setValue:[result objectForKey:@"first_name"] forKey:@"first_name"];
-            [self.facebookUserData setValue:[result objectForKey:@"last_name"] forKey:@"last_name"];
-            [self.facebookUserData setValue:[result objectForKey:@"birthday"] forKey:@"birthdate"];
-            [self.facebookUserData setValue:[result objectForKey:@"gender"] forKey:@"gender"];
-            [self.facebookUserData setValue:[FBSession.activeSession accessTokenData].accessToken  forKey:@"oauth_token"];
-            
-            // READ: http://jeffreysambells.com/2013/03/01/asynchronous-operations-in-ios-with-grand-central-dispatch
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                NSURL *profilePicUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=large",[result objectForKey:@"id"]]];
-                NSData  *avatar = [NSData dataWithContentsOfURL:profilePicUrl];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    if (avatar != nil) {
-                        [self.facebookUserData setValue:[avatar base64EncodedStringWithOptions:0] forKey:@"avatar"];
-                    }
-                    
-                    if (self.user == nil)
-                    {
-                        [ApiRequest request:@"login.json" method:@"POST" params:[NSDictionary dictionaryWithObjectsAndKeys:self.facebookUserData,@"user", nil] completeBlock:^(NSDictionary *user, NSError *error){
-                            if (!error) {
-                                NSLog(@"%@",user);
-                                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:user[@"user"] options:0 error:nil];
-                                NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
-                                [user_defaults setObject:[user[@"user"] objectForKey:@"authentication_token"] forKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"ApiAuthKeyName"]];
-                                [user_defaults setObject:[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] forKey:@"current_user"];
-                                [user_defaults synchronize];
-                                self.user = user[@"user"];
-                                self.user = [self.user mutableCopy];
-                                
-                                if ([self.user[@"user_type"] isKindOfClass:[NSNull class]])
-                                {
-                                    NSString *urlString = [NSString stringWithFormat:@"%@users/%d/change_photo.json",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"ApiUrl"],[self.user[@"id"] intValue]];
-                                    [[ApiRequest request] POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                                        [formData appendPartWithFileData:UIImageJPEGRepresentation([UIImage imageWithData:avatar], 100) name:@"user[avatar]" fileName:@"avatar.jpg" mimeType:@"image/jpeg"];
-                                    } success:^(AFHTTPRequestOperation *operation, id user) {
-                                        NSLog(@"%@",user);
-                                        NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
-                                        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:user[@"user"] options:0 error:nil];
-                                        [user_defaults setObject:[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] forKey:@"current_user"];
-                                        [user_defaults synchronize];
-                                        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                                        appDelegate.user =  user[@"user"];
-                                        appDelegate.user = [appDelegate.user mutableCopy];
-                                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                        NSDictionary *errorResult = (NSDictionary *)operation.responseObject;
-                                        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Ooops!" message:[errorResult[@"errors"] componentsJoinedByString:@"\n" ] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                        [alert show];
-                                        NSLog(@"%@",operation.responseObject);
-                                    }];
-                                }
-                                
-                                [[NSNotificationCenter defaultCenter] postNotificationName:@"facebookLoginComplete" object:self];
-                            } else {
-                                [MBProgressHUD hideHUDForView:[RegistrationOptions registrationOptions].view animated:YES];
-                                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Facebook Login Error 1" message:[error.userInfo[@"errors"] componentsJoinedByString:@"\n" ] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                [alert show];
-                                return;
-                            }
-                        }];
-                    }
-                });
-            });
+            NSLog(@"%@",facebookUser);
+//            self.facebookUserData = [[NSMutableDictionary alloc] init];
+//            [self.facebookUserData setValue:[result objectForKey:@"id"] forKey:@"facebook_id"];
+//            [self.facebookUserData setValue:[result objectForKey:@"email"] forKey:@"email"];
+//            //NSString *username = [[result objectForKey:@"email"] substringToIndex:[[result objectForKey:@"email"] rangeOfString:@"@"].location];
+//            NSString* username = [[result objectForKey:@"email"] stringByReplacingOccurrencesOfString:@"@" withString:@""];
+//            username = [username stringByReplacingOccurrencesOfString:@"." withString:@""];
+//            [self.facebookUserData setValue:username forKey:@"username"];
+//            [self.facebookUserData setValue:[result objectForKey:@"first_name"] forKey:@"first_name"];
+//            [self.facebookUserData setValue:[result objectForKey:@"last_name"] forKey:@"last_name"];
+//            [self.facebookUserData setValue:[result objectForKey:@"birthday"] forKey:@"birthdate"];
+//            [self.facebookUserData setValue:[result objectForKey:@"gender"] forKey:@"gender"];
+//            [self.facebookUserData setValue:[FBSession.activeSession accessTokenData].accessToken  forKey:@"oauth_token"];
+//
+//            // READ: http://jeffreysambells.com/2013/03/01/asynchronous-operations-in-ios-with-grand-central-dispatch
+//            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//                NSURL *profilePicUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=large",[result objectForKey:@"id"]]];
+//                NSData  *avatar = [NSData dataWithContentsOfURL:profilePicUrl];
+//                
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    
+//                    if (avatar != nil) {
+//                        [self.facebookUserData setValue:[avatar base64EncodedStringWithOptions:0] forKey:@"avatar"];
+//                    }
+//                    
+//                    if (self.user == nil)
+//                    {
+//                        [ApiRequest request:@"login.json" method:@"POST" params:[NSDictionary dictionaryWithObjectsAndKeys:self.facebookUserData,@"user", nil] completeBlock:^(NSDictionary *user, NSError *error){
+//                            if (!error) {
+//                                NSLog(@"%@",user);
+//                                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:user[@"user"] options:0 error:nil];
+//                                NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
+//                                [user_defaults setObject:[user[@"user"] objectForKey:@"authentication_token"] forKey:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"ApiAuthKeyName"]];
+//                                [user_defaults setObject:[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] forKey:@"current_user"];
+//                                [user_defaults synchronize];
+//                                self.user = user[@"user"];
+//                                self.user = [self.user mutableCopy];
+//                                
+//                                [[NSNotificationCenter defaultCenter] postNotificationName:@"facebookLoginComplete" object:self];
+//                            } else {
+//                                [MBProgressHUD hideHUDForView:[RegistrationOptions registrationOptions].view animated:YES];
+//                                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Facebook Login Error 1" message:[error.userInfo[@"errors"] componentsJoinedByString:@"\n" ] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//                                [alert show];
+//                                return;
+//                            }
+//                        }];
+//                    }
+//                });
+//            });
             
         } else {
-            [MBProgressHUD hideHUDForView:[RegistrationOptions registrationOptions].view animated:YES];
+            [MBProgressHUD hideHUDForView:[Login login].view animated:YES];
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Facebook Login Error 2" message:[error.userInfo[@"errors"] componentsJoinedByString:@"\n" ] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
             return;

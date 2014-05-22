@@ -55,7 +55,7 @@ static Login* login = nil;
     [MBProgressHUD showHUDAddedTo:self.view message:@"Login" animated:YES];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookLoginComplete) name:@"facebookLoginComplete" object:nil];
-    [FBSession openActiveSessionWithReadPermissions:@[@"basic_info",@"email",@"user_birthday"]
+    [FBSession openActiveSessionWithReadPermissions:@[@"public_profile",@"email"]
                                        allowLoginUI:YES
                                   completionHandler:
      ^(FBSession *session, FBSessionState state, NSError *error) {
@@ -63,6 +63,24 @@ static Login* login = nil;
          AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
          [appDelegate sessionStateChanged:session state:state error:error];
      }];
+}
+
+- (void)facebookLoginComplete
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [UIView transitionWithView:appDelegate.window
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromBottom
+                    animations:^{
+                        [self dismissViewControllerAnimated:NO completion:nil];
+                        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+                        appDelegate.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+                        appDelegate.window.rootViewController = [[Player alloc] init];
+                        [appDelegate.window makeKeyAndVisible];
+                    }
+                    completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
