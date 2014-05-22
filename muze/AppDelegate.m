@@ -58,8 +58,8 @@
         {
             [FBSession.activeSession closeAndClearTokenInformation];
             NSLog(@"FBSessionStateClosedLoginFailed");
-            [MBProgressHUD hideHUDForView:[Login login].view animated:YES];
-            [MBProgressHUD hideHUDForView:[Login login].view animated:YES];
+            Login *login = [Login login];
+            [MBProgressHUD hideHUDForView:login.view animated:YES];
             break;
         }
         default:
@@ -166,21 +166,21 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    Player *player = [Player player];
-    
-    if (player.movieDidStartPlaying == NO)
-    {
-        player.movieNumber--;
-        [MBProgressHUD hideHUDForView:player.view animated:YES];
-        [player didPressNextButton];
-    }
-    else
-    {
-        if (!player.isMenuShown)
-            [player showMenu];
-        if (player.playImage.hidden == YES)
-            [player.moviePlayer play];
-    }
+//    Player *player = [Player player];
+//    
+//    if (player.movieDidStartPlaying == NO)
+//    {
+//        player.movieNumber--;
+//        [MBProgressHUD hideHUDForView:player.view animated:YES];
+//        [player didPressNextButton];
+//    }
+//    else
+//    {
+//        if (!player.isMenuShown)
+//            [player showMenu];
+//        if (player.playImage.hidden == YES)
+//            [player.moviePlayer play];
+//    }
     
 }
 

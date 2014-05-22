@@ -30,6 +30,8 @@ static Login* login = nil;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    login = self;
+    
     /* BACKGROUND IMAGE */
     UIImageView *backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.height, self.view.frame.size.width)];
     if (self.view.frame.size.height == 490)
