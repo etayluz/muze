@@ -141,6 +141,7 @@ static Player *player;
     self.youTubePlayer = [[YTPlayerView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.height,600)];
     NSDictionary *playerVars = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0,@"cc_load_policy":@0,@"enablejsapi":@1,@"vq":@"large",@"rel":@0};
     [self.youTubePlayer loadWithVideoId:@"6sii6TcrS3I" playerVars:playerVars];//BW-tzEKwD7g//Bt9zSfinwFA
+    [self.youTubePlayer playVideo];
     self.youTubePlayer.backgroundColor = [UIColor redColor];
     self.youTubePlayer.delegate = self;
     self.youTubePlayer.hidden = YES;
@@ -211,6 +212,7 @@ static Player *player;
             NSLog(@"kYTPlayerStatePlaying");
             self.youTubePlayer.hidden = NO;
             [MBProgressHUD hideHUDForView:self.view animated:YES];
+            self.checkLoadedFraction = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(checkTheLoadedFraction) userInfo:nil repeats:YES];
             break;
         case kYTPlayerStatePaused:
             NSLog(@"kYTPlayerStatePaused");
@@ -231,6 +233,19 @@ static Player *player;
     //NSString *yourHTMLSourceCodeString = [self.playerView.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
     //NSLog(@"%@",yourHTMLSourceCodeString);
 }
+
+-(void)checkTheLoadedFraction
+{
+    float currentTimeToDuration = [self.youTubePlayer currentTime]/[self.youTubePlayer duration];
+    float videoLoadedFraction = [self.youTubePlayer videoLoadedFraction];
+    NSLog(@"videoLoadedFraction=%f, currentTimeToDuration=%f, Duration=%d, Current=%f",[self.youTubePlayer videoLoadedFraction], currentTimeToDuration, [self.youTubePlayer duration], [self.youTubePlayer currentTime]);
+    if (currentTimeToDuration <  videoLoadedFraction * 0.3)
+    {
+        [self.checkLoadedFraction invalidate];
+        NSLog(@"Load Next Video");
+    }
+}
+
 
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView
 {

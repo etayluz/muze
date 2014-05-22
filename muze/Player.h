@@ -46,6 +46,7 @@
 @property   UIView                   *helpOverlay;
 @property   UIView                   *cover;
 @property(nonatomic, strong)        YTPlayerView *youTubePlayer;
+@property   NSTimer                  *checkLoadedFraction;
 
 
 @end

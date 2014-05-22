@@ -684,7 +684,7 @@ NSString static *const kYTPlayerEmbedUrlRegexPattern = @"^http(s)://(www.)youtub
                 'playsinline' : 1\
             },\
             'width' : '%fpx',\
-            'videoId' : '6sii6TcrS3I',\
+            'videoId' : 'BW-tzEKwD7g',\
             'events' : {\
                 'onPlaybackQualityChange' : 'onPlaybackQualityChange',\
                 'onStateChange' : 'onStateChange',\
