@@ -155,12 +155,13 @@ static Player *player;
     
     //[self didPressNextButton];
     
-    self.playerView = [[YTPlayerView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.height,1000)];
+    self.playerView = [[YTPlayerView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.height,300)];
     NSDictionary *playerVars = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0};
-    [self.playerView loadWithVideoId:@"BW-tzEKwD7g" playerVars:playerVars];
+    [self.playerView loadWithVideoId:@"Bt9zSfinwFA" playerVars:playerVars];//BW-tzEKwD7g
     self.playerView.backgroundColor = [UIColor redColor];
     self.playerView.delegate = self;
     self.playerView.hidden = YES;
+    self.playerView.userInteractionEnabled = NO;
    // self.playerView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.view addSubview:self.playerView];
     
@@ -199,6 +200,7 @@ static Player *player;
         case kYTPlayerStatePlaying:
             NSLog(@"Started playback");
             self.playerView.hidden = NO;
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             break;
         case kYTPlayerStatePaused:
             NSLog(@"Paused playback");
@@ -212,7 +214,6 @@ static Player *player;
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView
 {
      NSLog(@"playerViewDidBecomeReady");
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self.playerView playVideo];
 }
 
