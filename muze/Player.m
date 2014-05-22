@@ -225,7 +225,7 @@ static Player *player;
             NSLog(@"kYTPlayerStatePlaying");
             self.youTubePlayer.hidden = NO;
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-            self.checkLoadedFraction = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(checkTheLoadedFraction) userInfo:nil repeats:YES];
+            //self.checkLoadedFraction = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(checkTheLoadedFraction) userInfo:nil repeats:YES];
             break;
         case kYTPlayerStatePaused:
             NSLog(@"kYTPlayerStatePaused");
@@ -249,7 +249,7 @@ static Player *player;
 
 -(void)checkTheLoadedFraction
 {
-    return;
+    //return;
     float currentTimeToDuration = [self.youTubePlayer currentTime]/[self.youTubePlayer duration];
     float videoLoadedFraction = [self.youTubePlayer videoLoadedFraction];
     NSLog(@"videoLoadedFraction=%f, currentTimeToDuration=%f, Duration=%d, Current=%f",videoLoadedFraction, currentTimeToDuration, [self.youTubePlayer duration], [self.youTubePlayer currentTime]);
