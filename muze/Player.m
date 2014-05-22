@@ -216,8 +216,8 @@ static Player *player;
             break;
     }
     
-    NSString *yourHTMLSourceCodeString = [self.playerView.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
-    NSLog(@"%@",yourHTMLSourceCodeString);
+    //NSString *yourHTMLSourceCodeString = [self.playerView.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
+    //NSLog(@"%@",yourHTMLSourceCodeString);
 }
 
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView
