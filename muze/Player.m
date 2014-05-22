@@ -153,7 +153,17 @@ static Player *player;
     
     [self.swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
     
-    [self didPressNextButton];
+    //[self didPressNextButton];
+    
+    self.playerView = [[YTPlayerView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.height,1000)];
+    NSDictionary *playerVars = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0};
+    [self.playerView loadWithVideoId:@"BW-tzEKwD7g" playerVars:playerVars];
+    self.playerView.backgroundColor = [UIColor redColor];
+    self.playerView.delegate = self;
+    self.playerView.hidden = YES;
+   // self.playerView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    [self.view addSubview:self.playerView];
+    
     [self.view addSubview:self.nudge];
     [self.view addSubview:self.menu];
     
@@ -162,7 +172,7 @@ static Player *player;
     self.helpOverlay.frame = CGRectMake(0,0,self.view.frame.size.height,320);
     self.helpOverlay.backgroundColor = [UIColor blackColor];
     self.helpOverlay.alpha = 0.6;
-    [self.view addSubview:self.helpOverlay];
+    //[self.view addSubview:self.helpOverlay];
 
     /* HELP OVERLAY IMAGE */
     UIImageView *helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-568)*-1/7, -20, self.view.frame.size.height, 320)];
@@ -180,7 +190,41 @@ static Player *player;
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.helpOverlay addSubview:self.hideHelpButton];
+    
+    [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
 }
+
+- (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
+    switch (state) {
+        case kYTPlayerStatePlaying:
+            NSLog(@"Started playback");
+            self.playerView.hidden = NO;
+            break;
+        case kYTPlayerStatePaused:
+            NSLog(@"Paused playback");
+            break;
+        default:
+            NSLog(@"default");
+            break;
+    }
+}
+
+- (void)playerViewDidBecomeReady:(YTPlayerView *)playerView
+{
+     NSLog(@"playerViewDidBecomeReady");
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self.playerView playVideo];
+}
+
+- (void)playerView:(YTPlayerView *)playerView didChangeToQuality:(YTPlaybackQuality)quality
+{
+    NSLog(@"didChangeToQuality");
+}
+- (void)playerView:(YTPlayerView *)playerView receivedError:(YTPlayerError)error
+{
+    NSLog(@"receivedError");
+}
+
 
 -(void)didPressHideHelpButton
 {
@@ -457,6 +501,7 @@ static Player *player;
 
 - (void)didPressPauseButton
 {
+    [self.playerView pauseVideo];
     self.isMoviePaused = YES;
     [self.moviePlayer pause];
     self.pauseImage.hidden = YES;
@@ -467,6 +512,7 @@ static Player *player;
 
 - (void)didPressPlayButton
 {
+    [self.playerView playVideo];
     self.isMoviePaused = NO;
     [self.moviePlayer play];
     self.pauseImage.hidden = NO;

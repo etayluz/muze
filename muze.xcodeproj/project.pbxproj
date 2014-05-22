@@ -22,6 +22,8 @@
 		B447D1861928540A005F081E /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D1811928540A005F081E /* Play.png */; };
 		B447D18A19285906005F081E /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D18919285906005F081E /* Pause.png */; };
 		B4A8C8D5192A8D88002A2175 /* Help2.png in Resources */ = {isa = PBXBuildFile; fileRef = B4A8C8D4192A8D88002A2175 /* Help2.png */; };
+		B4B10D28192DA36100A70C7F /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = B4B10D27192DA36100A70C7F /* Assets */; };
+		B4B10D2B192DA37400A70C7F /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B10D2A192DA37400A70C7F /* YTPlayerView.m */; };
 		B4C2550E1925F45400A6C846 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C2550D1925F45400A6C846 /* MessageUI.framework */; };
 		B4D348711925A653006A8C21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486C1925A653006A8C21 /* AppDelegate.m */; };
 		B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486E1925A653006A8C21 /* MBProgressHUD.m */; };
@@ -61,6 +63,9 @@
 		B447D1811928540A005F081E /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Play.png; path = muze/images/Play.png; sourceTree = SOURCE_ROOT; };
 		B447D18919285906005F081E /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = muze/images/Pause.png; sourceTree = SOURCE_ROOT; };
 		B4A8C8D4192A8D88002A2175 /* Help2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Help2.png; path = muze/images/Help2.png; sourceTree = SOURCE_ROOT; };
+		B4B10D27192DA36100A70C7F /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = "youtube-ios-player-helper/Assets"; sourceTree = SOURCE_ROOT; };
+		B4B10D29192DA37400A70C7F /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = "youtube-ios-player-helper/Classes/YTPlayerView.h"; sourceTree = SOURCE_ROOT; };
+		B4B10D2A192DA37400A70C7F /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = "youtube-ios-player-helper/Classes/YTPlayerView.m"; sourceTree = SOURCE_ROOT; };
 		B4C2550D1925F45400A6C846 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B4D3486B1925A653006A8C21 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = muze/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		B4D3486C1925A653006A8C21 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = muze/AppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -137,12 +142,15 @@
 		B40F79F819255F02009BAE3C /* muze */ = {
 			isa = PBXGroup;
 			children = (
+				B4B10D27192DA36100A70C7F /* Assets */,
 				B4D3486B1925A653006A8C21 /* AppDelegate.h */,
 				B4D3486C1925A653006A8C21 /* AppDelegate.m */,
 				B4D3486D1925A653006A8C21 /* MBProgressHUD.h */,
 				B4D3486E1925A653006A8C21 /* MBProgressHUD.m */,
 				B4D3486F1925A653006A8C21 /* Player.h */,
 				B4D348701925A653006A8C21 /* Player.m */,
+				B4B10D29192DA37400A70C7F /* YTPlayerView.h */,
+				B4B10D2A192DA37400A70C7F /* YTPlayerView.m */,
 				B40F7A2119255FFF009BAE3C /* images */,
 				B40F79F919255F02009BAE3C /* Supporting Files */,
 			);
@@ -269,6 +277,7 @@
 				B447D1851928540A005F081E /* Next.png in Resources */,
 				B447D1841928540A005F081E /* LikeSelected.png in Resources */,
 				B447D17C19285106005F081E /* Nudge.png in Resources */,
+				B4B10D28192DA36100A70C7F /* Assets in Resources */,
 				B4D348971925EEB4006A8C21 /* Mail.png in Resources */,
 				B438DFF0192A11C500049005 /* Help.png in Resources */,
 				B447D1861928540A005F081E /* Play.png in Resources */,
@@ -295,6 +304,7 @@
 				B4D348821925A699006A8C21 /* main.m in Sources */,
 				B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */,
 				B4D348731925A653006A8C21 /* Player.m in Sources */,
+				B4B10D2B192DA37400A70C7F /* YTPlayerView.m in Sources */,
 				B4D348711925A653006A8C21 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

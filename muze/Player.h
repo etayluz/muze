@@ -6,11 +6,12 @@
 //  Copyright (c) 2014 com.luzsoft.muzeme. All rights reserved.
 //
 
+#import "YTPlayerView.h"
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface Player : UIViewController <UIAlertViewDelegate, UIGestureRecognizerDelegate>
+@interface Player : UIViewController <UIAlertViewDelegate, UIGestureRecognizerDelegate, YTPlayerViewDelegate>
 + (Player*)player;
 -(void)showMenu;
 - (void)didPressNextButton;
@@ -43,4 +44,7 @@
 @property   UISwipeGestureRecognizer *swipeUp;
 @property   UISwipeGestureRecognizer *swipeDown;
 @property   UIView                   *helpOverlay;
+@property(nonatomic, strong)        YTPlayerView *playerView;
+
+
 @end
