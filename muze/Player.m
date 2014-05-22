@@ -283,7 +283,7 @@ static Player *player;
 
 - (void)playerView:(YTPlayerView *)playerView didChangeToQuality:(YTPlaybackQuality)quality
 {
-    NSLog(@"didChangeToQuality");
+    //NSLog(@"didChangeToQuality");
 }
 - (void)playerView:(YTPlayerView *)playerView receivedError:(YTPlayerError)error
 {
