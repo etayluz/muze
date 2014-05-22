@@ -162,9 +162,15 @@ static Player *player;
     self.playerView.delegate = self;
     self.playerView.hidden = YES;
     self.playerView.userInteractionEnabled = NO;
-   // self.playerView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.view addSubview:self.playerView];
     
+    /* YOUTUBE VIDEO COVER */
+    self.cover = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 320)];
+    [self.view addSubview:self.cover];
+    [self.cover addGestureRecognizer:self.tap];
+    [self.cover addGestureRecognizer:self.swipeDown];
+    [self.cover addGestureRecognizer:self.swipeUp];
+
     [self.view addSubview:self.nudge];
     [self.view addSubview:self.menu];
     

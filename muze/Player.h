@@ -44,6 +44,7 @@
 @property   UISwipeGestureRecognizer *swipeUp;
 @property   UISwipeGestureRecognizer *swipeDown;
 @property   UIView                   *helpOverlay;
+@property   UIView                   *cover;
 @property(nonatomic, strong)        YTPlayerView *playerView;
 
 
