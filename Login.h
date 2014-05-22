@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface Login : UIViewController
++(Login*)login;
 @property UIButton *facebookButton;
 @end

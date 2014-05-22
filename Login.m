@@ -15,6 +15,15 @@
 
 @implementation Login
 
+static Login* login = nil;
+
++(Login*)login
+{
+    if (login == nil)
+        login = [[self alloc] init];
+    
+    return login;
+}
 
 - (void)viewDidLoad
 {
