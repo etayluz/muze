@@ -609,7 +609,7 @@ NSString static *const kYTPlayerEmbedUrlRegexPattern = @"^http(s)://(www.)youtub
   };
   NSMutableDictionary *playerParams = [[NSMutableDictionary alloc] init];
   [playerParams addEntriesFromDictionary:additionalPlayerParams];
-  [playerParams setValue:@"100%" forKey:@"height"];
+  [playerParams setValue:@"200%" forKey:@"height"];
   [playerParams setValue:@"100%" forKey:@"width"];
   [playerParams setValue:playerCallbacks forKey:@"events"];
 
@@ -624,11 +624,11 @@ NSString static *const kYTPlayerEmbedUrlRegexPattern = @"^http(s)://(www.)youtub
   [self addSubview:self.webView];
 
   NSError *error = nil;
-  NSString *path = [[NSBundle mainBundle] pathForResource:@"YTPlayerView-iframe-player"
-                                                   ofType:@"html"
-                                              inDirectory:@"Assets"];
-  NSString *embedHTMLTemplate =
-      [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+//  NSString *path = [[NSBundle mainBundle] pathForResource:@"YTPlayerView-iframe-player"
+//                                                   ofType:@"html"
+//                                              inDirectory:@"Assets"];
+//  NSString *embedHTMLTemplate =
+//      [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
 
   if (error) {
     NSLog(@"Received error rendering template: %@", error);
@@ -637,9 +637,9 @@ NSString static *const kYTPlayerEmbedUrlRegexPattern = @"^http(s)://(www.)youtub
 
   // Render the playerVars as a JSON dictionary.
   NSError *jsonRenderingError = nil;
-  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:playerParams
-                                                     options:NSJSONWritingPrettyPrinted
-                                                       error:&jsonRenderingError];
+//  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:playerParams
+//                                                     options:NSJSONWritingPrettyPrinted
+//                                                       error:&jsonRenderingError];
   if (jsonRenderingError) {
     NSLog(@"Attempted configuration of player with invalid playerVars: %@ \tError: %@",
           playerParams,
@@ -647,10 +647,69 @@ NSString static *const kYTPlayerEmbedUrlRegexPattern = @"^http(s)://(www.)youtub
     return NO;
   }
 
-  NSString *playerVarsJsonString =
-      [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+  //NSString *playerVarsJsonString =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 
-  NSString *embedHTML = [NSString stringWithFormat:embedHTMLTemplate, playerVarsJsonString];
+    BOOL isIPhone = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone;
+    BOOL isIPhone5 = isIPhone && ([[UIScreen mainScreen] bounds].size.height > 480.0);
+    float height;
+    if (isIPhone5)
+        height = 568;
+    else
+        height = 490;
+    
+    NSString *embedHTML;// = [NSString stringWithFormat:embedHTMLTemplate, playerVarsJsonString];
+    embedHTML = [NSString stringWithFormat:@"<html>\
+    <head>\
+    <style>\
+    body { margin: 0; }\
+    </style>\
+    </head>\
+    <body>\
+    <div id='player'></div>\
+    <script src='https://www.youtube.com/iframe_api'></script>\
+    <script>\
+    var player;\
+    YT.ready(function() {\
+        player = new YT.Player('player', {\
+            'playerVars' : {\
+                'enablejsapi' : 1,\
+                'modestbranding' : 1,\
+                'autoplay' : 1,\
+                'iv_load_policy' : 3,\
+                'showinfo' : 0,\
+                'controls' : 0,\
+                'cc_load_policy' : 0,\
+                'vq' : 'large',\
+                'playsinline' : 1\
+            },\
+            'width' : '%fpx',\
+            'videoId' : 'Bt9zSfinwFA',\
+            'events' : {\
+                'onPlaybackQualityChange' : 'onPlaybackQualityChange',\
+                'onStateChange' : 'onStateChange',\
+                'onError' : 'onPlayerError',\
+                'onReady' : 'onReady'\
+            },\
+            'height' : '320px'\
+        });\
+        window.location.href = 'ytplayer://onYouTubeIframeAPIReady';\
+    });\
+    function onReady(event) {\
+        window.location.href = 'ytplayer://onReady?data=' + event.data;\
+    }\
+    function onStateChange(event) {\
+        window.location.href = 'ytplayer://onStateChange?data=' + event.data;\
+    }\
+    \
+    function onPlaybackQualityChange(event) {\
+        window.location.href = 'ytplayer://onPlaybackQualityChange?data=' + event.data;\
+    }\
+    function onPlayerError(event) {\
+        window.location.href = 'ytplayer://onError?data=' + event.data;\
+    }\
+    </script>\
+    </body>\
+    </html>", height];
   [self.webView loadHTMLString:embedHTML baseURL:[NSURL URLWithString:@"about:blank"]];
   [self.webView setDelegate:self];
   self.webView.allowsInlineMediaPlayback = YES;
@@ -747,7 +806,7 @@ NSString static *const kYTPlayerEmbedUrlRegexPattern = @"^http(s)://(www.)youtub
 
 - (UIWebView *)createNewWebView {
   UIWebView *webView = [[UIWebView alloc] initWithFrame:self.bounds];
-  webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+  ///webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
   webView.scrollView.scrollEnabled = NO;
   webView.scrollView.bounces = NO;
   return webView;
