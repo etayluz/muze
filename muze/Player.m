@@ -145,7 +145,17 @@ static Player *player;
     self.youTubePlayer.delegate = self;
     self.youTubePlayer.hidden = YES;
     self.youTubePlayer.userInteractionEnabled = NO;
+    self.youTubePlayer.tag = 1;
     [self.view addSubview:self.youTubePlayer];
+   
+    /* YOUTUBE PLAYER 2 */
+    self.youTubePlayer2 = [[YTPlayerView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.height,600)];
+    self.youTubePlayer2.backgroundColor = [UIColor redColor];
+    self.youTubePlayer2.delegate = self;
+    self.youTubePlayer2.hidden = YES;
+    self.youTubePlayer2.userInteractionEnabled = NO;
+    self.youTubePlayer2.tag = 2;
+    //[self.view addSubview:self.youTubePlayer2];
     
     /* YOUTUBE VIDEO COVER */
     self.cover = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 320)];
@@ -195,6 +205,10 @@ static Player *player;
 }
 
 - (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
+    NSLog(@"Tag=%ld", (long)playerView.tag);
+    
+    if (playerView.tag == 2)
+        return;
     switch (state) {
         case kYTPlayerStateUnstarted:
             NSLog(@"kYTPlayerStateUnstarted");
@@ -242,13 +256,15 @@ static Player *player;
     {
         [self.checkLoadedFraction invalidate];
         NSLog(@"Load Next Video");
+        NSDictionary *playerVars2 = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0,@"cc_load_policy":@0,@"enablejsapi":@1,@"vq":@"large",@"rel":@0};
+        [self.youTubePlayer2 loadWithVideoId:@"6sii6TcrS3I" playerVars:playerVars2];//BW-tzEKwD7g//Bt9zSfinwFA
     }
 }
 
 
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView
 {
-     NSLog(@"playerViewDidBecomeReady");
+     NSLog(@"playerViewDidBecomeReady Tag=%ld",(long)playerView.tag);
     [self.youTubePlayer playVideo];
 }
 
