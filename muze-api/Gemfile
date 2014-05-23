@@ -5,6 +5,7 @@ gem 'rails', '4.0.4'
 gem 'rspec-core'
 gem 'rspec-mocks'
 gem "rspec-expectations"
+gem 'rspec-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 

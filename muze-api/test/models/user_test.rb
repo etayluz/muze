@@ -1,19 +1,14 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "the truth" do
+    assert true
+  end
+
+  test "should not save post without title" do
+    user = User.new
+    assert user.save, "Saved the user with a title"
+  end
 end
 
-describe User do
-
-  before { @user = User.new(name: "Example User", email: "user@example.com") }
-
-  subject { @user }
-
-  it { should respond_to(:name) }
-  it { should respond_to(:email) }
-  
-end
 
