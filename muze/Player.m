@@ -115,7 +115,7 @@ static Player *player;
     layer1 = [self.playButton layer];
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
-    self.playButton.enabled = NO;
+    self.playButton.hidden = YES;
     [self.menu addSubview:self.playButton];
     
     /* NEXT IMAGE */
@@ -134,7 +134,7 @@ static Player *player;
     layer1 = [self.nextButton layer];
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
-    self.nextButton.enabled = NO;
+    self.nextButton.hidden = YES;
     [self.menu addSubview:self.nextButton];
     
     /* YOUTUBE PLAYER */
@@ -215,9 +215,9 @@ static Player *player;
         case kYTPlayerStateEnded:
             NSLog(@"kYTPlayerStateEnded");
             self.pauseImage.hidden = NO;
-            self.pauseButton.enabled = YES;
+            self.pauseButton.hidden = NO;
             self.playImage.hidden = YES;
-            self.playButton.enabled = NO;
+            self.playButton.hidden = YES;
             self.youTubePlayer.hidden = YES;
             [self.youTubePlayer cueVideoById:@"JvxHPtEsmFc" startSeconds:0 suggestedQuality:kYTPlaybackQualityMedium];
             break;
@@ -391,7 +391,7 @@ static Player *player;
     self.isMovieLiked = YES;
     self.likeImage.image = [UIImage imageNamed:@"LikeSelected.png"];
     self.nextImage.hidden = NO;
-    self.nextButton.enabled = YES;
+    self.nextButton.hidden = NO;
 }
 
 - (void)didPressDislikeButton
@@ -402,6 +402,15 @@ static Player *player;
 
 - (void)didPressNextButton
 {
+    self.likeImage.image = [UIImage imageNamed:@"Like.png"];
+    self.pauseImage.hidden = NO;
+    self.pauseButton.hidden = NO;
+    self.playImage.hidden = YES;
+    self.playButton.hidden = YES;
+    self.nextButton.hidden = YES;
+    self.nextImage.hidden = YES;
+    
+    
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
     [self.youTubePlayer stopVideo];
     self.youTubePlayer.hidden = YES;
@@ -412,18 +421,18 @@ static Player *player;
 {
     [self.youTubePlayer pauseVideo];
     self.pauseImage.hidden = YES;
-    self.pauseButton.enabled = NO;
+    self.pauseButton.hidden = YES;
     self.playImage.hidden = NO;
-    self.playButton.enabled = YES;
+    self.playButton.hidden = NO;
 }
 
 - (void)didPressPlayButton
 {
     [self.youTubePlayer playVideo];
     self.pauseImage.hidden = NO;
-    self.pauseButton.enabled = YES;
+    self.pauseButton.hidden = NO;
     self.playImage.hidden = YES;
-    self.playButton.enabled = NO;
+    self.playButton.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
