@@ -18,6 +18,9 @@
     //self.window.rootViewController = [[Login alloc] init];
     [self.window makeKeyAndVisible];
     
+    NSString *uuid = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    NSLog(@"%@",uuid);
+    
 //    // Whenever a person opens the app, check for a cached session
 //    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
 //        NSLog(@"FBSessionStateCreatedTokenLoaded");
