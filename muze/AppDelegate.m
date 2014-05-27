@@ -16,6 +16,19 @@
     // Override point for customization after application launch.
     self.window.rootViewController =  [[Player alloc] init];
     [self.window makeKeyAndVisible];
+    
+    NSString *request = @"";
+    NSLog(@"%@", request);
+    [ApiRequest request:request method:@"POST" params:nil  completeBlock:^(NSDictionary *serachResults, NSError *error){
+        if (!error) {
+
+        }
+        else
+        {
+
+        }
+    }];
+    
     return YES;
 }
 

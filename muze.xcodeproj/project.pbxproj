@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C497200ED4441C88CA28C84 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 763B558895224A9BBF7F21E7 /* libPods.a */; };
 		B40F79F319255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
 		B40F79F519255F02009BAE3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F419255F02009BAE3C /* CoreGraphics.framework */; };
 		B40F79F719255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
 		B40F7A0C19255F02009BAE3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F7A0B19255F02009BAE3C /* XCTest.framework */; };
 		B40F7A0D19255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
 		B40F7A0E19255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
+		B426CE5B193463E5007B655D /* ApiRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B426CE5A193463E5007B655D /* ApiRequest.m */; };
 		B438DFF0192A11C500049005 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = B438DFEF192A11C500049005 /* Help.png */; };
 		B447D17C19285106005F081E /* Nudge.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17B19285106005F081E /* Nudge.png */; };
 		B447D1821928540A005F081E /* Dislike.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17D1928540A005F081E /* Dislike.png */; };
@@ -46,12 +48,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6903E007E24244A5A07DB549 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		763B558895224A9BBF7F21E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40F79EF19255F02009BAE3C /* muze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40F79F219255F02009BAE3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B40F79F419255F02009BAE3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B40F79F619255F02009BAE3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B40F7A0A19255F02009BAE3C /* muzeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = muzeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40F7A0B19255F02009BAE3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B426CE59193463E5007B655D /* ApiRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiRequest.h; sourceTree = SOURCE_ROOT; };
+		B426CE5A193463E5007B655D /* ApiRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiRequest.m; sourceTree = SOURCE_ROOT; };
 		B438DFEF192A11C500049005 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Help.png; path = muze/images/Help.png; sourceTree = SOURCE_ROOT; };
 		B447D17B19285106005F081E /* Nudge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Nudge.png; path = muze/images/Nudge.png; sourceTree = SOURCE_ROOT; };
 		B447D17D1928540A005F081E /* Dislike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dislike.png; path = muze/images/Dislike.png; sourceTree = SOURCE_ROOT; };
@@ -88,6 +94,7 @@
 				B40F79F519255F02009BAE3C /* CoreGraphics.framework in Frameworks */,
 				B40F79F719255F02009BAE3C /* UIKit.framework in Frameworks */,
 				B40F79F319255F02009BAE3C /* Foundation.framework in Frameworks */,
+				0C497200ED4441C88CA28C84 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +117,7 @@
 				B40F79F819255F02009BAE3C /* muze */,
 				B40F79F119255F02009BAE3C /* Frameworks */,
 				B40F79F019255F02009BAE3C /* Products */,
+				6903E007E24244A5A07DB549 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +138,7 @@
 				B40F79F419255F02009BAE3C /* CoreGraphics.framework */,
 				B40F79F619255F02009BAE3C /* UIKit.framework */,
 				B40F7A0B19255F02009BAE3C /* XCTest.framework */,
+				763B558895224A9BBF7F21E7 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -139,6 +148,8 @@
 			children = (
 				B4D3486B1925A653006A8C21 /* AppDelegate.h */,
 				B4D3486C1925A653006A8C21 /* AppDelegate.m */,
+				B426CE59193463E5007B655D /* ApiRequest.h */,
+				B426CE5A193463E5007B655D /* ApiRequest.m */,
 				B4D3486D1925A653006A8C21 /* MBProgressHUD.h */,
 				B4D3486E1925A653006A8C21 /* MBProgressHUD.m */,
 				B4D3486F1925A653006A8C21 /* Player.h */,
@@ -189,9 +200,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B40F7A1B19255F02009BAE3C /* Build configuration list for PBXNativeTarget "muze" */;
 			buildPhases = (
+				E2BC57FE351D404581FD4689 /* Check Pods Manifest.lock */,
 				B40F79EB19255F02009BAE3C /* Sources */,
 				B40F79EC19255F02009BAE3C /* Frameworks */,
 				B40F79ED19255F02009BAE3C /* Resources */,
+				530090716EA049FEA021F8CD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,6 +300,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		530090716EA049FEA021F8CD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2BC57FE351D404581FD4689 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B40F79EB19255F02009BAE3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -296,6 +342,7 @@
 				B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */,
 				B4D348731925A653006A8C21 /* Player.m in Sources */,
 				B4D348711925A653006A8C21 /* AppDelegate.m in Sources */,
+				B426CE5B193463E5007B655D /* ApiRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +447,7 @@
 		};
 		B40F7A1C19255F02009BAE3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6903E007E24244A5A07DB549 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -417,6 +465,7 @@
 		};
 		B40F7A1D19255F02009BAE3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6903E007E24244A5A07DB549 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

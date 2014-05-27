@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-MuzeApi::Application.config.secret_key_base = '99fd950595188019129408a47d2864f24390293d009586b5b5624072bc60f0638b9650d8eb11010b72926d0792c223dd79a4cb441730263551c83294bf9d424e'
+MuzeApi::Application.config.secret_key_base = '28eac8e04ab6b5d33166d896e9db9e2373cb58894d091c1de6becc5ef673fe6bf4f62314d946174d48f6abdfe89d8cb224eabf6e997fdeefd9025d60bea11f24'
