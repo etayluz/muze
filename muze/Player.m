@@ -31,7 +31,7 @@ static Player *player;
     player = self;
     self.isMovieLiked = NO;
     self.isMoviePaused = NO;
-    self.isHelpDone = NO;
+    //self.isHelpDone = NO;
     self.view.backgroundColor = [UIColor blueColor];
     
     /* NUDGE */
@@ -157,38 +157,38 @@ static Player *player;
     [self.view addSubview:self.nudge];
     [self.view addSubview:self.menu];
     
-    /* HELP OVERLAY VIEW */
-    self.helpOverlay = [[UIView alloc] init];
-    self.helpOverlay.frame = CGRectMake(0,0,self.view.frame.size.height,320);
-    self.helpOverlay.backgroundColor = [UIColor blackColor];
-    self.helpOverlay.alpha = 0.6;
-    [self.view addSubview:self.helpOverlay];
-
-    /* HELP OVERLAY IMAGE */
-    UIImageView *helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-568)*-1/7, -20, self.view.frame.size.height, 320)];
-    helpImage.image = [UIImage imageNamed:@"Help.png"];
-    helpImage.contentMode = UIViewContentModeScaleAspectFill;
-    [self.helpOverlay addSubview:helpImage];
-    
-    /* HIDE HELP BUTTON */
-    self.hideHelpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [self.hideHelpButton addTarget:self
-                        action:@selector(didPressHideHelpButton)
-              forControlEvents:UIControlEventTouchDown];
-    self.hideHelpButton.frame = self.helpOverlay.frame;
-    layer1 = [self.playButton layer];
-    //[layer1 setBorderWidth:1.0];
-    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
-    [self.helpOverlay addSubview:self.hideHelpButton];
+//    /* HELP OVERLAY VIEW */
+//    self.helpOverlay = [[UIView alloc] init];
+//    self.helpOverlay.frame = CGRectMake(0,0,self.view.frame.size.height,320);
+//    self.helpOverlay.backgroundColor = [UIColor blackColor];
+//    self.helpOverlay.alpha = 0.6;
+//    [self.view addSubview:self.helpOverlay];
+//
+//    /* HELP OVERLAY IMAGE */
+//    UIImageView *helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-568)*-1/7, -20, self.view.frame.size.height, 320)];
+//    helpImage.image = [UIImage imageNamed:@"Help.png"];
+//    helpImage.contentMode = UIViewContentModeScaleAspectFill;
+//    [self.helpOverlay addSubview:helpImage];
+//    
+//    /* HIDE HELP BUTTON */
+//    self.hideHelpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [self.hideHelpButton addTarget:self
+//                        action:@selector(didPressHideHelpButton)
+//              forControlEvents:UIControlEventTouchDown];
+//    self.hideHelpButton.frame = self.helpOverlay.frame;
+//    layer1 = [self.playButton layer];
+//    //[layer1 setBorderWidth:1.0];
+//    [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+//    [self.helpOverlay addSubview:self.hideHelpButton];
 }
 
--(void)didPressHideHelpButton
-{
-    [self.helpOverlay removeFromSuperview];
-    self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
-    if(self.menu.frame.origin.y == 320)
-        [self showMenu];
-}
+//-(void)didPressHideHelpButton
+//{
+//    [self.helpOverlay removeFromSuperview];
+//    self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
+//    if(self.menu.frame.origin.y == 320)
+//        [self showMenu];
+//}
 
 - (void)didPressMovie
 {
@@ -217,69 +217,10 @@ static Player *player;
     return YES;
 }
 
-- (void)didPressMailButton
-{
-    if ([MFMailComposeViewController canSendMail])
-    {
-        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
-        
-        mailer.mailComposeDelegate = (id)self;
-        
-        [mailer setSubject:@"New Feedback"];
-        
-        NSArray *toRecipients = [NSArray arrayWithObjects:@"etayluz@gmail.com", nil];
-        [mailer setToRecipients:toRecipients];
-        
-//        UIImage *myImage = [UIImage imageNamed:@"mobiletuts-logo.png"];
-//        NSData *imageData = UIImagePNGRepresentation(myImage);
-//        [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"mobiletutsImage"];
-        
-        NSString *emailBody = @"";
-        [mailer setMessageBody:emailBody isHTML:NO];
-        
-        [self presentViewController:mailer animated:YES completion:nil];
-        
-    }
-    else
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
-                                                        message:@"Your device doesn't support the composer sheet"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }
-}
-
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
-{
-    switch (result)
-    {
-        case MFMailComposeResultCancelled:
-            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
-            break;
-        case MFMailComposeResultSaved:
-            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
-            break;
-        case MFMailComposeResultSent:
-            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
-            break;
-        case MFMailComposeResultFailed:
-            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
-            break;
-        default:
-            NSLog(@"Mail not sent.");
-            break;
-    }
-    
-    // Remove the mail view
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-}
 
 -(void)didSwipeUp
 {
-    if(self.menu.frame.origin.y == 320)
+    if(self.menu.frame.origin.y >= 320)
         [self showMenu];
 }
 
@@ -291,38 +232,38 @@ static Player *player;
 
 -(void)hideMenu
 {
-    [self.helpOverlay removeFromSuperview];
-    if (!self.isHelpDone)
-    {
-        self.isHelpDone = YES;
-        /* HELP OVERLAY VIEW */
-        self.helpOverlay = [[UIView alloc] init];
-        self.helpOverlay.frame = CGRectMake(0,0,self.view.frame.size.height,320);
-        [self.view addSubview:self.helpOverlay];
-        
-        /* HELP OVERLAY IMAGE */
-        UIImageView *helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-568)*-1/7, -20, self.view.frame.size.height, 320)];
-        helpImage.image = [UIImage imageNamed:@"Help2.png"];
-        helpImage.contentMode = UIViewContentModeScaleAspectFill;
-        [self.helpOverlay addSubview:helpImage];
-        
-        /* HIDE HELP BUTTON */
-        self.hideHelpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [self.hideHelpButton addTarget:self
-                                action:@selector(didPressHideHelpButton)
-                      forControlEvents:UIControlEventTouchDown];
-        self.hideHelpButton.frame = self.helpOverlay.frame;
-        CALayer *layer1 = [self.playButton layer];
-        //[layer1 setBorderWidth:1.0];
-        [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
-        [self.helpOverlay addSubview:self.hideHelpButton];
-    }
+    //[self.helpOverlay removeFromSuperview];
+//    if (!self.isHelpDone)
+//    {
+//        self.isHelpDone = YES;
+//        /* HELP OVERLAY VIEW */
+//        self.helpOverlay = [[UIView alloc] init];
+//        self.helpOverlay.frame = CGRectMake(0,0,self.view.frame.size.height,320);
+//        [self.view addSubview:self.helpOverlay];
+//        
+//        /* HELP OVERLAY IMAGE */
+//        UIImageView *helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-568)*-1/7, -20, self.view.frame.size.height, 320)];
+//        helpImage.image = [UIImage imageNamed:@"Help2.png"];
+//        helpImage.contentMode = UIViewContentModeScaleAspectFill;
+//        [self.helpOverlay addSubview:helpImage];
+//        
+//        /* HIDE HELP BUTTON */
+//        self.hideHelpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        [self.hideHelpButton addTarget:self
+//                                action:@selector(didPressHideHelpButton)
+//                      forControlEvents:UIControlEventTouchDown];
+//        self.hideHelpButton.frame = self.helpOverlay.frame;
+//        CALayer *layer1 = [self.playButton layer];
+//        //[layer1 setBorderWidth:1.0];
+//        [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
+//        [self.helpOverlay addSubview:self.hideHelpButton];
+//    }
     
     [self.hideMenuTimer invalidate];
     [UIView animateWithDuration:0.5 animations:^{
         CGRect frame;
         frame = self.menu.frame;
-        frame.origin.y += (self.menu.frame.size.height);
+        frame.origin.y = 320;
         self.menu.frame=frame;
     }
     completion:^ (BOOL finished) {}
@@ -335,7 +276,7 @@ static Player *player;
     [UIView animateWithDuration:0.5 animations:^{
         CGRect frame;
         frame = self.menu.frame;
-        frame.origin.y -= (self.menu.frame.size.height);
+        frame.origin.y = 320 - self.menu.frame.size.height;
         self.menu.frame=frame;
     }
     completion:^ (BOOL finished) {}
@@ -363,8 +304,8 @@ static Player *player;
     {
         self.isError = NO;
         [self.hideMenuTimer invalidate];
-        if (self.helpOverlay.hidden == YES)
-            self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
+        //if (self.helpOverlay.hidden == YES)
+        self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
         self.movieDidStartPlaying = YES;
         self.movieWillStartPlaying = NO;
         [MBProgressHUD hideHUDForView:self.view animated:YES];
