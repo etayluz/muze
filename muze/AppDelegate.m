@@ -17,9 +17,11 @@
     self.window.rootViewController =  [[Player alloc] init];
     [self.window makeKeyAndVisible];
     
+    NSString *uuid = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    NSDictionary *params = @{@"uuid":uuid};
     NSString *request = @"users/create";
     NSLog(@"%@", request);
-    [ApiRequest request:request method:@"GET" params:nil  completeBlock:^(NSDictionary *serachResults, NSError *error){
+    [ApiRequest request:request method:@"GET" params:params  completeBlock:^(NSDictionary *serachResults, NSError *error){
         if (!error)
         {
             NSLog(@"%@", serachResults);
