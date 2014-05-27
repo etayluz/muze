@@ -17,15 +17,16 @@
     self.window.rootViewController =  [[Player alloc] init];
     [self.window makeKeyAndVisible];
     
-    NSString *request = @"";
+    NSString *request = @"users/create";
     NSLog(@"%@", request);
-    [ApiRequest request:request method:@"POST" params:nil  completeBlock:^(NSDictionary *serachResults, NSError *error){
-        if (!error) {
-
+    [ApiRequest request:request method:@"GET" params:nil  completeBlock:^(NSDictionary *serachResults, NSError *error){
+        if (!error)
+        {
+            NSLog(@"%@", serachResults);
         }
         else
         {
-
+            NSLog(@"%@", [error.userInfo[@"errors"] componentsJoinedByString:@"\n"]);
         }
     }];
     

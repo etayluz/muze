@@ -1,4 +1,7 @@
 MuzeApi::Application.routes.draw do
+    controller :users do
+    get "api/users/create", to: :create
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -12,7 +15,7 @@ MuzeApi::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  #resources :users
 
   # Example resource route with options:
   #   resources :products do
