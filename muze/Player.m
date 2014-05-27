@@ -30,6 +30,7 @@ static Player *player;
     self.movieNumber = 1;
     player = self;
     self.isMovieLiked = NO;
+    self.isMoviePaused = NO;
     self.isHelpDone = NO;
     self.view.backgroundColor = [UIColor blueColor];
     
@@ -115,7 +116,7 @@ static Player *player;
     layer1 = [self.playButton layer];
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
-    self.playButton.hidden = YES;
+    self.playButton.enabled = NO;
     [self.menu addSubview:self.playButton];
     
     /* NEXT IMAGE */
@@ -134,55 +135,34 @@ static Player *player;
     layer1 = [self.nextButton layer];
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
-    self.nextButton.hidden = YES;
+    self.nextButton.enabled = NO;
     [self.menu addSubview:self.nextButton];
+
+    self.tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(didPressMovie)];
+    self.tap.delegate = self;
     
-    /* YOUTUBE PLAYER */
-    self.youTubePlayer = [[YTPlayerView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.height,600)];
-    NSDictionary *playerVars = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0,@"cc_load_policy":@0,@"enablejsapi":@1,@"vq":@"large",@"rel":@0};
-    [self.youTubePlayer loadWithVideoId:@"6sii6TcrS3I" playerVars:playerVars];//BW-tzEKwD7g//Bt9zSfinwFA
-    self.youTubePlayer.backgroundColor = [UIColor redColor];
-    self.youTubePlayer.delegate = self;
-    self.youTubePlayer.hidden = YES;
-    self.youTubePlayer.userInteractionEnabled = NO;
-    self.youTubePlayer.tag = 1;
-    [self.view addSubview:self.youTubePlayer];
-   
-    /* YOUTUBE PLAYER 2 */
-    self.youTubePlayer2 = [[YTPlayerView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.height,600)];
-    self.youTubePlayer2.backgroundColor = [UIColor redColor];
-    self.youTubePlayer2.delegate = self;
-    self.youTubePlayer2.hidden = YES;
-    self.youTubePlayer2.userInteractionEnabled = NO;
-    self.youTubePlayer2.tag = 2;
-    //[self.view addSubview:self.youTubePlayer2];
+    self.swipeUp = [[UISwipeGestureRecognizer alloc]
+             initWithTarget:self action:@selector(didSwipeUp)];
     
-    /* YOUTUBE VIDEO COVER */
-    self.cover = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 320)];
-    [self.view addSubview:self.cover];
+    [self.swipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
+    
+    self.swipeDown = [[UISwipeGestureRecognizer alloc]
+                    initWithTarget:self action:@selector(didSwipeDown)];
+    
+    [self.swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
+    
+    [self didPressNextButton];
     [self.view addSubview:self.nudge];
     [self.view addSubview:self.menu];
-    
-    /* GESTURES */
-    self.tap = [[UITapGestureRecognizer alloc]
-                initWithTarget:self
-                action:@selector(didPressMovie)];
-    self.tap.delegate = self;
-    self.swipeUp = [[UISwipeGestureRecognizer alloc]
-                    initWithTarget:self action:@selector(didSwipeUp)];
-    [self.swipeUp setDirection:UISwipeGestureRecognizerDirectionUp];
-    self.swipeDown = [[UISwipeGestureRecognizer alloc]
-                      initWithTarget:self action:@selector(didSwipeDown)];
-    [self.swipeDown setDirection:UISwipeGestureRecognizerDirectionDown];
-    [self.cover addGestureRecognizer:self.tap];
-    [self.cover addGestureRecognizer:self.swipeDown];
-    [self.cover addGestureRecognizer:self.swipeUp];
     
     /* HELP OVERLAY VIEW */
     self.helpOverlay = [[UIView alloc] init];
     self.helpOverlay.frame = CGRectMake(0,0,self.view.frame.size.height,320);
     self.helpOverlay.backgroundColor = [UIColor blackColor];
     self.helpOverlay.alpha = 0.6;
+    [self.view addSubview:self.helpOverlay];
 
     /* HELP OVERLAY IMAGE */
     UIImageView *helpImage  = [[UIImageView alloc] initWithFrame:CGRectMake((self.view.frame.size.height-568)*-1/7, -20, self.view.frame.size.height, 320)];
@@ -200,96 +180,7 @@ static Player *player;
     //[layer1 setBorderWidth:1.0];
     [layer1 setBorderColor:[[UIColor blackColor] CGColor]];
     [self.helpOverlay addSubview:self.hideHelpButton];
-    
-    [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
 }
-
-- (void)playerView:(YTPlayerView *)playerView didChangeToState:(YTPlayerState)state {
-//    NSLog(@"Tag=%ld", (long)playerView.tag);
-//    
-//    if (playerView.tag == 2)
-//        return;
-    switch (state) {
-        case kYTPlayerStateUnstarted:
-            NSLog(@"kYTPlayerStateUnstarted");
-        case kYTPlayerStateEnded:
-            NSLog(@"kYTPlayerStateEnded");
-            self.pauseImage.hidden = NO;
-            self.pauseButton.hidden = NO;
-            self.playImage.hidden = YES;
-            self.playButton.hidden = YES;
-            self.youTubePlayer.hidden = YES;
-            [self.youTubePlayer cueVideoById:@"JvxHPtEsmFc" startSeconds:0 suggestedQuality:kYTPlaybackQualityMedium];
-            break;
-        case kYTPlayerStatePlaying:
-            NSLog(@"kYTPlayerStatePlaying");
-            self.youTubePlayer.hidden = NO;
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            //self.checkLoadedFraction = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(checkTheLoadedFraction) userInfo:nil repeats:YES];
-            break;
-        case kYTPlayerStatePaused:
-            NSLog(@"kYTPlayerStatePaused");
-            break;
-        case kYTPlayerStateBuffering:
-            NSLog(@"kYTPlayerStateBuffering");
-            break;
-        case kYTPlayerStateQueued:
-            NSLog(@"kYTPlayerStateQueued");
-            [self.youTubePlayer playVideo];
-            break;
-        default:
-            //[self.playerView playVideo];
-            NSLog(@"default:%u", state);
-            break;
-    }
-    
-    //NSString *yourHTMLSourceCodeString = [self.playerView.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"];
-    //NSLog(@"%@",yourHTMLSourceCodeString);
-}
-
--(void)checkTheLoadedFraction
-{
-    //return;
-    float currentTimeToDuration = [self.youTubePlayer currentTime]/[self.youTubePlayer duration];
-    float videoLoadedFraction = [self.youTubePlayer videoLoadedFraction];
-    NSLog(@"videoLoadedFraction=%f, currentTimeToDuration=%f, Duration=%d, Current=%f",videoLoadedFraction, currentTimeToDuration, [self.youTubePlayer duration], [self.youTubePlayer currentTime]);
-    if (currentTimeToDuration <  videoLoadedFraction * 0.3)
-    {
-        //[self.checkLoadedFraction invalidate];
-        NSLog(@"Load Next Video");
-        //NSDictionary *playerVars2 = @{@"playsinline" : @1,@"autoplay":@1,@"controls":@0,@"iv_load_policy":@3,@"modestbranding":@1,@"showinfo":@0,@"cc_load_policy":@0,@"enablejsapi":@1,@"vq":@"large",@"rel":@0};
-        //[self.youTubePlayer2 loadWithVideoId:@"6sii6TcrS3I" playerVars:playerVars2];//BW-tzEKwD7g//Bt9zSfinwFA
-
-        [self.youTubePlayer2 cueVideoById:@"JvxHPtEsmFc" startSeconds:0 suggestedQuality:kYTPlaybackQualityMedium];
-
-    }
-  
-//    float currentTimeToDuration2 = [self.youTubePlayer2 currentTime]/[self.youTubePlayer duration];
-//    float videoLoadedFraction2 = [self.youTubePlayer2 videoLoadedFraction];
-    //NSLog(@"videoLoadedFraction2=%f, currentTimeToDuration2=%f, Duration2=%d, Current2=%f",videoLoadedFraction2, currentTimeToDuration2, [self.youTubePlayer2 duration], [self.youTubePlayer2 currentTime]);
-}
-
-
-- (void)playerViewDidBecomeReady:(YTPlayerView *)playerView
-{
-//     NSLog(@"playerViewDidBecomeReady Tag=%ld",(long)playerView.tag);
-//    if (playerView.tag == 2)
-//    {
-//        [self.youTubePlayer2 playVideo];
-//        //return;
-//    }
-    [self.youTubePlayer playVideo];
-}
-
-- (void)playerView:(YTPlayerView *)playerView didChangeToQuality:(YTPlaybackQuality)quality
-{
-    //NSLog(@"didChangeToQuality");
-}
-- (void)playerView:(YTPlayerView *)playerView receivedError:(YTPlayerError)error
-{
-    NSLog(@"receivedError");
-}
-
 
 -(void)didPressHideHelpButton
 {
@@ -301,12 +192,18 @@ static Player *player;
 
 - (void)didPressMovie
 {
-    if (self.menu.frame.origin.y == 320 - self.menu.frame.size.height)
+    //[self.helpOverlay removeFromSuperview];
+    if (self.isError)
+    {
+        [self didPressNextButton];
+        return;
+    }
+    if (self.menu.frame.origin.y == 320 - self.menu.frame.size.height)// && !self.isMoviePaused)
     {
         [self hideMenu];
         
     }
-    else if(self.menu.frame.origin.y >= 320)
+    else if(self.menu.frame.origin.y == 320)
     {
         [self showMenu];
     }
@@ -320,6 +217,65 @@ static Player *player;
     return YES;
 }
 
+- (void)didPressMailButton
+{
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+        
+        mailer.mailComposeDelegate = (id)self;
+        
+        [mailer setSubject:@"New Feedback"];
+        
+        NSArray *toRecipients = [NSArray arrayWithObjects:@"etayluz@gmail.com", nil];
+        [mailer setToRecipients:toRecipients];
+        
+//        UIImage *myImage = [UIImage imageNamed:@"mobiletuts-logo.png"];
+//        NSData *imageData = UIImagePNGRepresentation(myImage);
+//        [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"mobiletutsImage"];
+        
+        NSString *emailBody = @"";
+        [mailer setMessageBody:emailBody isHTML:NO];
+        
+        [self presentViewController:mailer animated:YES completion:nil];
+        
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
+                                                        message:@"Your device doesn't support the composer sheet"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+            break;
+        default:
+            NSLog(@"Mail not sent.");
+            break;
+    }
+    
+    // Remove the mail view
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
 
 -(void)didSwipeUp
 {
@@ -379,7 +335,7 @@ static Player *player;
     [UIView animateWithDuration:0.5 animations:^{
         CGRect frame;
         frame = self.menu.frame;
-        frame.origin.y = 320 - self.menu.frame.size.height;
+        frame.origin.y -= (self.menu.frame.size.height);
         self.menu.frame=frame;
     }
     completion:^ (BOOL finished) {}
@@ -391,7 +347,7 @@ static Player *player;
     self.isMovieLiked = YES;
     self.likeImage.image = [UIImage imageNamed:@"LikeSelected.png"];
     self.nextImage.hidden = NO;
-    self.nextButton.hidden = NO;
+    self.nextButton.enabled = YES;
 }
 
 - (void)didPressDislikeButton
@@ -400,39 +356,136 @@ static Player *player;
 
 }
 
+- (void)moviePlayerStateDidChange
+{
+    NSLog(@"moviePlayerStateDidChange");
+    if (self.movieWillStartPlaying == YES)
+    {
+        self.isError = NO;
+        [self.hideMenuTimer invalidate];
+        if (self.helpOverlay.hidden == YES)
+            self.hideMenuTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideMenu) userInfo:nil repeats:NO];
+        self.movieDidStartPlaying = YES;
+        self.movieWillStartPlaying = NO;
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if(self.menu.frame.origin.y == 320)
+            [self showMenu];
+    }
+}
+
+- (void)movieNowPlaying
+{
+    //    NSLog(@"%ld", (long)self.moviePlayer.playbackState);
+    //    if (self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying)
+    NSLog(@"movieNowPlaying");
+    self.movieWillStartPlaying = YES;
+}
+
+- (void)movieDidFinishPlaying:(NSNotification *)notification
+{
+    NSDictionary *notificationUserInfo = [notification userInfo];
+    NSNumber *resultValue = [notificationUserInfo objectForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey];
+    MPMovieFinishReason reason = [resultValue intValue];
+    if (reason == MPMovieFinishReasonPlaybackError)
+    {
+        self.isError = YES;
+        UILabel *textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 320/2.5,self.view.frame.size.height,40)];
+        textLabel.font = [UIFont systemFontOfSize:15];
+        textLabel.textAlignment = NSTextAlignmentCenter;
+        textLabel.textColor = [UIColor whiteColor];
+        textLabel.text = @"Video failed to load. Tap to retry.";
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.moviePlayer.view addSubview:textLabel];
+    }
+    else
+    {
+        [self didPressNextButton];
+        NSLog(@"movieDidFinishPlaying");
+    }
+}
+
 - (void)didPressNextButton
 {
-    self.likeImage.image = [UIImage imageNamed:@"Like.png"];
+    self.movieDidStartPlaying = NO;
+    self.movieWillStartPlaying = NO;
     self.pauseImage.hidden = NO;
-    self.pauseButton.hidden = NO;
+    self.pauseButton.enabled = YES;
     self.playImage.hidden = YES;
-    self.playButton.hidden = YES;
-    self.nextButton.hidden = YES;
+    self.playButton.enabled = NO;
+    self.isMovieLiked = NO;
+    self.isMoviePaused = NO;
     self.nextImage.hidden = YES;
+    self.nextButton.enabled = NO;
+    self.likeImage.image = [UIImage imageNamed:@"Like.png"];
+    [self.moviePlayer.view removeFromSuperview];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerNowPlayingMovieDidChangeNotification
+                                                  object:nil];
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerPlaybackStateDidChangeNotification
+                                                  object:nil];
+
+    [self.moviePlayer pause];
     
+    if (self.movieNumber == 6)
+        self.movieNumber = 1;
+    self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://etayluz.com/videos/%ld.mp4", (long)self.movieNumber++]]];
+    [self.moviePlayer.view addGestureRecognizer:self.tap];
+    [self.moviePlayer.view addGestureRecognizer:self.swipeDown];
+    [self.moviePlayer.view addGestureRecognizer:self.swipeUp];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieNowPlaying)
+                                                     name:MPMoviePlayerNowPlayingMovieDidChangeNotification
+                                                   object:self.moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(movieDidFinishPlaying:) name:MPMoviePlayerPlaybackDidFinishNotification object:self.moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayerStateDidChange)
+                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification
+                                               object:nil];
+    self.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
+    self.moviePlayer.scalingMode = MPMovieScalingModeAspectFit;
+    self.moviePlayer.view.frame = CGRectMake(0,0,self.view.frame.size.height,320);
+    self.moviePlayer.shouldAutoplay = YES;
+    self.moviePlayer.controlStyle = MPMovieControlStyleNone;//MPMovieControlStyleNone
+    [self.view insertSubview:self.moviePlayer.view atIndex:0];
     [MBProgressHUD showHUDAddedTo:self.view message:@"Loading" animated:YES];
-    [self.youTubePlayer stopVideo];
-    self.youTubePlayer.hidden = YES;
-    return;
+    [self.moviePlayer prepareToPlay];
 }
 
 - (void)didPressPauseButton
 {
-    [self.youTubePlayer pauseVideo];
+    self.isMoviePaused = YES;
+    [self.moviePlayer pause];
     self.pauseImage.hidden = YES;
-    self.pauseButton.hidden = YES;
+    self.pauseButton.enabled = NO;
     self.playImage.hidden = NO;
-    self.playButton.hidden = NO;
+    self.playButton.enabled = YES;
 }
 
 - (void)didPressPlayButton
 {
-    [self.youTubePlayer playVideo];
+    self.isMoviePaused = NO;
+    [self.moviePlayer play];
     self.pauseImage.hidden = NO;
-    self.pauseButton.hidden = NO;
+    self.pauseButton.enabled = YES;
     self.playImage.hidden = YES;
-    self.playButton.hidden = YES;
+    self.playButton.enabled = NO;
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //home button press programmatically
+    //        UIApplication *app = [UIApplication sharedApplication];
+    //        [app performSelector:@selector(suspend)];
+    //
+    //        //wait 2 seconds while app is going background
+    //        [NSThread sleepForTimeInterval:2.0];
+    
+    //exit app when app is in background
+    exit(0);
 }
 
 - (void)didReceiveMemoryWarning

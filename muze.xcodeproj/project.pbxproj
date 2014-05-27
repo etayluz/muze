@@ -13,11 +13,6 @@
 		B40F7A0C19255F02009BAE3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F7A0B19255F02009BAE3C /* XCTest.framework */; };
 		B40F7A0D19255F02009BAE3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F219255F02009BAE3C /* Foundation.framework */; };
 		B40F7A0E19255F02009BAE3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40F79F619255F02009BAE3C /* UIKit.framework */; };
-		B426CE3B192E9329007B655D /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = B426CE3A192E9329007B655D /* Login.m */; };
-		B426CE3E192E9790007B655D /* Login4.png in Resources */ = {isa = PBXBuildFile; fileRef = B426CE3C192E9790007B655D /* Login4.png */; };
-		B426CE3F192E9790007B655D /* Login5.png in Resources */ = {isa = PBXBuildFile; fileRef = B426CE3D192E9790007B655D /* Login5.png */; };
-		B426CE41192E9923007B655D /* FacebookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B426CE40192E9923007B655D /* FacebookButton.png */; };
-		B426CE43192E9AEE007B655D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B426CE42192E9AEE007B655D /* FacebookSDK.framework */; };
 		B438DFF0192A11C500049005 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = B438DFEF192A11C500049005 /* Help.png */; };
 		B447D17C19285106005F081E /* Nudge.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17B19285106005F081E /* Nudge.png */; };
 		B447D1821928540A005F081E /* Dislike.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D17D1928540A005F081E /* Dislike.png */; };
@@ -27,8 +22,6 @@
 		B447D1861928540A005F081E /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D1811928540A005F081E /* Play.png */; };
 		B447D18A19285906005F081E /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B447D18919285906005F081E /* Pause.png */; };
 		B4A8C8D5192A8D88002A2175 /* Help2.png in Resources */ = {isa = PBXBuildFile; fileRef = B4A8C8D4192A8D88002A2175 /* Help2.png */; };
-		B4B10D28192DA36100A70C7F /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = B4B10D27192DA36100A70C7F /* Assets */; };
-		B4B10D2B192DA37400A70C7F /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B10D2A192DA37400A70C7F /* YTPlayerView.m */; };
 		B4C2550E1925F45400A6C846 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C2550D1925F45400A6C846 /* MessageUI.framework */; };
 		B4D348711925A653006A8C21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486C1925A653006A8C21 /* AppDelegate.m */; };
 		B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B4D3486E1925A653006A8C21 /* MBProgressHUD.m */; };
@@ -59,12 +52,6 @@
 		B40F79F619255F02009BAE3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B40F7A0A19255F02009BAE3C /* muzeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = muzeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40F7A0B19255F02009BAE3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B426CE39192E9329007B655D /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = SOURCE_ROOT; };
-		B426CE3A192E9329007B655D /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = SOURCE_ROOT; };
-		B426CE3C192E9790007B655D /* Login4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Login4.png; path = muze/images/Login4.png; sourceTree = SOURCE_ROOT; };
-		B426CE3D192E9790007B655D /* Login5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Login5.png; path = muze/images/Login5.png; sourceTree = SOURCE_ROOT; };
-		B426CE40192E9923007B655D /* FacebookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FacebookButton.png; path = muze/images/FacebookButton.png; sourceTree = SOURCE_ROOT; };
-		B426CE42192E9AEE007B655D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = muze/FacebookSDK.framework; sourceTree = "<group>"; };
 		B438DFEF192A11C500049005 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Help.png; path = muze/images/Help.png; sourceTree = SOURCE_ROOT; };
 		B447D17B19285106005F081E /* Nudge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Nudge.png; path = muze/images/Nudge.png; sourceTree = SOURCE_ROOT; };
 		B447D17D1928540A005F081E /* Dislike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dislike.png; path = muze/images/Dislike.png; sourceTree = SOURCE_ROOT; };
@@ -74,9 +61,6 @@
 		B447D1811928540A005F081E /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Play.png; path = muze/images/Play.png; sourceTree = SOURCE_ROOT; };
 		B447D18919285906005F081E /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = muze/images/Pause.png; sourceTree = SOURCE_ROOT; };
 		B4A8C8D4192A8D88002A2175 /* Help2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Help2.png; path = muze/images/Help2.png; sourceTree = SOURCE_ROOT; };
-		B4B10D27192DA36100A70C7F /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = "youtube-ios-player-helper/Assets"; sourceTree = SOURCE_ROOT; };
-		B4B10D29192DA37400A70C7F /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = "youtube-ios-player-helper/Classes/YTPlayerView.h"; sourceTree = SOURCE_ROOT; };
-		B4B10D2A192DA37400A70C7F /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = "youtube-ios-player-helper/Classes/YTPlayerView.m"; sourceTree = SOURCE_ROOT; };
 		B4C2550D1925F45400A6C846 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B4D3486B1925A653006A8C21 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = muze/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		B4D3486C1925A653006A8C21 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = muze/AppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -101,7 +85,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4C2550E1925F45400A6C846 /* MessageUI.framework in Frameworks */,
-				B426CE43192E9AEE007B655D /* FacebookSDK.framework in Frameworks */,
 				B40F79F519255F02009BAE3C /* CoreGraphics.framework in Frameworks */,
 				B40F79F719255F02009BAE3C /* UIKit.framework in Frameworks */,
 				B40F79F319255F02009BAE3C /* Foundation.framework in Frameworks */,
@@ -142,7 +125,6 @@
 		B40F79F119255F02009BAE3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B426CE42192E9AEE007B655D /* FacebookSDK.framework */,
 				B4C2550D1925F45400A6C846 /* MessageUI.framework */,
 				B40F79F219255F02009BAE3C /* Foundation.framework */,
 				B40F79F419255F02009BAE3C /* CoreGraphics.framework */,
@@ -155,17 +137,12 @@
 		B40F79F819255F02009BAE3C /* muze */ = {
 			isa = PBXGroup;
 			children = (
-				B4B10D27192DA36100A70C7F /* Assets */,
 				B4D3486B1925A653006A8C21 /* AppDelegate.h */,
 				B4D3486C1925A653006A8C21 /* AppDelegate.m */,
-				B426CE39192E9329007B655D /* Login.h */,
-				B426CE3A192E9329007B655D /* Login.m */,
 				B4D3486D1925A653006A8C21 /* MBProgressHUD.h */,
 				B4D3486E1925A653006A8C21 /* MBProgressHUD.m */,
 				B4D3486F1925A653006A8C21 /* Player.h */,
 				B4D348701925A653006A8C21 /* Player.m */,
-				B4B10D29192DA37400A70C7F /* YTPlayerView.h */,
-				B4B10D2A192DA37400A70C7F /* YTPlayerView.m */,
 				B40F7A2119255FFF009BAE3C /* images */,
 				B40F79F919255F02009BAE3C /* Supporting Files */,
 			);
@@ -191,14 +168,11 @@
 				B4D3488F1925EBC0006A8C21 /* Default.png */,
 				B4D348901925EBC0006A8C21 /* Default@2x.png */,
 				B447D17D1928540A005F081E /* Dislike.png */,
-				B426CE40192E9923007B655D /* FacebookButton.png */,
 				B438DFEF192A11C500049005 /* Help.png */,
 				B4A8C8D4192A8D88002A2175 /* Help2.png */,
 				B4D348941925EBF2006A8C21 /* Icon.png */,
 				B447D17E1928540A005F081E /* Like.png */,
 				B447D17F1928540A005F081E /* LikeSelected.png */,
-				B426CE3C192E9790007B655D /* Login4.png */,
-				B426CE3D192E9790007B655D /* Login5.png */,
 				B4D348961925EEB4006A8C21 /* Mail.png */,
 				B447D1801928540A005F081E /* Next.png */,
 				B447D17B19285106005F081E /* Nudge.png */,
@@ -291,15 +265,11 @@
 				B4D348931925EBC0006A8C21 /* Default@2x.png in Resources */,
 				B4D348921925EBC0006A8C21 /* Default.png in Resources */,
 				B447D1821928540A005F081E /* Dislike.png in Resources */,
-				B426CE41192E9923007B655D /* FacebookButton.png in Resources */,
 				B447D18A19285906005F081E /* Pause.png in Resources */,
 				B447D1851928540A005F081E /* Next.png in Resources */,
 				B447D1841928540A005F081E /* LikeSelected.png in Resources */,
 				B447D17C19285106005F081E /* Nudge.png in Resources */,
-				B4B10D28192DA36100A70C7F /* Assets in Resources */,
 				B4D348971925EEB4006A8C21 /* Mail.png in Resources */,
-				B426CE3F192E9790007B655D /* Login5.png in Resources */,
-				B426CE3E192E9790007B655D /* Login4.png in Resources */,
 				B438DFF0192A11C500049005 /* Help.png in Resources */,
 				B447D1861928540A005F081E /* Play.png in Resources */,
 				B4A8C8D5192A8D88002A2175 /* Help2.png in Resources */,
@@ -325,8 +295,6 @@
 				B4D348821925A699006A8C21 /* main.m in Sources */,
 				B4D348721925A653006A8C21 /* MBProgressHUD.m in Sources */,
 				B4D348731925A653006A8C21 /* Player.m in Sources */,
-				B426CE3B192E9329007B655D /* Login.m in Sources */,
-				B4B10D2B192DA37400A70C7F /* YTPlayerView.m in Sources */,
 				B4D348711925A653006A8C21 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,10 +405,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/muze",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "muze/muze-Prefix.pch";
 				INFOPLIST_FILE = "muze/muze-Info.plist";
@@ -458,10 +422,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/muze",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "muze/muze-Prefix.pch";
 				INFOPLIST_FILE = "muze/muze-Info.plist";
